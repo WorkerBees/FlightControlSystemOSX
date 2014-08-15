@@ -87,7 +87,6 @@
 		44587C29199EC60900559FEC /* FlightControlSystemOSX */ = {
 			isa = PBXGroup;
 			children = (
-				44587C51199EC68400559FEC /* FlightControlSystemOSX.entitlements */,
 				44587C2E199EC60900559FEC /* FCSMainViewController.h */,
 				44587C2F199EC60900559FEC /* FCSMainViewController.m */,
 				44587C31199EC60900559FEC /* FCSMissionDocument.h */,
@@ -103,6 +102,7 @@
 		44587C2A199EC60900559FEC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				44587C51199EC68400559FEC /* FlightControlSystemOSX.entitlements */,
 				44587C2B199EC60900559FEC /* Info.plist */,
 				44587C2C199EC60900559FEC /* main.m */,
 				44587C50199EC65800559FEC /* PrefixHeader.pch */,
@@ -455,6 +455,7 @@
 				44587C4C199EC60900559FEC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		44587C4D199EC60900559FEC /* Build configuration list for PBXNativeTarget "FlightControlSystemOSXTests" */ = {
 			isa = XCConfigurationList;
@@ -463,6 +464,7 @@
 				44587C4F199EC60900559FEC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
