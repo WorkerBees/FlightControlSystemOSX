@@ -6,13 +6,13 @@
 //  Copyright (c) 2014 Craig Hughes. All rights reserved.
 //
 
-#import "Document.h"
+#import "FCSMissionDocument.h"
 
-@interface Document ()
+@interface FCSMissionDocument ()
 
 @end
 
-@implementation Document
+@implementation FCSMissionDocument
             
 - (instancetype)init {
     self = [super init];

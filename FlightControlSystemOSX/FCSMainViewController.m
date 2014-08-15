@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Craig Hughes. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "FCSMainViewController.h"
 
-@implementation ViewController
+@implementation FCSMainViewController
             
 - (void)viewDidLoad {
     [super viewDidLoad];
