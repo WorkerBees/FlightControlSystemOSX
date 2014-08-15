@@ -1,0 +1,483 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		44587C2D199EC60900559FEC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 44587C2C199EC60900559FEC /* main.m */; };
+		44587C30199EC60900559FEC /* FCSMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44587C2F199EC60900559FEC /* FCSMainViewController.m */; };
+		44587C33199EC60900559FEC /* FCSMissionDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 44587C32199EC60900559FEC /* FCSMissionDocument.m */; };
+		44587C36199EC60900559FEC /* FCSMissionDocument.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 44587C34199EC60900559FEC /* FCSMissionDocument.xcdatamodeld */; };
+		44587C38199EC60900559FEC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44587C37199EC60900559FEC /* Images.xcassets */; };
+		44587C3B199EC60900559FEC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44587C39199EC60900559FEC /* Main.storyboard */; };
+		44587C47199EC60900559FEC /* FlightControlSystemOSXTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44587C46199EC60900559FEC /* FlightControlSystemOSXTests.m */; };
+		44587C53199EC69000559FEC /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44587C52199EC69000559FEC /* MapKit.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		44587C41199EC60900559FEC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 44587C1F199EC60900559FEC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 44587C26199EC60900559FEC;
+			remoteInfo = FlightControlSystemOSX;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		44587C27199EC60900559FEC /* FlightControlSystemOSX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlightControlSystemOSX.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		44587C2B199EC60900559FEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		44587C2C199EC60900559FEC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		44587C2E199EC60900559FEC /* FCSMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FCSMainViewController.h; sourceTree = "<group>"; };
+		44587C2F199EC60900559FEC /* FCSMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FCSMainViewController.m; sourceTree = "<group>"; };
+		44587C31199EC60900559FEC /* FCSMissionDocument.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FCSMissionDocument.h; sourceTree = "<group>"; };
+		44587C32199EC60900559FEC /* FCSMissionDocument.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FCSMissionDocument.m; sourceTree = "<group>"; };
+		44587C35199EC60900559FEC /* FCSMissionDocument.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FCSMissionDocument.xcdatamodel; sourceTree = "<group>"; };
+		44587C37199EC60900559FEC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		44587C3A199EC60900559FEC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		44587C40199EC60900559FEC /* FlightControlSystemOSXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlightControlSystemOSXTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		44587C45199EC60900559FEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		44587C46199EC60900559FEC /* FlightControlSystemOSXTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlightControlSystemOSXTests.m; sourceTree = "<group>"; };
+		44587C50199EC65800559FEC /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		44587C51199EC68400559FEC /* FlightControlSystemOSX.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = FlightControlSystemOSX.entitlements; sourceTree = "<group>"; };
+		44587C52199EC69000559FEC /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		44587C24199EC60900559FEC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				44587C53199EC69000559FEC /* MapKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		44587C3D199EC60900559FEC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		44587C1E199EC60900559FEC = {
+			isa = PBXGroup;
+			children = (
+				44587C52199EC69000559FEC /* MapKit.framework */,
+				44587C29199EC60900559FEC /* FlightControlSystemOSX */,
+				44587C43199EC60900559FEC /* FlightControlSystemOSXTests */,
+				44587C28199EC60900559FEC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		44587C28199EC60900559FEC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				44587C27199EC60900559FEC /* FlightControlSystemOSX.app */,
+				44587C40199EC60900559FEC /* FlightControlSystemOSXTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		44587C29199EC60900559FEC /* FlightControlSystemOSX */ = {
+			isa = PBXGroup;
+			children = (
+				44587C51199EC68400559FEC /* FlightControlSystemOSX.entitlements */,
+				44587C2E199EC60900559FEC /* FCSMainViewController.h */,
+				44587C2F199EC60900559FEC /* FCSMainViewController.m */,
+				44587C31199EC60900559FEC /* FCSMissionDocument.h */,
+				44587C32199EC60900559FEC /* FCSMissionDocument.m */,
+				44587C37199EC60900559FEC /* Images.xcassets */,
+				44587C39199EC60900559FEC /* Main.storyboard */,
+				44587C34199EC60900559FEC /* FCSMissionDocument.xcdatamodeld */,
+				44587C2A199EC60900559FEC /* Supporting Files */,
+			);
+			path = FlightControlSystemOSX;
+			sourceTree = "<group>";
+		};
+		44587C2A199EC60900559FEC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				44587C2B199EC60900559FEC /* Info.plist */,
+				44587C2C199EC60900559FEC /* main.m */,
+				44587C50199EC65800559FEC /* PrefixHeader.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		44587C43199EC60900559FEC /* FlightControlSystemOSXTests */ = {
+			isa = PBXGroup;
+			children = (
+				44587C46199EC60900559FEC /* FlightControlSystemOSXTests.m */,
+				44587C44199EC60900559FEC /* Supporting Files */,
+			);
+			path = FlightControlSystemOSXTests;
+			sourceTree = "<group>";
+		};
+		44587C44199EC60900559FEC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				44587C45199EC60900559FEC /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		44587C26199EC60900559FEC /* FlightControlSystemOSX */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 44587C4A199EC60900559FEC /* Build configuration list for PBXNativeTarget "FlightControlSystemOSX" */;
+			buildPhases = (
+				44587C23199EC60900559FEC /* Sources */,
+				44587C24199EC60900559FEC /* Frameworks */,
+				44587C25199EC60900559FEC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FlightControlSystemOSX;
+			productName = FlightControlSystemOSX;
+			productReference = 44587C27199EC60900559FEC /* FlightControlSystemOSX.app */;
+			productType = "com.apple.product-type.application";
+		};
+		44587C3F199EC60900559FEC /* FlightControlSystemOSXTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 44587C4D199EC60900559FEC /* Build configuration list for PBXNativeTarget "FlightControlSystemOSXTests" */;
+			buildPhases = (
+				44587C3C199EC60900559FEC /* Sources */,
+				44587C3D199EC60900559FEC /* Frameworks */,
+				44587C3E199EC60900559FEC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				44587C42199EC60900559FEC /* PBXTargetDependency */,
+			);
+			name = FlightControlSystemOSXTests;
+			productName = FlightControlSystemOSXTests;
+			productReference = 44587C40199EC60900559FEC /* FlightControlSystemOSXTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		44587C1F199EC60900559FEC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = "Craig Hughes";
+				TargetAttributes = {
+					44587C26199EC60900559FEC = {
+						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = GVYZ6YPF25;
+						SystemCapabilities = {
+							com.apple.Maps.Mac = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
+					};
+					44587C3F199EC60900559FEC = {
+						CreatedOnToolsVersion = 6.0;
+						TestTargetID = 44587C26199EC60900559FEC;
+					};
+				};
+			};
+			buildConfigurationList = 44587C22199EC60900559FEC /* Build configuration list for PBXProject "FlightControlSystemOSX" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 44587C1E199EC60900559FEC;
+			productRefGroup = 44587C28199EC60900559FEC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				44587C26199EC60900559FEC /* FlightControlSystemOSX */,
+				44587C3F199EC60900559FEC /* FlightControlSystemOSXTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		44587C25199EC60900559FEC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				44587C38199EC60900559FEC /* Images.xcassets in Resources */,
+				44587C3B199EC60900559FEC /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		44587C3E199EC60900559FEC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		44587C23199EC60900559FEC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				44587C36199EC60900559FEC /* FCSMissionDocument.xcdatamodeld in Sources */,
+				44587C33199EC60900559FEC /* FCSMissionDocument.m in Sources */,
+				44587C30199EC60900559FEC /* FCSMainViewController.m in Sources */,
+				44587C2D199EC60900559FEC /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		44587C3C199EC60900559FEC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				44587C47199EC60900559FEC /* FlightControlSystemOSXTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		44587C42199EC60900559FEC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 44587C26199EC60900559FEC /* FlightControlSystemOSX */;
+			targetProxy = 44587C41199EC60900559FEC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		44587C39199EC60900559FEC /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				44587C3A199EC60900559FEC /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		44587C48199EC60900559FEC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_RAND = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_STRCPY = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_ASSIGN_ENUM = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREFIX_HEADER = FlightControlSystemOSX/PrefixHeader.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_SHADOW = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LLVM_LTO = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				RUN_CLANG_STATIC_ANALYZER = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		44587C49199EC60900559FEC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_RAND = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_STRCPY = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_ASSIGN_ENUM = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREFIX_HEADER = FlightControlSystemOSX/PrefixHeader.pch;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_SHADOW = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LLVM_LTO = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				RUN_CLANG_STATIC_ANALYZER = YES;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		44587C4B199EC60900559FEC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = FlightControlSystemOSX/FlightControlSystemOSX.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = FlightControlSystemOSX/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Debug;
+		};
+		44587C4C199EC60900559FEC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = FlightControlSystemOSX/FlightControlSystemOSX.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = FlightControlSystemOSX/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Release;
+		};
+		44587C4E199EC60900559FEC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = FlightControlSystemOSXTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FlightControlSystemOSX.app/Contents/MacOS/FlightControlSystemOSX";
+			};
+			name = Debug;
+		};
+		44587C4F199EC60900559FEC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = FlightControlSystemOSXTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FlightControlSystemOSX.app/Contents/MacOS/FlightControlSystemOSX";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		44587C22199EC60900559FEC /* Build configuration list for PBXProject "FlightControlSystemOSX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				44587C48199EC60900559FEC /* Debug */,
+				44587C49199EC60900559FEC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		44587C4A199EC60900559FEC /* Build configuration list for PBXNativeTarget "FlightControlSystemOSX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				44587C4B199EC60900559FEC /* Debug */,
+				44587C4C199EC60900559FEC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		44587C4D199EC60900559FEC /* Build configuration list for PBXNativeTarget "FlightControlSystemOSXTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				44587C4E199EC60900559FEC /* Debug */,
+				44587C4F199EC60900559FEC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		44587C34199EC60900559FEC /* FCSMissionDocument.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				44587C35199EC60900559FEC /* FCSMissionDocument.xcdatamodel */,
+			);
+			currentVersion = 44587C35199EC60900559FEC /* FCSMissionDocument.xcdatamodel */;
+			path = FCSMissionDocument.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 44587C1F199EC60900559FEC /* Project object */;
+}
