@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="6205" systemVersion="14A314h" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="jGA-0Y-lOj">
     <dependencies>
+        <deployment defaultVersion="101000" identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6205"/>
+        <plugIn identifier="com.apple.MapKitIBPlugin" version="6205"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -646,18 +648,32 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="jGA-0Y-lOj" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="Ckk-yw-fiv">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="Ckk-yw-fiv">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" unifiedTitleAndToolbar="YES" fullSizeContentView="YES"/>
+                        <windowCollectionBehavior key="collectionBehavior" fullScreenPrimary="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1177"/>
                         <view key="contentView" id="pgY-O8-iph">
                             <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </view>
+                        <toolbar key="toolbar" implicitIdentifier="3FD2489E-A5E8-4D08-92DC-6BD6A142964C" showsBaselineSeparator="NO" displayMode="iconAndLabel" sizeMode="small" id="6QM-68-t3B">
+                            <allowedToolbarItems>
+                                <toolbarItem implicitItemIdentifier="0DC654FC-61B5-4606-AB1B-943278444165" label="Send Plan" paletteLabel="Send Plan" tag="-1" image="NSShareTemplate" id="Fgk-iH-UBo"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="GEy-As-VqY"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="Cic-kZ-RlF"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarCustomizeToolbarItem" id="2lL-oG-ZFp"/>
+                            </allowedToolbarItems>
+                            <defaultToolbarItems>
+                                <toolbarItem reference="Fgk-iH-UBo"/>
+                                <toolbarItem reference="GEy-As-VqY"/>
+                                <toolbarItem reference="2lL-oG-ZFp"/>
+                            </defaultToolbarItems>
+                        </toolbar>
                     </window>
                     <connections>
-                        <segue destination="5gI-5U-AMq" kind="relationship" relationship="window.shadowedContentViewController" id="nsd-lR-9xd"/>
+                        <segue destination="j15-eZ-ddR" kind="relationship" relationship="window.shadowedContentViewController" id="aWn-u4-AXc"/>
                     </connections>
                 </windowController>
                 <customObject id="6f7-a7-6o1" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -665,31 +681,65 @@
             <point key="canvasLocation" x="75" y="250"/>
         </scene>
         <!--Main View Controller-->
-        <scene sceneID="hIz-AP-VOD">
+        <scene sceneID="IGp-yq-Dre">
             <objects>
-                <viewController id="5gI-5U-AMq" customClass="FCSMainViewController" sceneMemberID="viewController">
-                    <view key="view" id="ERx-hH-rdd">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                <viewController id="j15-eZ-ddR" customClass="FCSMainViewController" sceneMemberID="viewController">
+                    <view key="view" id="PHE-oy-l0Q">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="494"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="TyV-c9-G0C">
-                                <rect key="frame" x="100" y="139" width="250" height="22"/>
-                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="Your document contents here" id="Cc7-nU-5Mv">
-                                    <font key="font" metaFont="system" size="18"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            <mapView mapType="hybrid" showsUserLocation="YES" showsZoomControls="NO" showsScale="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nFQ-R9-8NV">
+                                <rect key="frame" x="0.0" y="0.0" width="480" height="494"/>
+                                <connections>
+                                    <outlet property="delegate" destination="j15-eZ-ddR" id="rYq-qQ-Zfg"/>
+                                </connections>
+                            </mapView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mCH-5v-JXa" userLabel="Feedback">
+                                <rect key="frame" x="20" y="20" width="38" height="17"/>
+                                <textFieldCell key="cell" lineBreakMode="truncatingMiddle" refusesFirstResponder="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" title="Label" drawsBackground="YES" id="zG9-qA-VJj">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                                 </textFieldCell>
                             </textField>
+                            <searchField wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gaj-Hz-73O">
+                                <rect key="frame" x="110" y="372" width="350" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="350" id="C5F-AS-KfG"/>
+                                </constraints>
+                                <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" allowsUndo="NO" borderStyle="bezel" placeholderString="Location" usesSingleLineMode="YES" bezelStyle="round" sendsSearchStringImmediately="YES" id="VNN-cP-yHe">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </searchFieldCell>
+                                <connections>
+                                    <action selector="searchLocationEntered:" target="j15-eZ-ddR" id="HXG-4F-trZ"/>
+                                    <outlet property="delegate" destination="j15-eZ-ddR" id="XGe-TW-Xah"/>
+                                </connections>
+                            </searchField>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="centerY" secondItem="TyV-c9-G0C" secondAttribute="centerY" id="Rxv-Yd-F43"/>
-                            <constraint firstAttribute="centerX" secondItem="TyV-c9-G0C" secondAttribute="centerX" id="Zn4-Y4-lbg"/>
+                            <constraint firstItem="nFQ-R9-8NV" firstAttribute="top" secondItem="PHE-oy-l0Q" secondAttribute="top" id="6gf-kD-3a2"/>
+                            <constraint firstAttribute="trailing" secondItem="gaj-Hz-73O" secondAttribute="trailing" constant="20" symbolic="YES" id="Bui-3L-Pmu"/>
+                            <constraint firstItem="mCH-5v-JXa" firstAttribute="leading" secondItem="PHE-oy-l0Q" secondAttribute="leading" constant="20" symbolic="YES" id="FTr-et-AzX"/>
+                            <constraint firstAttribute="bottom" secondItem="mCH-5v-JXa" secondAttribute="bottom" constant="20" symbolic="YES" id="RCG-oP-IjR"/>
+                            <constraint firstItem="gaj-Hz-73O" firstAttribute="top" secondItem="PHE-oy-l0Q" secondAttribute="top" constant="100" id="Zli-3H-dEn"/>
+                            <constraint firstAttribute="trailing" secondItem="nFQ-R9-8NV" secondAttribute="trailing" id="b54-7X-DqR"/>
+                            <constraint firstAttribute="bottom" secondItem="nFQ-R9-8NV" secondAttribute="bottom" id="ec8-wM-SqB"/>
+                            <constraint firstItem="nFQ-R9-8NV" firstAttribute="leading" secondItem="PHE-oy-l0Q" secondAttribute="leading" id="oZK-pF-6sL"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="currentLocationDetail" destination="mCH-5v-JXa" id="TeS-ys-aQ0"/>
+                        <outlet property="mapView" destination="nFQ-R9-8NV" id="5wn-CB-LyY"/>
+                    </connections>
                 </viewController>
-                <customObject id="2Tp-Fl-jBw" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <customObject id="AoQ-5p-qgC" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="655"/>
+            <point key="canvasLocation" x="75" y="737"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="NSShareTemplate" width="11" height="16"/>
+    </resources>
 </document>
