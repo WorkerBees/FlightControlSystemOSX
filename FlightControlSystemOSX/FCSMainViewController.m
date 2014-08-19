@@ -21,9 +21,29 @@
 
 @end
 
-static const NSInteger currentLocationMenuItemTag = 1;
-
 @implementation FCSMainViewController
+
+- (void)setStatusForPlacemark:(MKPlacemark *)placemark
+{
+    [self setCurrentLocationDetail:[NSString stringWithFormat:@"%@ %@\n%@, %@, %@",
+                                    placemark.subThoroughfare,
+                                    placemark.thoroughfare,
+                                    placemark.locality,
+                                    placemark.subAdministrativeArea,
+                                    placemark.administrativeArea]
+                   enableAddButton:NO];
+}
+
+- (void)setStatusForFirstPlacemarkOfArray:(NSArray *)placemarks
+{
+    if(placemarks != nil) // nil if cancelled or error
+    {
+        if ([placemarks count] > 0)
+        {
+            [self setStatusForPlacemark:[placemarks objectAtIndex:0]];
+        }
+    }
+}
 
 #pragma mark - Auto-allocation methods
 
@@ -68,19 +88,12 @@ static const NSInteger currentLocationMenuItemTag = 1;
     [self.locationManager startUpdatingLocation];
 }
 
-- (void)viewDidAppear
-{
-}
-
 - (void)viewWillDisappear
 {
     [self.locationManager stopUpdatingLocation];
     _locationManager = nil;
-}
 
-- (void)viewDidDisappear
-{
-    [super viewDidDisappear];
+    [super viewWillDisappear];
 }
 
 #pragma mark - Location detail visible
@@ -89,43 +102,46 @@ static const NSInteger currentLocationMenuItemTag = 1;
                  enableAddButton:(BOOL)enableAddButton
 {
     (void)enableAddButton;
-    self.currentLocationDetail.stringValue = newDetail;
-    self.currentLocationDetail.hidden = NO;
 
-    [self.currentLocationDetail sizeToFit];
+    // Update UI on main thread
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.currentLocationDetail.stringValue = newDetail;
+        self.currentLocationDetail.hidden = NO;
+
+        [self.currentLocationDetail sizeToFit];
+    });
 }
 
 #pragma mark - Search for location
 
-- (IBAction)searchLocationEntered:(NSSearchField *)sender
+- (void)geocodeAddressString:(NSString *)addressString completionHandler:(CLGeocodeCompletionHandler)completionHandler
 {
     [self.geocoder cancelGeocode];
-    [self.geocoder geocodeAddressString:sender.stringValue
-                               inRegion:nil
-                      completionHandler:^(NSArray *placemarks, NSError *error)
-     {
-         if(error == nil)
-         {
-             if(placemarks != nil) // nil if cancelled or error
-             {
-                 if ([placemarks count] > 0)
-                 {
-                     MKPlacemark *placemark = [placemarks objectAtIndex:0];
-                     [self setCurrentLocationDetail:[NSString stringWithFormat:@"%@ %@\n%@, %@, %@",
-                                                     placemark.subThoroughfare,
-                                                     placemark.thoroughfare,
-                                                     placemark.locality,
-                                                     placemark.subAdministrativeArea,
-                                                     placemark.administrativeArea]
-                                    enableAddButton:NO];
-                 }
-             }
-         }
-         else
-         {
-             NSLog(@"Error: %@",error);
-         }
-     }];
+
+    CLLocation *center = [[CLLocation alloc] initWithLatitude:self.mapView.centerCoordinate.latitude
+                                                    longitude:self.mapView.centerCoordinate.longitude];
+    CLLocation *NEcorner = [[CLLocation alloc] initWithLatitude:self.mapView.centerCoordinate.latitude + self.mapView.region.span.latitudeDelta
+                                                      longitude:self.mapView.centerCoordinate.longitude + self.mapView.region.span.longitudeDelta];
+
+    [self.geocoder geocodeAddressString:addressString
+                               inRegion:[[CLCircularRegion alloc] initWithCenter:self.mapView.centerCoordinate
+                                                                          radius:[NEcorner distanceFromLocation:center]
+                                                                      identifier:nil]
+                      completionHandler:completionHandler];
+}
+
+- (IBAction)searchLocationEntered:(NSSearchField *)sender
+{
+    [self geocodeAddressString:sender.stringValue completionHandler:^(NSArray *placemarks, NSError *error) {
+        if(error == nil)
+        {
+            [self setStatusForFirstPlacemarkOfArray:placemarks];
+        }
+        else
+        {
+            NSLog(@"Error: %@",error);
+        }
+    }];
 }
 
 #pragma mark - Add waypoint
@@ -178,32 +194,29 @@ static const NSInteger currentLocationMenuItemTag = 1;
      {
          if(error == nil)
          {
-             if(placemarks != nil) // nil if cancelled or error
-             {
-                 if ([placemarks count] > 0)
-                 {
-                     MKPlacemark *placemark = [placemarks objectAtIndex:0];
-                     [self setCurrentLocationDetail:[NSString stringWithFormat:@"%@ %@\n%@, %@, %@",
-                                                     placemark.subThoroughfare,
-                                                     placemark.thoroughfare,
-                                                     placemark.locality,
-                                                     placemark.subAdministrativeArea,
-                                                     placemark.administrativeArea]
-                                    enableAddButton:NO];
-                 }
-             }
+             [self setStatusForFirstPlacemarkOfArray:placemarks];
          }
          else
          {
              NSLog(@"Error: %@",error);
          }
      }];
-
-
 }
 
 #pragma mark - Autocomplete search using text field delegate
 
+- (void) controlTextDidChange: (NSNotification *)note
+{
+    static BOOL isCompleting = NO;
+    NSTextView * fieldEditor = [note.userInfo objectForKey:@"NSFieldEditor"];
+
+    if(!isCompleting)
+    {
+        isCompleting = YES;
+        [fieldEditor complete:nil];
+        isCompleting = NO;
+    }
+}
 
 - (NSArray *)control:(NSControl *)control
             textView:(NSTextView *)textView
@@ -214,13 +227,46 @@ static const NSInteger currentLocationMenuItemTag = 1;
     (void)control;
     (void)words;
     (void)charRange;
-
+/*
     NSMutableArray *results = [NSMutableArray arrayWithCapacity:10];
 
-    NSString *stringSoFar = textView.string;
+    [self geocodeAddressString:textView.string
+                      completionHandler:^(NSArray *placemarks, NSError *error)
+     {
+         if(error == nil)
+         {
+             CLLocation *center = [[CLLocation alloc] initWithLatitude:self.mapView.centerCoordinate.latitude
+                                                             longitude:self.mapView.centerCoordinate.longitude];
 
-    *index = -1;
+             NSArray *sortedArray = [placemarks sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+                 CLPlacemark *pl1 = obj1;
+                 CLPlacemark *pl2 = obj2;
+                 return [pl1.location distanceFromLocation:center] > [pl2.location distanceFromLocation:center];
+             }];
+
+             for (CLPlacemark *placemark in sortedArray)
+             {
+                 [results addObject:[NSString stringWithFormat:@"%@ %@, %@, %@, %@ (%0.2f miles)",
+                                     placemark.subThoroughfare,
+                                     placemark.thoroughfare,
+                                     placemark.locality,
+                                     placemark.subAdministrativeArea,
+                                     placemark.administrativeArea,
+                                     [placemark.location distanceFromLocation:center] / 1609.34
+                                     ]];
+             }
+             NSLog(@"Completion lookup returned %lu items: %@",results.count, results);
+         }
+         else
+         {
+             NSLog(@"Completion lookup error: %@",error);
+         }
+     }];
+
+    *index = (results.count > 0) ? 0 : -1;
     return results;
+ */
+    return words;
 }
 
 

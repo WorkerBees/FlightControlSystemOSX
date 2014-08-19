@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="6205" systemVersion="14A314h" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="jGA-0Y-lOj">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="6205" systemVersion="14A329f" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="jGA-0Y-lOj">
     <dependencies>
         <deployment defaultVersion="101000" identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6205"/>
@@ -639,8 +639,12 @@
                             </menuItem>
                         </items>
                     </menu>
+                    <connections>
+                        <outlet property="delegate" destination="nuz-Cg-9MG" id="xxQ-0M-SiP"/>
+                    </connections>
                 </application>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <customObject id="nuz-Cg-9MG" customClass="AppDelegate"/>
             </objects>
             <point key="canvasLocation" x="75" y="0.0"/>
         </scene>
@@ -653,7 +657,7 @@
                         <windowCollectionBehavior key="collectionBehavior" fullScreenPrimary="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1177"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1200"/>
                         <view key="contentView" id="pgY-O8-iph">
                             <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                             <autoresizingMask key="autoresizingMask"/>
@@ -707,7 +711,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="350" id="C5F-AS-KfG"/>
                                 </constraints>
-                                <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" allowsUndo="NO" borderStyle="bezel" placeholderString="Location" usesSingleLineMode="YES" bezelStyle="round" sendsSearchStringImmediately="YES" id="VNN-cP-yHe">
+                                <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" allowsUndo="NO" borderStyle="bezel" placeholderString="Location" usesSingleLineMode="YES" bezelStyle="round" sendsWholeSearchString="YES" id="VNN-cP-yHe">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
