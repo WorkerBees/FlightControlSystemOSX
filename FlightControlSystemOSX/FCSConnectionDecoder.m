@@ -10,4 +10,10 @@
 
 @implementation FCSConnectionDecoder
 
+- (void)link:(FCSConnectionLink *)link receivedMAVLinkMessage:(FCSMAVLinkMessage *)message
+{
+    NSLog(@"Received message %@ on link %@", message, link);
+}
+
+
 @end

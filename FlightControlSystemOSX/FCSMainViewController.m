@@ -8,6 +8,8 @@
 
 #import "FCSMainViewController.h"
 
+#import "AppDelegate.h"
+
 @import MapKit;
 
 @interface FCSMainViewController () <MKMapViewDelegate, CLLocationManagerDelegate, NSTextFieldDelegate>
@@ -86,6 +88,21 @@
 
     // Get latest position fix
     [self.locationManager startUpdatingLocation];
+}
+
+- (void)viewDidAppear
+{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        // Find a serial connection and connect it
+        NSLog(@"Looking for a link to connect");
+        AppDelegate *myApp = (AppDelegate *)[NSApplication sharedApplication].delegate;
+        FCSConnectionLink *theLink = myApp.connectionLinkManager.availableLinks.anyObject;
+        NSLog(@"The connection manager gave me: %@", theLink);
+        if(theLink != nil)
+        {
+            theLink.connected = YES;
+        }
+    });
 }
 
 - (void)viewWillDisappear

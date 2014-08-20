@@ -8,6 +8,8 @@
 
 @import Foundation;
 
-@interface FCSConnectionDecoder : NSObject
+#import "FCSConnectionProtocol.h"
+
+@interface FCSConnectionDecoder : NSObject <FCSMAVLinkMessageReceivedDelegate>
 
 @end

@@ -16,8 +16,10 @@
 @interface FCSSerialLink () <ORSSerialPortDelegate>
 
 - (instancetype)initWithLinkManager:(FCSConnectionLinkManager *)manager
-             withPort:(ORSSerialPort *)port
-         withBaudRate:(NSUInteger)baudRate;
+                         withLinkID:(NSUInteger)id
+                           withPort:(ORSSerialPort *)port
+                       withBaudRate:(NSUInteger)baudRate
+               withProtocolDelegate:(id<FCSConnectionLinkReadDelegate>)protocolDelegate;
 
 @property ORSSerialPort *thePort;
 

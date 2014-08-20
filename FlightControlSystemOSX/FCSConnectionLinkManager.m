@@ -10,12 +10,17 @@
 
 #import "FCSSerialLink_private.h"
 
+#import "FCSConnectionProtocol.h"
+
+#import "FCSConnectionDecoder.h"
+
 #import "ORSSerialPortManager.h"
 #import "ORSSerialPort.h"
 
 @interface FCSConnectionLinkManager () <NSUserNotificationCenterDelegate>
 
 @property NSMutableSet *links;
+@property NSMutableIndexSet *availableLinkIds;
 
 @end
 
@@ -28,6 +33,7 @@
     self = [super init];
 
     _links = [NSMutableSet setWithCapacity:5];
+    _availableLinkIds = [[NSMutableIndexSet alloc] initWithIndexesInRange:NSMakeRange(0, 255)];
 
     // Search for USB serial ports
     [self addUSBSerialPorts:ORSSerialPortManager.sharedSerialPortManager.availablePorts];
@@ -58,16 +64,6 @@
 
 #pragma mark - FCSConnectionLink delegate methods
 
-- (void)connectionLink:(FCSConnectionLink *)link didReceiveData:(NSData *)input
-{
-    NSLog(@"Received %lu length data on link %@", input.length, link);
-}
-
-- (void)connectionLink:(FCSConnectionLink *)link didEncounterError:(NSError *)error
-{
-    NSLog(@"Link %@ encountered an error: %@", link, error);
-}
-
 - (void)opened:(FCSConnectionLink *)link
 {
     NSLog(@"Connected: %@",link);
@@ -88,9 +84,16 @@
         {
             NSLog(@"Adding %@ to available ports",port.name);
 
-            [_links addObject:[[FCSSerialLink alloc] initWithLinkManager:self
-                                                                withPort:port
-                                                            withBaudRate:115200]];
+            FCSConnectionDecoder *newDecoder = [[FCSConnectionDecoder alloc] init];
+
+            FCSConnectionLink *newLink = [[FCSSerialLink alloc] initWithLinkManager:self
+                                                                         withLinkID:self.availableLinkIds.firstIndex
+                                                                           withPort:port
+                                                                       withBaudRate:115200
+                                                               withProtocolDelegate:[[FCSConnectionProtocol alloc] initWithDelegate:newDecoder]];
+            [self.availableLinkIds removeIndex:self.availableLinkIds.firstIndex];
+
+            [_links addObject:newLink];
         }
     }
 }

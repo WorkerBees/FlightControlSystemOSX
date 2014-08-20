@@ -312,7 +312,6 @@
 			isa = PBXGroup;
 			children = (
 				444502C819A3DD44007056B9 /* Decoder */,
-				444502C419A3DD29007056B9 /* Protocol */,
 				444502C019A3DCCA007056B9 /* Link */,
 				444502BF19A3DCC0007056B9 /* ORSSerialPort */,
 				444501D519A3D0BE007056B9 /* mavlink */,
@@ -646,24 +645,17 @@
 				444502D019A3E8D8007056B9 /* FCSSerialLink.h */,
 				444502D319A3F1BB007056B9 /* FCSSerialLink_private.h */,
 				444502D119A3E8D8007056B9 /* FCSSerialLink.m */,
-			);
-			name = Link;
-			sourceTree = "<group>";
-		};
-		444502C419A3DD29007056B9 /* Protocol */ = {
-			isa = PBXGroup;
-			children = (
 				444502C519A3DD3D007056B9 /* FCSConnectionProtocol.h */,
 				444502C619A3DD3D007056B9 /* FCSConnectionProtocol.m */,
+				444502C919A3DD56007056B9 /* FCSConnectionDecoder.h */,
+				444502CA19A3DD56007056B9 /* FCSConnectionDecoder.m */,
 			);
-			name = Protocol;
+			name = Link;
 			sourceTree = "<group>";
 		};
 		444502C819A3DD44007056B9 /* Decoder */ = {
 			isa = PBXGroup;
 			children = (
-				444502C919A3DD56007056B9 /* FCSConnectionDecoder.h */,
-				444502CA19A3DD56007056B9 /* FCSConnectionDecoder.m */,
 			);
 			name = Decoder;
 			sourceTree = "<group>";

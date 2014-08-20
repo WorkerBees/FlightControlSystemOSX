@@ -34,17 +34,24 @@ typedef NS_ENUM(NSUInteger, FCSLinkType)
 + (NSString *)stringForLinkType:(FCSLinkType) type;
 + (FCSLinkType)linkTypeForString:(NSString *) type;
 
-// The type of link
-@property (readonly) FCSLinkType type;
-
 // Read this property to assess connection state; write it to open/close the connection
 @property BOOL connected;
 
 // Read this property to assess whether timeouts are enabled; write it to change timeout monitoring.
 @property BOOL timeoutsEnabled;
 
+// The type of link
+@property (readonly) FCSLinkType type;
+
 // A human-readable name for this connection
 @property (readonly) NSString *name;
+
+// A unique ID which is actually in the range 0..255
+@property (readonly) NSUInteger linkId;
+
+- (instancetype)initWithType:(FCSLinkType)type
+                  withLinkID:(NSUInteger)linkId
+                    withName:(NSString *)name;
 
 - (void)writeData:(NSData *)output;
 

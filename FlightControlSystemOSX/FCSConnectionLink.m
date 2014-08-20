@@ -48,6 +48,19 @@
     return result;
 }
 
+- (instancetype)initWithType:(FCSLinkType)type
+                  withLinkID:(NSUInteger)linkId
+                    withName:(NSString *)name
+{
+    self = [super init];
+
+    _type = type;
+    _linkId = linkId;
+    _name = name;
+
+    return self;
+}
+
 - (void)writeData:(NSData *)output
 {
     NSAssert(NO, @"Subclasses must override this message");

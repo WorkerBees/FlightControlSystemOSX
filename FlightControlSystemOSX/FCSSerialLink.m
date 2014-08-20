@@ -8,6 +8,8 @@
 
 #import "FCSSerialLink_private.h"
 
+#define FCS_DEBUG_SERIAL_LINK 0
+
 @interface FCSSerialLink ()
 
 @end
@@ -16,9 +18,7 @@
 
 #pragma mark - Property accessors
 
-- (FCSLinkType) type { return FCSSerialLinkType; }
-- (NSString *) name { NSAssert(self.thePort!= nil,@"Th port is nil!"); return self.thePort.name; }
-- (BOOL) connected { NSAssert(self.thePort!= nil,@"Th port is nil!"); return self.thePort.isOpen; }
+- (BOOL) connected { NSAssert(self.thePort!= nil,@"The port is nil!"); return self.thePort.isOpen; }
 
 - (void) setConnected:(BOOL)connected
 {
@@ -50,9 +50,15 @@
     return [NSString stringWithFormat:@"%@ - %@ - %@", [FCSConnectionLink stringForLinkType:self.type], self.name, connectedString];
 }
 
-- (instancetype)initWithLinkManager:(FCSConnectionLinkManager *)manager withPort:(ORSSerialPort *)port withBaudRate:(NSUInteger)baudRate
+- (instancetype)initWithLinkManager:(FCSConnectionLinkManager *)manager
+                         withLinkID:(NSUInteger)linkId
+                           withPort:(ORSSerialPort *)port
+                       withBaudRate:(NSUInteger)baudRate
+               withProtocolDelegate:(id<FCSConnectionLinkReadDelegate>)protocolDelegate
 {
-    self.readerDelegate = manager;
+    self = [super initWithType:FCSSerialLinkType withLinkID:linkId withName:port.name];
+
+    self.readerDelegate = protocolDelegate;
     self.linkStatusDelegate = manager;
     self.thePort = port;
 

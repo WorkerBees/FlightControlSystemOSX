@@ -10,6 +10,6 @@
 #import "ORSSerialPortManager.h"
 #import "ORSSerialPort.h"
 
-@interface FCSConnectionLinkManager () <FCSConnectionLinkReadDelegate,FCSConnectionLinkStatusDelegate>
+@interface FCSConnectionLinkManager () <FCSConnectionLinkStatusDelegate>
 
 @end
