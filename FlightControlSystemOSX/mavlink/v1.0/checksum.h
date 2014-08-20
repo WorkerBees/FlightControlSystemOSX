@@ -31,7 +31,7 @@ static inline void crc_accumulate(uint8_t data, uint16_t *crcAccum)
 
         tmp = data ^ (uint8_t)(*crcAccum &0xff);
         tmp ^= (tmp<<4);
-        *crcAccum = (*crcAccum>>8) ^ (tmp<<8) ^ (tmp <<3) ^ (tmp>>4);
+        *crcAccum = (*crcAccum>>8) ^ (uint16_t)(tmp<<8) ^ (uint16_t)(tmp<<3) ^ (uint16_t)(tmp>>4);
 }
 
 /**
