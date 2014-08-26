@@ -8,39 +8,6 @@
 
 #import "FCSConnectionProtocol.h"
 
-static const mavlink_message_info_t message_infos[] = MAVLINK_MESSAGE_INFO;
-
-@implementation FCSMAVLinkMessage
-
-- (instancetype)initWithMessage:(mavlink_message_t *)message
-{
-    self = [super init];
-
-    _theMessage = malloc(sizeof(mavlink_message_t));
-    memcpy(_theMessage, message, sizeof(mavlink_message_t));
-
-    return self;
-}
-
-- (NSString *)description
-{
-    mavlink_message_info_t info = message_infos[self.theMessage->msgid];
-    NSString *result = [NSString stringWithFormat:@"(%s) sys:%02x comp:%02x seq:%02x", info.name,
-                                                                                       self.theMessage->sysid,
-                                                                                       self.theMessage->compid,
-                                                                                       self.theMessage->seq];
-
-    return result;
-}
-
-- (void)dealloc
-{
-    free(_theMessage);
-}
-
-@end
-
-
 @interface FCSConnectionProtocol ()
 
 // A dictionary with keys of systemID; values are dictionary with (key componentID; value lastSequenceNumber
@@ -49,9 +16,6 @@ static const mavlink_message_info_t message_infos[] = MAVLINK_MESSAGE_INFO;
 @end
 
 @implementation FCSConnectionProtocol
-
-+ (uint8_t)systemID { return 252; }
-+ (uint8_t)componentID { return 1; }
 
 - (instancetype)initWithDelegate:(id<FCSMAVLinkMessageReceivedDelegate>)delegate
 {
@@ -71,8 +35,8 @@ static const mavlink_message_info_t message_infos[] = MAVLINK_MESSAGE_INFO;
     int len = mavlink_msg_to_send_buffer(buffer, message.theMessage);
     static uint8_t messageKeys[256] = MAVLINK_MESSAGE_CRCS;
     mavlink_finalize_message_chan(message.theMessage,
-                                  FCSConnectionProtocol.systemID,
-                                  FCSConnectionProtocol.componentID,
+                                  FCSGCSSystemID,
+                                  FCSGCSComponentID,
                                   (uint8_t)link.linkId,
                                   message.theMessage->len,
                                   messageKeys[message.theMessage->msgid]);
@@ -102,6 +66,7 @@ static const mavlink_message_info_t message_infos[] = MAVLINK_MESSAGE_INFO;
         unsigned int decodeState = mavlink_parse_char((uint8_t)link.linkId, byte, &message, &status);
         if (decodeState == 1)
         {
+            // TODO: respond to pings properly through FCSMAVLinkPingMessage
             if(message.msgid == MAVLINK_MSG_ID_PING)
             {
                 // process ping requests (tgt_system and tgt_comp must be zero)
@@ -110,15 +75,15 @@ static const mavlink_message_info_t message_infos[] = MAVLINK_MESSAGE_INFO;
                 if(!ping.target_system && !ping.target_component)
                 {
                     mavlink_message_t msg;
-                    mavlink_msg_ping_pack(FCSConnectionProtocol.systemID,
-                                          FCSConnectionProtocol.componentID,
+                    mavlink_msg_ping_pack(FCSGCSSystemID,
+                                          FCSGCSComponentID,
                                           &msg,
                                           ping.time_usec,
                                           ping.seq,
                                           message.sysid,
                                           message.compid);
                     NSLog(@"Replying to ping");
-                    [self sendMessage:[[FCSMAVLinkMessage alloc] initWithMessage:&msg] onLink:link];
+                    [self sendMessage:[FCSMAVLinkMessage makeFromMessage:&msg] onLink:link];
                 }
             }
 
@@ -169,7 +134,7 @@ static const mavlink_message_info_t message_infos[] = MAVLINK_MESSAGE_INFO;
             if(self.delegate)
             {
                 // FCSMAVLinkMessage init method will copy the message contents off the stack into a managed heap object
-                [self.delegate link:link receivedMAVLinkMessage:[[FCSMAVLinkMessage alloc] initWithMessage:&message]];
+                [self.delegate link:link receivedMAVLinkMessage:[FCSMAVLinkMessage makeFromMessage:&message]];
             }
         }
     }

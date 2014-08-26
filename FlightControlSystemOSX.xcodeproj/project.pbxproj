@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4418360619A55925000C8CBB /* FCSMAVLinkMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4418360519A55925000C8CBB /* FCSMAVLinkMessage.m */; };
 		444502BD19A3D0D9007056B9 /* ORSSerialPort.m in Sources */ = {isa = PBXBuildFile; fileRef = 444502BA19A3D0D9007056B9 /* ORSSerialPort.m */; };
 		444502BE19A3D0D9007056B9 /* ORSSerialPortManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 444502BC19A3D0D9007056B9 /* ORSSerialPortManager.m */; };
 		444502C719A3DD3D007056B9 /* FCSConnectionProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 444502C619A3DD3D007056B9 /* FCSConnectionProtocol.m */; };
@@ -21,7 +22,114 @@
 		44587C3B199EC60900559FEC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44587C39199EC60900559FEC /* Main.storyboard */; };
 		44587C47199EC60900559FEC /* FlightControlSystemOSXTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44587C46199EC60900559FEC /* FlightControlSystemOSXTests.m */; };
 		44587C53199EC69000559FEC /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44587C52199EC69000559FEC /* MapKit.framework */; };
+		445A4C7B19A6CFEC00338A3A /* FCSMAVLinkHeartbeatMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 445A4C7A19A6CFEC00338A3A /* FCSMAVLinkHeartbeatMessage.m */; };
+		445A4C7E19A6D00E00338A3A /* FCSMAVLinkSystemStatusMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 445A4C7D19A6D00E00338A3A /* FCSMAVLinkSystemStatusMessage.m */; };
+		445A4C8119A6D03E00338A3A /* FCSMAVLinkStatusTextMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 445A4C8019A6D03E00338A3A /* FCSMAVLinkStatusTextMessage.m */; };
+		445A4C8419A6D06300338A3A /* FCSMAVLinkCommandLongMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 445A4C8319A6D06300338A3A /* FCSMAVLinkCommandLongMessage.m */; };
+		445A4C8719A6D08F00338A3A /* FCSMAVLinkCommandAcknowledgementMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 445A4C8619A6D08F00338A3A /* FCSMAVLinkCommandAcknowledgementMessage.m */; };
+		445A4C8A19A6D0B800338A3A /* FCAMAVLinkSetParameterMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 445A4C8919A6D0B800338A3A /* FCAMAVLinkSetParameterMessage.m */; };
+		445A4C8D19A6D0CE00338A3A /* FCSMAVLinkParameterValueMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 445A4C8C19A6D0CE00338A3A /* FCSMAVLinkParameterValueMessage.m */; };
+		445A4C9019A6D0E300338A3A /* FCSMAVLinkMissionItemMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 445A4C8F19A6D0E300338A3A /* FCSMAVLinkMissionItemMessage.m */; };
+		445A4C9319A6D0F400338A3A /* FCSMAVLinkMissionCountMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 445A4C9219A6D0F400338A3A /* FCSMAVLinkMissionCountMessage.m */; };
+		445A4C9619A6D11700338A3A /* FCSMAVLinkMissionAcknowledgementMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 445A4C9519A6D11700338A3A /* FCSMAVLinkMissionAcknowledgementMessage.m */; };
+		445A4C9919A6D1FD00338A3A /* FCSMAVLinkDataStreamMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 445A4C9819A6D1FD00338A3A /* FCSMAVLinkDataStreamMessage.m */; };
+		445A4C9C19A6D22400338A3A /* FCSMAVLinkRequestDataStreamMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 445A4C9B19A6D22400338A3A /* FCSMAVLinkRequestDataStreamMessage.m */; };
+		445A4C9F19A6D24F00338A3A /* FCSMAVLinkGPSStatusMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 445A4C9E19A6D24F00338A3A /* FCSMAVLinkGPSStatusMessage.m */; };
+		445A4CA219A6D37D00338A3A /* FCSMAVLinkHighResIMUMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 445A4CA119A6D37D00338A3A /* FCSMAVLinkHighResIMUMessage.m */; };
+		445A4CA519A6D3D700338A3A /* FCSMAVLinkMissionRequestPartialListMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 445A4CA419A6D3D700338A3A /* FCSMAVLinkMissionRequestPartialListMessage.m */; };
+		445A4CA819A6D41C00338A3A /* FCSMAVLinkMissionWritePartialListMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 445A4CA719A6D41C00338A3A /* FCSMAVLinkMissionWritePartialListMessage.m */; };
+		445A4CAB19A6D45600338A3A /* FCSMAVLinkMissionRequestMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 445A4CAA19A6D45600338A3A /* FCSMAVLinkMissionRequestMessage.m */; };
+		445A4CAE19A6D48300338A3A /* FCSMAVLinkMissionSetCurrentMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 445A4CAD19A6D48300338A3A /* FCSMAVLinkMissionSetCurrentMessage.m */; };
+		445A4CB119A6D49300338A3A /* FCSMAVLinkMissionCurrentMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 445A4CB019A6D49300338A3A /* FCSMAVLinkMissionCurrentMessage.m */; };
+		445A4CB419A6D4B200338A3A /* FCSMAVLinkMissionRequestListMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 445A4CB319A6D4B200338A3A /* FCSMAVLinkMissionRequestListMessage.m */; };
+		445A4CB719A6D4D700338A3A /* FCSMAVLinkSystemTimeMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 445A4CB619A6D4D700338A3A /* FCSMAVLinkSystemTimeMessage.m */; };
+		445A4CBA19A6D4EC00338A3A /* FCSMAVLinkPingMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 445A4CB919A6D4EC00338A3A /* FCSMAVLinkPingMessage.m */; };
+		445A4CBD19A6D51400338A3A /* FCSMAVLinkSetModeMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 445A4CBC19A6D51400338A3A /* FCSMAVLinkSetModeMessage.m */; };
+		445A4CC019A6D5AD00338A3A /* FCSMAVLinkParameterReadRequestMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 445A4CBF19A6D5AD00338A3A /* FCSMAVLinkParameterReadRequestMessage.m */; };
+		445A4CC319A6D5C400338A3A /* FCSMAVLinkParameterListRequestMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 445A4CC219A6D5C400338A3A /* FCSMAVLinkParameterListRequestMessage.m */; };
+		445A4CC619A6D5F800338A3A /* FCSMAVLinkGPSRawDataMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 445A4CC519A6D5F800338A3A /* FCSMAVLinkGPSRawDataMessage.m */; };
+		445A4CC919A6D63100338A3A /* FCSMAVLinkScaledIMUMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 445A4CC819A6D63100338A3A /* FCSMAVLinkScaledIMUMessage.m */; };
+		445A4CCC19A6D65500338A3A /* FCSMAVLinkRawIMUMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 445A4CCB19A6D65500338A3A /* FCSMAVLinkRawIMUMessage.m */; };
+		445A4CCF19A6D67200338A3A /* FCSMAVLinkRawPressureMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 445A4CCE19A6D67200338A3A /* FCSMAVLinkRawPressureMessage.m */; };
+		445A4CD219A6D68400338A3A /* FCSMAVLinkScaledPressureMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 445A4CD119A6D68400338A3A /* FCSMAVLinkScaledPressureMessage.m */; };
+		445A4CD519A6D6A000338A3A /* FCSMAVLinkAttitudeMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 445A4CD419A6D6A000338A3A /* FCSMAVLinkAttitudeMessage.m */; };
+		445A4CD819A6D6F000338A3A /* FCSMAVLinkAttitudeQuaternionMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 445A4CD719A6D6F000338A3A /* FCSMAVLinkAttitudeQuaternionMessage.m */; };
+		445A4CDB19A6D72300338A3A /* FCSMAVLinkLocalPositionMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 445A4CDA19A6D72300338A3A /* FCSMAVLinkLocalPositionMessage.m */; };
+		445A4CDE19A6D73B00338A3A /* FCSMAVLinkGlobalPositionMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 445A4CDD19A6D73B00338A3A /* FCSMAVLinkGlobalPositionMessage.m */; };
+		445A4CE119A6D75500338A3A /* FCSMAVLinkRCChannelsScaledMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 445A4CE019A6D75500338A3A /* FCSMAVLinkRCChannelsScaledMessage.m */; };
+		445A4CE419A6D76600338A3A /* FCSMAVLinkRCChannelsRawMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 445A4CE319A6D76600338A3A /* FCSMAVLinkRCChannelsRawMessage.m */; };
+		445A4CE719A6D78300338A3A /* FCSMAVLinkServoOutputRawMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 445A4CE619A6D78300338A3A /* FCSMAVLinkServoOutputRawMessage.m */; };
+		445A4CEA19A6D7B300338A3A /* FCSMAVLinkMissionClearAllMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 445A4CE919A6D7B300338A3A /* FCSMAVLinkMissionClearAllMessage.m */; };
+		445A4CED19A6D7CE00338A3A /* FCSMAVLinkMissionItemReachedMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 445A4CEC19A6D7CE00338A3A /* FCSMAVLinkMissionItemReachedMessage.m */; };
+		445A4CF019A6D7EC00338A3A /* FCSMAVLinkSetGPSGlobalOriginMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 445A4CEF19A6D7EC00338A3A /* FCSMAVLinkSetGPSGlobalOriginMessage.m */; };
+		445A4CF319A6D7FF00338A3A /* FCSMAVLinkGPSGlobalOriginMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 445A4CF219A6D7FF00338A3A /* FCSMAVLinkGPSGlobalOriginMessage.m */; };
+		445A4CF619A6D82800338A3A /* FCSMAVLinkSetAllowedSafetyAreaMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 445A4CF519A6D82800338A3A /* FCSMAVLinkSetAllowedSafetyAreaMessage.m */; };
+		445A4CF919A6D83D00338A3A /* FCSMAVLinkAllowedSafetyAreaMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 445A4CF819A6D83D00338A3A /* FCSMAVLinkAllowedSafetyAreaMessage.m */; };
+		445A4CFC19A6D87000338A3A /* FCSMAVLinkAttitudeQuaternionCOVMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 445A4CFB19A6D87000338A3A /* FCSMAVLinkAttitudeQuaternionCOVMessage.m */; };
+		445A4CFF19A6D89A00338A3A /* FCSMAVLinkNavControllerOutputMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 445A4CFE19A6D89A00338A3A /* FCSMAVLinkNavControllerOutputMessage.m */; };
+		445A4D0219A6D8C800338A3A /* FCSMAVLinkGlobalPositionCOVMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 445A4D0119A6D8C800338A3A /* FCSMAVLinkGlobalPositionCOVMessage.m */; };
+		445A4D0519A6D8E400338A3A /* FCSMAVLinkLocalPositionCOVMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 445A4D0419A6D8E400338A3A /* FCSMAVLinkLocalPositionCOVMessage.m */; };
+		445A4D0819A6D91700338A3A /* FCSMAVLinkRCChannelsMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 445A4D0719A6D91700338A3A /* FCSMAVLinkRCChannelsMessage.m */; };
+		445A4D0B19A6D95900338A3A /* FCSMAVLinkManualControlMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 445A4D0A19A6D95900338A3A /* FCSMAVLinkManualControlMessage.m */; };
+		445A4D0E19A6D96C00338A3A /* FCSMAVLinkRCChannelOverrideMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 445A4D0D19A6D96C00338A3A /* FCSMAVLinkRCChannelOverrideMessage.m */; };
+		445A4D1119A6D9C600338A3A /* FCSMAVLinkMissionItemINTMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 445A4D1019A6D9C600338A3A /* FCSMAVLinkMissionItemINTMessage.m */; };
+		445A4D1419A6D9FC00338A3A /* FCSMAVLinkVFRHUDMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 445A4D1319A6D9FC00338A3A /* FCSMAVLinkVFRHUDMessage.m */; };
+		445A4D1719A6DA5D00338A3A /* FCSMAVLinkCommandINTMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 445A4D1619A6DA5D00338A3A /* FCSMAVLinkCommandINTMessage.m */; };
+		446E39AB19AD134B0000D8D2 /* FCAMAVLinkFenceStatusMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 446E39AA19AD134B0000D8D2 /* FCAMAVLinkFenceStatusMessage.m */; };
+		446E39AE19AD13610000D8D2 /* FCSMAVLinkFenceFetchPointMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 446E39AD19AD13610000D8D2 /* FCSMAVLinkFenceFetchPointMessage.m */; };
+		446E39B119AD13760000D8D2 /* FCSMAVLinkFencePointMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 446E39B019AD13760000D8D2 /* FCSMAVLinkFencePointMessage.m */; };
+		446E39B419AD13890000D8D2 /* FCSMAVLinkHWStatusMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 446E39B319AD13890000D8D2 /* FCSMAVLinkHWStatusMessage.m */; };
+		446E39B719AD13BF0000D8D2 /* FCSMAVLinkLimitsStatusMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 446E39B619AD13BF0000D8D2 /* FCSMAVLinkLimitsStatusMessage.m */; };
+		446E39BA19AD13D30000D8D2 /* FCSMAVLinkMemInfoMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 446E39B919AD13D30000D8D2 /* FCSMAVLinkMemInfoMessage.m */; };
+		446E39BD19AD140F0000D8D2 /* FCSMAVLinkWindMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 446E39BC19AD140F0000D8D2 /* FCSMAVLinkWindMessage.m */; };
 		449C2D4E19A405B0006EC79B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 449C2D4D19A405B0006EC79B /* AppDelegate.m */; };
+		44A9516919ABB4AE008D7D5F /* FCSMAVLinkManualSetpointMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A9516819ABB4AE008D7D5F /* FCSMAVLinkManualSetpointMessage.m */; };
+		44A9516C19ABB4CE008D7D5F /* FCSMAVLinkSetAttitudeTargetMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A9516B19ABB4CE008D7D5F /* FCSMAVLinkSetAttitudeTargetMessage.m */; };
+		44A9516F19ABB4E5008D7D5F /* FCSMAVLinkAttitudeTargetMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A9516E19ABB4E5008D7D5F /* FCSMAVLinkAttitudeTargetMessage.m */; };
+		44A9517219ABB512008D7D5F /* FCSMAVLinkSetPositionTargetLocalNEDMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A9517119ABB512008D7D5F /* FCSMAVLinkSetPositionTargetLocalNEDMessage.m */; };
+		44A9517519ABB52C008D7D5F /* FCSMAVLinkPositionTargetLocalNEDMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A9517419ABB52C008D7D5F /* FCSMAVLinkPositionTargetLocalNEDMessage.m */; };
+		44A9517819ABB544008D7D5F /* FCSMAVLinkSetPositionTargetGlobalINTMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A9517719ABB544008D7D5F /* FCSMAVLinkSetPositionTargetGlobalINTMessage.m */; };
+		44A9517B19ABB565008D7D5F /* FCSMAVLinkPositionTargetGlobalINTMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A9517A19ABB565008D7D5F /* FCSMAVLinkPositionTargetGlobalINTMessage.m */; };
+		44A9517E19ABB5AB008D7D5F /* FCSMAVLinkLocalPositionNEDSystemGlobalOffsetMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A9517D19ABB5AB008D7D5F /* FCSMAVLinkLocalPositionNEDSystemGlobalOffsetMessage.m */; };
+		44A9518119ABB5EA008D7D5F /* FCSMAVLinkHILStateMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A9518019ABB5EA008D7D5F /* FCSMAVLinkHILStateMessage.m */; };
+		44A9518419ABB606008D7D5F /* FCSMAVLinkHILControlsMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A9518319ABB606008D7D5F /* FCSMAVLinkHILControlsMessage.m */; };
+		44A9518719ABB61D008D7D5F /* FCSMAVLinkHILRCInputsRawMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A9518619ABB61D008D7D5F /* FCSMAVLinkHILRCInputsRawMessage.m */; };
+		44A9518A19ABB632008D7D5F /* FCSMAVLinkOpticalFlowMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A9518919ABB632008D7D5F /* FCSMAVLinkOpticalFlowMessage.m */; };
+		44A9518D19ABB650008D7D5F /* FCSMAVLinkGlobalVisionPositionEstimateMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A9518C19ABB650008D7D5F /* FCSMAVLinkGlobalVisionPositionEstimateMessage.m */; };
+		44A9519019ABB665008D7D5F /* FCSMAVLinkVisionPositionEstimateMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A9518F19ABB665008D7D5F /* FCSMAVLinkVisionPositionEstimateMessage.m */; };
+		44A9519319ABB67B008D7D5F /* FCSMAVLinkVisionSpeedEstimateMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A9519219ABB67B008D7D5F /* FCSMAVLinkVisionSpeedEstimateMessage.m */; };
+		44A9519619ABB69A008D7D5F /* FCSMAVLinkVICONPositionEstimateMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A9519519ABB69A008D7D5F /* FCSMAVLinkVICONPositionEstimateMessage.m */; };
+		44A9519919ABB6E6008D7D5F /* FCSMAVLinkOmnidirectionalFlowMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A9519819ABB6E6008D7D5F /* FCSMAVLinkOmnidirectionalFlowMessage.m */; };
+		44A9519C19ABB6FB008D7D5F /* FCSMAVLinkHILSensorMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A9519B19ABB6FB008D7D5F /* FCSMAVLinkHILSensorMessage.m */; };
+		44A9519F19ABB70D008D7D5F /* FCSMAVLinkSimStateMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A9519E19ABB70D008D7D5F /* FCSMAVLinkSimStateMessage.m */; };
+		44A951A219ABB720008D7D5F /* FCSMAVLinkRadioStatusMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A951A119ABB720008D7D5F /* FCSMAVLinkRadioStatusMessage.m */; };
+		44A951A519ABB734008D7D5F /* FCSMAVLinkFileTransferProtocolMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A951A419ABB734008D7D5F /* FCSMAVLinkFileTransferProtocolMessage.m */; };
+		44A951A819ABB747008D7D5F /* FCSMAVLinkHILGPSMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A951A719ABB747008D7D5F /* FCSMAVLinkHILGPSMessage.m */; };
+		44A951AB19ABB756008D7D5F /* FCSMAVLinkHILOpticalFlowMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A951AA19ABB756008D7D5F /* FCSMAVLinkHILOpticalFlowMessage.m */; };
+		44A951AE19ABB76A008D7D5F /* FCSMAVLinkHILStateQuaternionMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A951AD19ABB76A008D7D5F /* FCSMAVLinkHILStateQuaternionMessage.m */; };
+		44A951B119ABB78A008D7D5F /* FCSMAVLinkScaledIMU2Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A951B019ABB78A008D7D5F /* FCSMAVLinkScaledIMU2Message.m */; };
+		44A951B419ABB79A008D7D5F /* FCSMAVLinkLogRequestMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A951B319ABB79A008D7D5F /* FCSMAVLinkLogRequestMessage.m */; };
+		44A951B719ABB7A9008D7D5F /* FCSMAVLinkLogEntryMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A951B619ABB7A9008D7D5F /* FCSMAVLinkLogEntryMessage.m */; };
+		44A951BA19ABB7BC008D7D5F /* FCSMAVLinkLogRequestDataMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A951B919ABB7BC008D7D5F /* FCSMAVLinkLogRequestDataMessage.m */; };
+		44A951BD19ABB7C8008D7D5F /* FCSMAVLinkLogDataMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A951BC19ABB7C8008D7D5F /* FCSMAVLinkLogDataMessage.m */; };
+		44A951C019ABB7DA008D7D5F /* FCSMAVLinkLogEraseMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A951BF19ABB7DA008D7D5F /* FCSMAVLinkLogEraseMessage.m */; };
+		44A951C319ABB7EE008D7D5F /* FCSMAVLinkLogRequestEndMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A951C219ABB7EE008D7D5F /* FCSMAVLinkLogRequestEndMessage.m */; };
+		44A951C619ABB801008D7D5F /* FCSMAVLinkGPSInjectDataMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A951C519ABB801008D7D5F /* FCSMAVLinkGPSInjectDataMessage.m */; };
+		44A951C919ABB812008D7D5F /* FCSMAVLinkGPS2RawMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A951C819ABB812008D7D5F /* FCSMAVLinkGPS2RawMessage.m */; };
+		44A951CC19ABB823008D7D5F /* FCSMAVLinkPowerStatusMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A951CB19ABB823008D7D5F /* FCSMAVLinkPowerStatusMessage.m */; };
+		44A951CF19ABB833008D7D5F /* FCSMAVLinkSerialControlMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A951CE19ABB833008D7D5F /* FCSMAVLinkSerialControlMessage.m */; };
+		44A951D219ABB845008D7D5F /* FCSMAVLinkGPSRTKMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A951D119ABB845008D7D5F /* FCSMAVLinkGPSRTKMessage.m */; };
+		44A951D519ABB851008D7D5F /* FCSMAVLinkGPS2RTKMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A951D419ABB851008D7D5F /* FCSMAVLinkGPS2RTKMessage.m */; };
+		44A951D819ABB86C008D7D5F /* FCSMAVLinkDataTransmissionHandshakeMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A951D719ABB86C008D7D5F /* FCSMAVLinkDataTransmissionHandshakeMessage.m */; };
+		44A951DB19ABB880008D7D5F /* FCSMAVLinkEncapsulatedDataMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A951DA19ABB880008D7D5F /* FCSMAVLinkEncapsulatedDataMessage.m */; };
+		44A951DE19ABB891008D7D5F /* FCSMAVLinkDistanceSensorMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A951DD19ABB891008D7D5F /* FCSMAVLinkDistanceSensorMessage.m */; };
+		44A951E119ABB8A5008D7D5F /* FCSMAVLinkTerrainRequestMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A951E019ABB8A5008D7D5F /* FCSMAVLinkTerrainRequestMessage.m */; };
+		44A951E419ABB8B4008D7D5F /* FCSMAVLinkTerrainDataMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A951E319ABB8B4008D7D5F /* FCSMAVLinkTerrainDataMessage.m */; };
+		44A951E719ABB8CC008D7D5F /* FCSMAVLinkTerrainCheckMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A951E619ABB8CC008D7D5F /* FCSMAVLinkTerrainCheckMessage.m */; };
+		44A951EA19ABB8DC008D7D5F /* FCSMAVLinkTerrainReportMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A951E919ABB8DC008D7D5F /* FCSMAVLinkTerrainReportMessage.m */; };
+		44A951ED19ABB8EB008D7D5F /* FCSMAVLinkBatteryStatusMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A951EC19ABB8EB008D7D5F /* FCSMAVLinkBatteryStatusMessage.m */; };
+		44A951F019ABB8FF008D7D5F /* FCSMAVLinkAutopilotVersionMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A951EF19ABB8FF008D7D5F /* FCSMAVLinkAutopilotVersionMessage.m */; };
+		44A951F319ABB911008D7D5F /* FCSMAVLinkV2ExtensionMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A951F219ABB911008D7D5F /* FCSMAVLinkV2ExtensionMessage.m */; };
 		44E669DE19A40EA400E4EB20 /* FCSConnectionLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E669DD19A40EA400E4EB20 /* FCSConnectionLink.m */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +144,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4418360419A55925000C8CBB /* FCSMAVLinkMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkMessage.h; sourceTree = "<group>"; };
+		4418360519A55925000C8CBB /* FCSMAVLinkMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkMessage.m; sourceTree = "<group>"; };
 		444501D819A3D0BE007056B9 /* ardupilotmega.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ardupilotmega.h; sourceTree = "<group>"; };
 		444501D919A3D0BE007056B9 /* mavlink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mavlink.h; sourceTree = "<group>"; };
 		444501DA19A3D0BE007056B9 /* mavlink_msg_ahrs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mavlink_msg_ahrs.h; sourceTree = "<group>"; };
@@ -284,8 +394,224 @@
 		44587C50199EC65800559FEC /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		44587C51199EC68400559FEC /* FlightControlSystemOSX.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = FlightControlSystemOSX.entitlements; sourceTree = "<group>"; };
 		44587C52199EC69000559FEC /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		445A4C7919A6CFEC00338A3A /* FCSMAVLinkHeartbeatMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkHeartbeatMessage.h; sourceTree = "<group>"; };
+		445A4C7A19A6CFEC00338A3A /* FCSMAVLinkHeartbeatMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkHeartbeatMessage.m; sourceTree = "<group>"; };
+		445A4C7C19A6D00E00338A3A /* FCSMAVLinkSystemStatusMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkSystemStatusMessage.h; sourceTree = "<group>"; };
+		445A4C7D19A6D00E00338A3A /* FCSMAVLinkSystemStatusMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkSystemStatusMessage.m; sourceTree = "<group>"; };
+		445A4C7F19A6D03E00338A3A /* FCSMAVLinkStatusTextMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkStatusTextMessage.h; sourceTree = "<group>"; };
+		445A4C8019A6D03E00338A3A /* FCSMAVLinkStatusTextMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkStatusTextMessage.m; sourceTree = "<group>"; };
+		445A4C8219A6D06300338A3A /* FCSMAVLinkCommandLongMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkCommandLongMessage.h; sourceTree = "<group>"; };
+		445A4C8319A6D06300338A3A /* FCSMAVLinkCommandLongMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkCommandLongMessage.m; sourceTree = "<group>"; };
+		445A4C8519A6D08F00338A3A /* FCSMAVLinkCommandAcknowledgementMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkCommandAcknowledgementMessage.h; sourceTree = "<group>"; };
+		445A4C8619A6D08F00338A3A /* FCSMAVLinkCommandAcknowledgementMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkCommandAcknowledgementMessage.m; sourceTree = "<group>"; };
+		445A4C8819A6D0B800338A3A /* FCAMAVLinkSetParameterMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCAMAVLinkSetParameterMessage.h; sourceTree = "<group>"; };
+		445A4C8919A6D0B800338A3A /* FCAMAVLinkSetParameterMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCAMAVLinkSetParameterMessage.m; sourceTree = "<group>"; };
+		445A4C8B19A6D0CE00338A3A /* FCSMAVLinkParameterValueMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkParameterValueMessage.h; sourceTree = "<group>"; };
+		445A4C8C19A6D0CE00338A3A /* FCSMAVLinkParameterValueMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkParameterValueMessage.m; sourceTree = "<group>"; };
+		445A4C8E19A6D0E300338A3A /* FCSMAVLinkMissionItemMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkMissionItemMessage.h; sourceTree = "<group>"; };
+		445A4C8F19A6D0E300338A3A /* FCSMAVLinkMissionItemMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkMissionItemMessage.m; sourceTree = "<group>"; };
+		445A4C9119A6D0F400338A3A /* FCSMAVLinkMissionCountMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkMissionCountMessage.h; sourceTree = "<group>"; };
+		445A4C9219A6D0F400338A3A /* FCSMAVLinkMissionCountMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkMissionCountMessage.m; sourceTree = "<group>"; };
+		445A4C9419A6D11700338A3A /* FCSMAVLinkMissionAcknowledgementMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkMissionAcknowledgementMessage.h; sourceTree = "<group>"; };
+		445A4C9519A6D11700338A3A /* FCSMAVLinkMissionAcknowledgementMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkMissionAcknowledgementMessage.m; sourceTree = "<group>"; };
+		445A4C9719A6D1FD00338A3A /* FCSMAVLinkDataStreamMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkDataStreamMessage.h; sourceTree = "<group>"; };
+		445A4C9819A6D1FD00338A3A /* FCSMAVLinkDataStreamMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkDataStreamMessage.m; sourceTree = "<group>"; };
+		445A4C9A19A6D22400338A3A /* FCSMAVLinkRequestDataStreamMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkRequestDataStreamMessage.h; sourceTree = "<group>"; };
+		445A4C9B19A6D22400338A3A /* FCSMAVLinkRequestDataStreamMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkRequestDataStreamMessage.m; sourceTree = "<group>"; };
+		445A4C9D19A6D24F00338A3A /* FCSMAVLinkGPSStatusMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkGPSStatusMessage.h; sourceTree = "<group>"; };
+		445A4C9E19A6D24F00338A3A /* FCSMAVLinkGPSStatusMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkGPSStatusMessage.m; sourceTree = "<group>"; };
+		445A4CA019A6D37D00338A3A /* FCSMAVLinkHighResIMUMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkHighResIMUMessage.h; sourceTree = "<group>"; };
+		445A4CA119A6D37D00338A3A /* FCSMAVLinkHighResIMUMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkHighResIMUMessage.m; sourceTree = "<group>"; };
+		445A4CA319A6D3D700338A3A /* FCSMAVLinkMissionRequestPartialListMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkMissionRequestPartialListMessage.h; sourceTree = "<group>"; };
+		445A4CA419A6D3D700338A3A /* FCSMAVLinkMissionRequestPartialListMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkMissionRequestPartialListMessage.m; sourceTree = "<group>"; };
+		445A4CA619A6D41C00338A3A /* FCSMAVLinkMissionWritePartialListMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkMissionWritePartialListMessage.h; sourceTree = "<group>"; };
+		445A4CA719A6D41C00338A3A /* FCSMAVLinkMissionWritePartialListMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkMissionWritePartialListMessage.m; sourceTree = "<group>"; };
+		445A4CA919A6D45600338A3A /* FCSMAVLinkMissionRequestMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkMissionRequestMessage.h; sourceTree = "<group>"; };
+		445A4CAA19A6D45600338A3A /* FCSMAVLinkMissionRequestMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkMissionRequestMessage.m; sourceTree = "<group>"; };
+		445A4CAC19A6D48300338A3A /* FCSMAVLinkMissionSetCurrentMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkMissionSetCurrentMessage.h; sourceTree = "<group>"; };
+		445A4CAD19A6D48300338A3A /* FCSMAVLinkMissionSetCurrentMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkMissionSetCurrentMessage.m; sourceTree = "<group>"; };
+		445A4CAF19A6D49300338A3A /* FCSMAVLinkMissionCurrentMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FCSMAVLinkMissionCurrentMessage.h; path = ../FCSMAVLinkMissionCurrentMessage.h; sourceTree = "<group>"; };
+		445A4CB019A6D49300338A3A /* FCSMAVLinkMissionCurrentMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FCSMAVLinkMissionCurrentMessage.m; path = ../FCSMAVLinkMissionCurrentMessage.m; sourceTree = "<group>"; };
+		445A4CB219A6D4B200338A3A /* FCSMAVLinkMissionRequestListMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkMissionRequestListMessage.h; sourceTree = "<group>"; };
+		445A4CB319A6D4B200338A3A /* FCSMAVLinkMissionRequestListMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkMissionRequestListMessage.m; sourceTree = "<group>"; };
+		445A4CB519A6D4D700338A3A /* FCSMAVLinkSystemTimeMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkSystemTimeMessage.h; sourceTree = "<group>"; };
+		445A4CB619A6D4D700338A3A /* FCSMAVLinkSystemTimeMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkSystemTimeMessage.m; sourceTree = "<group>"; };
+		445A4CB819A6D4EC00338A3A /* FCSMAVLinkPingMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkPingMessage.h; sourceTree = "<group>"; };
+		445A4CB919A6D4EC00338A3A /* FCSMAVLinkPingMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkPingMessage.m; sourceTree = "<group>"; };
+		445A4CBB19A6D51400338A3A /* FCSMAVLinkSetModeMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkSetModeMessage.h; sourceTree = "<group>"; };
+		445A4CBC19A6D51400338A3A /* FCSMAVLinkSetModeMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkSetModeMessage.m; sourceTree = "<group>"; };
+		445A4CBE19A6D5AD00338A3A /* FCSMAVLinkParameterReadRequestMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkParameterReadRequestMessage.h; sourceTree = "<group>"; };
+		445A4CBF19A6D5AD00338A3A /* FCSMAVLinkParameterReadRequestMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkParameterReadRequestMessage.m; sourceTree = "<group>"; };
+		445A4CC119A6D5C400338A3A /* FCSMAVLinkParameterListRequestMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkParameterListRequestMessage.h; sourceTree = "<group>"; };
+		445A4CC219A6D5C400338A3A /* FCSMAVLinkParameterListRequestMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkParameterListRequestMessage.m; sourceTree = "<group>"; };
+		445A4CC419A6D5F800338A3A /* FCSMAVLinkGPSRawDataMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkGPSRawDataMessage.h; sourceTree = "<group>"; };
+		445A4CC519A6D5F800338A3A /* FCSMAVLinkGPSRawDataMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkGPSRawDataMessage.m; sourceTree = "<group>"; };
+		445A4CC719A6D63100338A3A /* FCSMAVLinkScaledIMUMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkScaledIMUMessage.h; sourceTree = "<group>"; };
+		445A4CC819A6D63100338A3A /* FCSMAVLinkScaledIMUMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkScaledIMUMessage.m; sourceTree = "<group>"; };
+		445A4CCA19A6D65500338A3A /* FCSMAVLinkRawIMUMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkRawIMUMessage.h; sourceTree = "<group>"; };
+		445A4CCB19A6D65500338A3A /* FCSMAVLinkRawIMUMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkRawIMUMessage.m; sourceTree = "<group>"; };
+		445A4CCD19A6D67200338A3A /* FCSMAVLinkRawPressureMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkRawPressureMessage.h; sourceTree = "<group>"; };
+		445A4CCE19A6D67200338A3A /* FCSMAVLinkRawPressureMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkRawPressureMessage.m; sourceTree = "<group>"; };
+		445A4CD019A6D68400338A3A /* FCSMAVLinkScaledPressureMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkScaledPressureMessage.h; sourceTree = "<group>"; };
+		445A4CD119A6D68400338A3A /* FCSMAVLinkScaledPressureMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkScaledPressureMessage.m; sourceTree = "<group>"; };
+		445A4CD319A6D6A000338A3A /* FCSMAVLinkAttitudeMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkAttitudeMessage.h; sourceTree = "<group>"; };
+		445A4CD419A6D6A000338A3A /* FCSMAVLinkAttitudeMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkAttitudeMessage.m; sourceTree = "<group>"; };
+		445A4CD619A6D6F000338A3A /* FCSMAVLinkAttitudeQuaternionMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkAttitudeQuaternionMessage.h; sourceTree = "<group>"; };
+		445A4CD719A6D6F000338A3A /* FCSMAVLinkAttitudeQuaternionMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkAttitudeQuaternionMessage.m; sourceTree = "<group>"; };
+		445A4CD919A6D72300338A3A /* FCSMAVLinkLocalPositionMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkLocalPositionMessage.h; sourceTree = "<group>"; };
+		445A4CDA19A6D72300338A3A /* FCSMAVLinkLocalPositionMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkLocalPositionMessage.m; sourceTree = "<group>"; };
+		445A4CDC19A6D73B00338A3A /* FCSMAVLinkGlobalPositionMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkGlobalPositionMessage.h; sourceTree = "<group>"; };
+		445A4CDD19A6D73B00338A3A /* FCSMAVLinkGlobalPositionMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkGlobalPositionMessage.m; sourceTree = "<group>"; };
+		445A4CDF19A6D75500338A3A /* FCSMAVLinkRCChannelsScaledMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkRCChannelsScaledMessage.h; sourceTree = "<group>"; };
+		445A4CE019A6D75500338A3A /* FCSMAVLinkRCChannelsScaledMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkRCChannelsScaledMessage.m; sourceTree = "<group>"; };
+		445A4CE219A6D76600338A3A /* FCSMAVLinkRCChannelsRawMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkRCChannelsRawMessage.h; sourceTree = "<group>"; };
+		445A4CE319A6D76600338A3A /* FCSMAVLinkRCChannelsRawMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkRCChannelsRawMessage.m; sourceTree = "<group>"; };
+		445A4CE519A6D78300338A3A /* FCSMAVLinkServoOutputRawMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkServoOutputRawMessage.h; sourceTree = "<group>"; };
+		445A4CE619A6D78300338A3A /* FCSMAVLinkServoOutputRawMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkServoOutputRawMessage.m; sourceTree = "<group>"; };
+		445A4CE819A6D7B300338A3A /* FCSMAVLinkMissionClearAllMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkMissionClearAllMessage.h; sourceTree = "<group>"; };
+		445A4CE919A6D7B300338A3A /* FCSMAVLinkMissionClearAllMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkMissionClearAllMessage.m; sourceTree = "<group>"; };
+		445A4CEB19A6D7CE00338A3A /* FCSMAVLinkMissionItemReachedMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkMissionItemReachedMessage.h; sourceTree = "<group>"; };
+		445A4CEC19A6D7CE00338A3A /* FCSMAVLinkMissionItemReachedMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkMissionItemReachedMessage.m; sourceTree = "<group>"; };
+		445A4CEE19A6D7EC00338A3A /* FCSMAVLinkSetGPSGlobalOriginMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkSetGPSGlobalOriginMessage.h; sourceTree = "<group>"; };
+		445A4CEF19A6D7EC00338A3A /* FCSMAVLinkSetGPSGlobalOriginMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkSetGPSGlobalOriginMessage.m; sourceTree = "<group>"; };
+		445A4CF119A6D7FF00338A3A /* FCSMAVLinkGPSGlobalOriginMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkGPSGlobalOriginMessage.h; sourceTree = "<group>"; };
+		445A4CF219A6D7FF00338A3A /* FCSMAVLinkGPSGlobalOriginMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkGPSGlobalOriginMessage.m; sourceTree = "<group>"; };
+		445A4CF419A6D82800338A3A /* FCSMAVLinkSetAllowedSafetyAreaMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkSetAllowedSafetyAreaMessage.h; sourceTree = "<group>"; };
+		445A4CF519A6D82800338A3A /* FCSMAVLinkSetAllowedSafetyAreaMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkSetAllowedSafetyAreaMessage.m; sourceTree = "<group>"; };
+		445A4CF719A6D83D00338A3A /* FCSMAVLinkAllowedSafetyAreaMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkAllowedSafetyAreaMessage.h; sourceTree = "<group>"; };
+		445A4CF819A6D83D00338A3A /* FCSMAVLinkAllowedSafetyAreaMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkAllowedSafetyAreaMessage.m; sourceTree = "<group>"; };
+		445A4CFA19A6D87000338A3A /* FCSMAVLinkAttitudeQuaternionCOVMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkAttitudeQuaternionCOVMessage.h; sourceTree = "<group>"; };
+		445A4CFB19A6D87000338A3A /* FCSMAVLinkAttitudeQuaternionCOVMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkAttitudeQuaternionCOVMessage.m; sourceTree = "<group>"; };
+		445A4CFD19A6D89A00338A3A /* FCSMAVLinkNavControllerOutputMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkNavControllerOutputMessage.h; sourceTree = "<group>"; };
+		445A4CFE19A6D89A00338A3A /* FCSMAVLinkNavControllerOutputMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkNavControllerOutputMessage.m; sourceTree = "<group>"; };
+		445A4D0019A6D8C800338A3A /* FCSMAVLinkGlobalPositionCOVMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkGlobalPositionCOVMessage.h; sourceTree = "<group>"; };
+		445A4D0119A6D8C800338A3A /* FCSMAVLinkGlobalPositionCOVMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkGlobalPositionCOVMessage.m; sourceTree = "<group>"; };
+		445A4D0319A6D8E400338A3A /* FCSMAVLinkLocalPositionCOVMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkLocalPositionCOVMessage.h; sourceTree = "<group>"; };
+		445A4D0419A6D8E400338A3A /* FCSMAVLinkLocalPositionCOVMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkLocalPositionCOVMessage.m; sourceTree = "<group>"; };
+		445A4D0619A6D91700338A3A /* FCSMAVLinkRCChannelsMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkRCChannelsMessage.h; sourceTree = "<group>"; };
+		445A4D0719A6D91700338A3A /* FCSMAVLinkRCChannelsMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkRCChannelsMessage.m; sourceTree = "<group>"; };
+		445A4D0919A6D95900338A3A /* FCSMAVLinkManualControlMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkManualControlMessage.h; sourceTree = "<group>"; };
+		445A4D0A19A6D95900338A3A /* FCSMAVLinkManualControlMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkManualControlMessage.m; sourceTree = "<group>"; };
+		445A4D0C19A6D96C00338A3A /* FCSMAVLinkRCChannelOverrideMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkRCChannelOverrideMessage.h; sourceTree = "<group>"; };
+		445A4D0D19A6D96C00338A3A /* FCSMAVLinkRCChannelOverrideMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkRCChannelOverrideMessage.m; sourceTree = "<group>"; };
+		445A4D0F19A6D9C600338A3A /* FCSMAVLinkMissionItemINTMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkMissionItemINTMessage.h; sourceTree = "<group>"; };
+		445A4D1019A6D9C600338A3A /* FCSMAVLinkMissionItemINTMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkMissionItemINTMessage.m; sourceTree = "<group>"; };
+		445A4D1219A6D9FC00338A3A /* FCSMAVLinkVFRHUDMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkVFRHUDMessage.h; sourceTree = "<group>"; };
+		445A4D1319A6D9FC00338A3A /* FCSMAVLinkVFRHUDMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkVFRHUDMessage.m; sourceTree = "<group>"; };
+		445A4D1519A6DA5D00338A3A /* FCSMAVLinkCommandINTMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkCommandINTMessage.h; sourceTree = "<group>"; };
+		445A4D1619A6DA5D00338A3A /* FCSMAVLinkCommandINTMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkCommandINTMessage.m; sourceTree = "<group>"; };
+		446E39A619AD0E520000D8D2 /* FCSMAVLinkEnumTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkEnumTypes.h; sourceTree = "<group>"; };
+		446E39A919AD134B0000D8D2 /* FCAMAVLinkFenceStatusMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCAMAVLinkFenceStatusMessage.h; sourceTree = "<group>"; };
+		446E39AA19AD134B0000D8D2 /* FCAMAVLinkFenceStatusMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCAMAVLinkFenceStatusMessage.m; sourceTree = "<group>"; };
+		446E39AC19AD13610000D8D2 /* FCSMAVLinkFenceFetchPointMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkFenceFetchPointMessage.h; sourceTree = "<group>"; };
+		446E39AD19AD13610000D8D2 /* FCSMAVLinkFenceFetchPointMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkFenceFetchPointMessage.m; sourceTree = "<group>"; };
+		446E39AF19AD13760000D8D2 /* FCSMAVLinkFencePointMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkFencePointMessage.h; sourceTree = "<group>"; };
+		446E39B019AD13760000D8D2 /* FCSMAVLinkFencePointMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkFencePointMessage.m; sourceTree = "<group>"; };
+		446E39B219AD13890000D8D2 /* FCSMAVLinkHWStatusMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkHWStatusMessage.h; sourceTree = "<group>"; };
+		446E39B319AD13890000D8D2 /* FCSMAVLinkHWStatusMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkHWStatusMessage.m; sourceTree = "<group>"; };
+		446E39B519AD13BF0000D8D2 /* FCSMAVLinkLimitsStatusMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkLimitsStatusMessage.h; sourceTree = "<group>"; };
+		446E39B619AD13BF0000D8D2 /* FCSMAVLinkLimitsStatusMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkLimitsStatusMessage.m; sourceTree = "<group>"; };
+		446E39B819AD13D30000D8D2 /* FCSMAVLinkMemInfoMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkMemInfoMessage.h; sourceTree = "<group>"; };
+		446E39B919AD13D30000D8D2 /* FCSMAVLinkMemInfoMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkMemInfoMessage.m; sourceTree = "<group>"; };
+		446E39BB19AD140F0000D8D2 /* FCSMAVLinkWindMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkWindMessage.h; sourceTree = "<group>"; };
+		446E39BC19AD140F0000D8D2 /* FCSMAVLinkWindMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkWindMessage.m; sourceTree = "<group>"; };
 		449C2D4C19A405B0006EC79B /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		449C2D4D19A405B0006EC79B /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		44A9516719ABB4AE008D7D5F /* FCSMAVLinkManualSetpointMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkManualSetpointMessage.h; sourceTree = "<group>"; };
+		44A9516819ABB4AE008D7D5F /* FCSMAVLinkManualSetpointMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkManualSetpointMessage.m; sourceTree = "<group>"; };
+		44A9516A19ABB4CE008D7D5F /* FCSMAVLinkSetAttitudeTargetMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkSetAttitudeTargetMessage.h; sourceTree = "<group>"; };
+		44A9516B19ABB4CE008D7D5F /* FCSMAVLinkSetAttitudeTargetMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkSetAttitudeTargetMessage.m; sourceTree = "<group>"; };
+		44A9516D19ABB4E5008D7D5F /* FCSMAVLinkAttitudeTargetMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkAttitudeTargetMessage.h; sourceTree = "<group>"; };
+		44A9516E19ABB4E5008D7D5F /* FCSMAVLinkAttitudeTargetMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkAttitudeTargetMessage.m; sourceTree = "<group>"; };
+		44A9517019ABB512008D7D5F /* FCSMAVLinkSetPositionTargetLocalNEDMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkSetPositionTargetLocalNEDMessage.h; sourceTree = "<group>"; };
+		44A9517119ABB512008D7D5F /* FCSMAVLinkSetPositionTargetLocalNEDMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkSetPositionTargetLocalNEDMessage.m; sourceTree = "<group>"; };
+		44A9517319ABB52C008D7D5F /* FCSMAVLinkPositionTargetLocalNEDMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkPositionTargetLocalNEDMessage.h; sourceTree = "<group>"; };
+		44A9517419ABB52C008D7D5F /* FCSMAVLinkPositionTargetLocalNEDMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkPositionTargetLocalNEDMessage.m; sourceTree = "<group>"; };
+		44A9517619ABB544008D7D5F /* FCSMAVLinkSetPositionTargetGlobalINTMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkSetPositionTargetGlobalINTMessage.h; sourceTree = "<group>"; };
+		44A9517719ABB544008D7D5F /* FCSMAVLinkSetPositionTargetGlobalINTMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkSetPositionTargetGlobalINTMessage.m; sourceTree = "<group>"; };
+		44A9517919ABB565008D7D5F /* FCSMAVLinkPositionTargetGlobalINTMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkPositionTargetGlobalINTMessage.h; sourceTree = "<group>"; };
+		44A9517A19ABB565008D7D5F /* FCSMAVLinkPositionTargetGlobalINTMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkPositionTargetGlobalINTMessage.m; sourceTree = "<group>"; };
+		44A9517C19ABB5AB008D7D5F /* FCSMAVLinkLocalPositionNEDSystemGlobalOffsetMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkLocalPositionNEDSystemGlobalOffsetMessage.h; sourceTree = "<group>"; };
+		44A9517D19ABB5AB008D7D5F /* FCSMAVLinkLocalPositionNEDSystemGlobalOffsetMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkLocalPositionNEDSystemGlobalOffsetMessage.m; sourceTree = "<group>"; };
+		44A9517F19ABB5EA008D7D5F /* FCSMAVLinkHILStateMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkHILStateMessage.h; sourceTree = "<group>"; };
+		44A9518019ABB5EA008D7D5F /* FCSMAVLinkHILStateMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkHILStateMessage.m; sourceTree = "<group>"; };
+		44A9518219ABB606008D7D5F /* FCSMAVLinkHILControlsMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkHILControlsMessage.h; sourceTree = "<group>"; };
+		44A9518319ABB606008D7D5F /* FCSMAVLinkHILControlsMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkHILControlsMessage.m; sourceTree = "<group>"; };
+		44A9518519ABB61D008D7D5F /* FCSMAVLinkHILRCInputsRawMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkHILRCInputsRawMessage.h; sourceTree = "<group>"; };
+		44A9518619ABB61D008D7D5F /* FCSMAVLinkHILRCInputsRawMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkHILRCInputsRawMessage.m; sourceTree = "<group>"; };
+		44A9518819ABB632008D7D5F /* FCSMAVLinkOpticalFlowMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkOpticalFlowMessage.h; sourceTree = "<group>"; };
+		44A9518919ABB632008D7D5F /* FCSMAVLinkOpticalFlowMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkOpticalFlowMessage.m; sourceTree = "<group>"; };
+		44A9518B19ABB650008D7D5F /* FCSMAVLinkGlobalVisionPositionEstimateMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkGlobalVisionPositionEstimateMessage.h; sourceTree = "<group>"; };
+		44A9518C19ABB650008D7D5F /* FCSMAVLinkGlobalVisionPositionEstimateMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkGlobalVisionPositionEstimateMessage.m; sourceTree = "<group>"; };
+		44A9518E19ABB665008D7D5F /* FCSMAVLinkVisionPositionEstimateMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkVisionPositionEstimateMessage.h; sourceTree = "<group>"; };
+		44A9518F19ABB665008D7D5F /* FCSMAVLinkVisionPositionEstimateMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkVisionPositionEstimateMessage.m; sourceTree = "<group>"; };
+		44A9519119ABB67B008D7D5F /* FCSMAVLinkVisionSpeedEstimateMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkVisionSpeedEstimateMessage.h; sourceTree = "<group>"; };
+		44A9519219ABB67B008D7D5F /* FCSMAVLinkVisionSpeedEstimateMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkVisionSpeedEstimateMessage.m; sourceTree = "<group>"; };
+		44A9519419ABB69A008D7D5F /* FCSMAVLinkVICONPositionEstimateMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkVICONPositionEstimateMessage.h; sourceTree = "<group>"; };
+		44A9519519ABB69A008D7D5F /* FCSMAVLinkVICONPositionEstimateMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkVICONPositionEstimateMessage.m; sourceTree = "<group>"; };
+		44A9519719ABB6E6008D7D5F /* FCSMAVLinkOmnidirectionalFlowMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkOmnidirectionalFlowMessage.h; sourceTree = "<group>"; };
+		44A9519819ABB6E6008D7D5F /* FCSMAVLinkOmnidirectionalFlowMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkOmnidirectionalFlowMessage.m; sourceTree = "<group>"; };
+		44A9519A19ABB6FB008D7D5F /* FCSMAVLinkHILSensorMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkHILSensorMessage.h; sourceTree = "<group>"; };
+		44A9519B19ABB6FB008D7D5F /* FCSMAVLinkHILSensorMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkHILSensorMessage.m; sourceTree = "<group>"; };
+		44A9519D19ABB70D008D7D5F /* FCSMAVLinkSimStateMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkSimStateMessage.h; sourceTree = "<group>"; };
+		44A9519E19ABB70D008D7D5F /* FCSMAVLinkSimStateMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkSimStateMessage.m; sourceTree = "<group>"; };
+		44A951A019ABB720008D7D5F /* FCSMAVLinkRadioStatusMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkRadioStatusMessage.h; sourceTree = "<group>"; };
+		44A951A119ABB720008D7D5F /* FCSMAVLinkRadioStatusMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkRadioStatusMessage.m; sourceTree = "<group>"; };
+		44A951A319ABB734008D7D5F /* FCSMAVLinkFileTransferProtocolMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkFileTransferProtocolMessage.h; sourceTree = "<group>"; };
+		44A951A419ABB734008D7D5F /* FCSMAVLinkFileTransferProtocolMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkFileTransferProtocolMessage.m; sourceTree = "<group>"; };
+		44A951A619ABB747008D7D5F /* FCSMAVLinkHILGPSMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkHILGPSMessage.h; sourceTree = "<group>"; };
+		44A951A719ABB747008D7D5F /* FCSMAVLinkHILGPSMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkHILGPSMessage.m; sourceTree = "<group>"; };
+		44A951A919ABB756008D7D5F /* FCSMAVLinkHILOpticalFlowMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkHILOpticalFlowMessage.h; sourceTree = "<group>"; };
+		44A951AA19ABB756008D7D5F /* FCSMAVLinkHILOpticalFlowMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkHILOpticalFlowMessage.m; sourceTree = "<group>"; };
+		44A951AC19ABB76A008D7D5F /* FCSMAVLinkHILStateQuaternionMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkHILStateQuaternionMessage.h; sourceTree = "<group>"; };
+		44A951AD19ABB76A008D7D5F /* FCSMAVLinkHILStateQuaternionMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkHILStateQuaternionMessage.m; sourceTree = "<group>"; };
+		44A951AF19ABB78A008D7D5F /* FCSMAVLinkScaledIMU2Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkScaledIMU2Message.h; sourceTree = "<group>"; };
+		44A951B019ABB78A008D7D5F /* FCSMAVLinkScaledIMU2Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkScaledIMU2Message.m; sourceTree = "<group>"; };
+		44A951B219ABB79A008D7D5F /* FCSMAVLinkLogRequestMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkLogRequestMessage.h; sourceTree = "<group>"; };
+		44A951B319ABB79A008D7D5F /* FCSMAVLinkLogRequestMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkLogRequestMessage.m; sourceTree = "<group>"; };
+		44A951B519ABB7A9008D7D5F /* FCSMAVLinkLogEntryMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkLogEntryMessage.h; sourceTree = "<group>"; };
+		44A951B619ABB7A9008D7D5F /* FCSMAVLinkLogEntryMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkLogEntryMessage.m; sourceTree = "<group>"; };
+		44A951B819ABB7BC008D7D5F /* FCSMAVLinkLogRequestDataMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkLogRequestDataMessage.h; sourceTree = "<group>"; };
+		44A951B919ABB7BC008D7D5F /* FCSMAVLinkLogRequestDataMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkLogRequestDataMessage.m; sourceTree = "<group>"; };
+		44A951BB19ABB7C8008D7D5F /* FCSMAVLinkLogDataMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkLogDataMessage.h; sourceTree = "<group>"; };
+		44A951BC19ABB7C8008D7D5F /* FCSMAVLinkLogDataMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkLogDataMessage.m; sourceTree = "<group>"; };
+		44A951BE19ABB7DA008D7D5F /* FCSMAVLinkLogEraseMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkLogEraseMessage.h; sourceTree = "<group>"; };
+		44A951BF19ABB7DA008D7D5F /* FCSMAVLinkLogEraseMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkLogEraseMessage.m; sourceTree = "<group>"; };
+		44A951C119ABB7EE008D7D5F /* FCSMAVLinkLogRequestEndMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkLogRequestEndMessage.h; sourceTree = "<group>"; };
+		44A951C219ABB7EE008D7D5F /* FCSMAVLinkLogRequestEndMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkLogRequestEndMessage.m; sourceTree = "<group>"; };
+		44A951C419ABB801008D7D5F /* FCSMAVLinkGPSInjectDataMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkGPSInjectDataMessage.h; sourceTree = "<group>"; };
+		44A951C519ABB801008D7D5F /* FCSMAVLinkGPSInjectDataMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkGPSInjectDataMessage.m; sourceTree = "<group>"; };
+		44A951C719ABB812008D7D5F /* FCSMAVLinkGPS2RawMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkGPS2RawMessage.h; sourceTree = "<group>"; };
+		44A951C819ABB812008D7D5F /* FCSMAVLinkGPS2RawMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkGPS2RawMessage.m; sourceTree = "<group>"; };
+		44A951CA19ABB823008D7D5F /* FCSMAVLinkPowerStatusMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkPowerStatusMessage.h; sourceTree = "<group>"; };
+		44A951CB19ABB823008D7D5F /* FCSMAVLinkPowerStatusMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkPowerStatusMessage.m; sourceTree = "<group>"; };
+		44A951CD19ABB833008D7D5F /* FCSMAVLinkSerialControlMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkSerialControlMessage.h; sourceTree = "<group>"; };
+		44A951CE19ABB833008D7D5F /* FCSMAVLinkSerialControlMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkSerialControlMessage.m; sourceTree = "<group>"; };
+		44A951D019ABB845008D7D5F /* FCSMAVLinkGPSRTKMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkGPSRTKMessage.h; sourceTree = "<group>"; };
+		44A951D119ABB845008D7D5F /* FCSMAVLinkGPSRTKMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkGPSRTKMessage.m; sourceTree = "<group>"; };
+		44A951D319ABB851008D7D5F /* FCSMAVLinkGPS2RTKMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkGPS2RTKMessage.h; sourceTree = "<group>"; };
+		44A951D419ABB851008D7D5F /* FCSMAVLinkGPS2RTKMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkGPS2RTKMessage.m; sourceTree = "<group>"; };
+		44A951D619ABB86C008D7D5F /* FCSMAVLinkDataTransmissionHandshakeMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkDataTransmissionHandshakeMessage.h; sourceTree = "<group>"; };
+		44A951D719ABB86C008D7D5F /* FCSMAVLinkDataTransmissionHandshakeMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkDataTransmissionHandshakeMessage.m; sourceTree = "<group>"; };
+		44A951D919ABB880008D7D5F /* FCSMAVLinkEncapsulatedDataMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkEncapsulatedDataMessage.h; sourceTree = "<group>"; };
+		44A951DA19ABB880008D7D5F /* FCSMAVLinkEncapsulatedDataMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkEncapsulatedDataMessage.m; sourceTree = "<group>"; };
+		44A951DC19ABB891008D7D5F /* FCSMAVLinkDistanceSensorMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkDistanceSensorMessage.h; sourceTree = "<group>"; };
+		44A951DD19ABB891008D7D5F /* FCSMAVLinkDistanceSensorMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkDistanceSensorMessage.m; sourceTree = "<group>"; };
+		44A951DF19ABB8A5008D7D5F /* FCSMAVLinkTerrainRequestMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkTerrainRequestMessage.h; sourceTree = "<group>"; };
+		44A951E019ABB8A5008D7D5F /* FCSMAVLinkTerrainRequestMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkTerrainRequestMessage.m; sourceTree = "<group>"; };
+		44A951E219ABB8B4008D7D5F /* FCSMAVLinkTerrainDataMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkTerrainDataMessage.h; sourceTree = "<group>"; };
+		44A951E319ABB8B4008D7D5F /* FCSMAVLinkTerrainDataMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkTerrainDataMessage.m; sourceTree = "<group>"; };
+		44A951E519ABB8CC008D7D5F /* FCSMAVLinkTerrainCheckMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkTerrainCheckMessage.h; sourceTree = "<group>"; };
+		44A951E619ABB8CC008D7D5F /* FCSMAVLinkTerrainCheckMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkTerrainCheckMessage.m; sourceTree = "<group>"; };
+		44A951E819ABB8DC008D7D5F /* FCSMAVLinkTerrainReportMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkTerrainReportMessage.h; sourceTree = "<group>"; };
+		44A951E919ABB8DC008D7D5F /* FCSMAVLinkTerrainReportMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkTerrainReportMessage.m; sourceTree = "<group>"; };
+		44A951EB19ABB8EB008D7D5F /* FCSMAVLinkBatteryStatusMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkBatteryStatusMessage.h; sourceTree = "<group>"; };
+		44A951EC19ABB8EB008D7D5F /* FCSMAVLinkBatteryStatusMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkBatteryStatusMessage.m; sourceTree = "<group>"; };
+		44A951EE19ABB8FF008D7D5F /* FCSMAVLinkAutopilotVersionMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkAutopilotVersionMessage.h; sourceTree = "<group>"; };
+		44A951EF19ABB8FF008D7D5F /* FCSMAVLinkAutopilotVersionMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkAutopilotVersionMessage.m; sourceTree = "<group>"; };
+		44A951F119ABB911008D7D5F /* FCSMAVLinkV2ExtensionMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkV2ExtensionMessage.h; sourceTree = "<group>"; };
+		44A951F219ABB911008D7D5F /* FCSMAVLinkV2ExtensionMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkV2ExtensionMessage.m; sourceTree = "<group>"; };
+		44A951F419ABC19F008D7D5F /* FCSMAVLinkMessageSubclasses.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkMessageSubclasses.h; sourceTree = "<group>"; };
 		44E669DD19A40EA400E4EB20 /* FCSConnectionLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSConnectionLink.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -314,16 +640,17 @@
 				444502C819A3DD44007056B9 /* Decoder */,
 				444502C019A3DCCA007056B9 /* Link */,
 				444502BF19A3DCC0007056B9 /* ORSSerialPort */,
-				444501D519A3D0BE007056B9 /* mavlink */,
+				444501D519A3D0BE007056B9 /* mavlink C library */,
 			);
 			name = MAVLink;
 			sourceTree = "<group>";
 		};
-		444501D519A3D0BE007056B9 /* mavlink */ = {
+		444501D519A3D0BE007056B9 /* mavlink C library */ = {
 			isa = PBXGroup;
 			children = (
 				444501D619A3D0BE007056B9 /* v1.0 */,
 			);
+			name = "mavlink C library";
 			path = mavlink;
 			sourceTree = "<group>";
 		};
@@ -647,8 +974,6 @@
 				444502D119A3E8D8007056B9 /* FCSSerialLink.m */,
 				444502C519A3DD3D007056B9 /* FCSConnectionProtocol.h */,
 				444502C619A3DD3D007056B9 /* FCSConnectionProtocol.m */,
-				444502C919A3DD56007056B9 /* FCSConnectionDecoder.h */,
-				444502CA19A3DD56007056B9 /* FCSConnectionDecoder.m */,
 			);
 			name = Link;
 			sourceTree = "<group>";
@@ -656,6 +981,13 @@
 		444502C819A3DD44007056B9 /* Decoder */ = {
 			isa = PBXGroup;
 			children = (
+				444502C919A3DD56007056B9 /* FCSConnectionDecoder.h */,
+				444502CA19A3DD56007056B9 /* FCSConnectionDecoder.m */,
+				446E39A619AD0E520000D8D2 /* FCSMAVLinkEnumTypes.h */,
+				4418360419A55925000C8CBB /* FCSMAVLinkMessage.h */,
+				4418360519A55925000C8CBB /* FCSMAVLinkMessage.m */,
+				44A951F419ABC19F008D7D5F /* FCSMAVLinkMessageSubclasses.h */,
+				445A4C7819A6CF8900338A3A /* FCSMAVLink message subclasses */,
 			);
 			name = Decoder;
 			sourceTree = "<group>";
@@ -729,6 +1061,243 @@
 			children = (
 			);
 			name = "Map Display";
+			sourceTree = "<group>";
+		};
+		445A4C7819A6CF8900338A3A /* FCSMAVLink message subclasses */ = {
+			isa = PBXGroup;
+			children = (
+				446E39A819AD13390000D8D2 /* Ardupilot */,
+				446E39A719AD132F0000D8D2 /* Common */,
+			);
+			name = "FCSMAVLink message subclasses";
+			sourceTree = "<group>";
+		};
+		446E39A719AD132F0000D8D2 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				445A4C7919A6CFEC00338A3A /* FCSMAVLinkHeartbeatMessage.h */,
+				445A4C7A19A6CFEC00338A3A /* FCSMAVLinkHeartbeatMessage.m */,
+				445A4C7C19A6D00E00338A3A /* FCSMAVLinkSystemStatusMessage.h */,
+				445A4C7D19A6D00E00338A3A /* FCSMAVLinkSystemStatusMessage.m */,
+				445A4CB519A6D4D700338A3A /* FCSMAVLinkSystemTimeMessage.h */,
+				445A4CB619A6D4D700338A3A /* FCSMAVLinkSystemTimeMessage.m */,
+				445A4CB819A6D4EC00338A3A /* FCSMAVLinkPingMessage.h */,
+				445A4CB919A6D4EC00338A3A /* FCSMAVLinkPingMessage.m */,
+				445A4CBB19A6D51400338A3A /* FCSMAVLinkSetModeMessage.h */,
+				445A4CBC19A6D51400338A3A /* FCSMAVLinkSetModeMessage.m */,
+				445A4CBE19A6D5AD00338A3A /* FCSMAVLinkParameterReadRequestMessage.h */,
+				445A4CBF19A6D5AD00338A3A /* FCSMAVLinkParameterReadRequestMessage.m */,
+				445A4CC119A6D5C400338A3A /* FCSMAVLinkParameterListRequestMessage.h */,
+				445A4CC219A6D5C400338A3A /* FCSMAVLinkParameterListRequestMessage.m */,
+				445A4C8B19A6D0CE00338A3A /* FCSMAVLinkParameterValueMessage.h */,
+				445A4C8C19A6D0CE00338A3A /* FCSMAVLinkParameterValueMessage.m */,
+				445A4C8819A6D0B800338A3A /* FCAMAVLinkSetParameterMessage.h */,
+				445A4C8919A6D0B800338A3A /* FCAMAVLinkSetParameterMessage.m */,
+				445A4CC419A6D5F800338A3A /* FCSMAVLinkGPSRawDataMessage.h */,
+				445A4CC519A6D5F800338A3A /* FCSMAVLinkGPSRawDataMessage.m */,
+				445A4C9D19A6D24F00338A3A /* FCSMAVLinkGPSStatusMessage.h */,
+				445A4C9E19A6D24F00338A3A /* FCSMAVLinkGPSStatusMessage.m */,
+				445A4CC719A6D63100338A3A /* FCSMAVLinkScaledIMUMessage.h */,
+				445A4CC819A6D63100338A3A /* FCSMAVLinkScaledIMUMessage.m */,
+				445A4CCA19A6D65500338A3A /* FCSMAVLinkRawIMUMessage.h */,
+				445A4CCB19A6D65500338A3A /* FCSMAVLinkRawIMUMessage.m */,
+				445A4CCD19A6D67200338A3A /* FCSMAVLinkRawPressureMessage.h */,
+				445A4CCE19A6D67200338A3A /* FCSMAVLinkRawPressureMessage.m */,
+				445A4CD019A6D68400338A3A /* FCSMAVLinkScaledPressureMessage.h */,
+				445A4CD119A6D68400338A3A /* FCSMAVLinkScaledPressureMessage.m */,
+				445A4CD319A6D6A000338A3A /* FCSMAVLinkAttitudeMessage.h */,
+				445A4CD419A6D6A000338A3A /* FCSMAVLinkAttitudeMessage.m */,
+				445A4CD619A6D6F000338A3A /* FCSMAVLinkAttitudeQuaternionMessage.h */,
+				445A4CD719A6D6F000338A3A /* FCSMAVLinkAttitudeQuaternionMessage.m */,
+				445A4CD919A6D72300338A3A /* FCSMAVLinkLocalPositionMessage.h */,
+				445A4CDA19A6D72300338A3A /* FCSMAVLinkLocalPositionMessage.m */,
+				445A4CDC19A6D73B00338A3A /* FCSMAVLinkGlobalPositionMessage.h */,
+				445A4CDD19A6D73B00338A3A /* FCSMAVLinkGlobalPositionMessage.m */,
+				445A4CDF19A6D75500338A3A /* FCSMAVLinkRCChannelsScaledMessage.h */,
+				445A4CE019A6D75500338A3A /* FCSMAVLinkRCChannelsScaledMessage.m */,
+				445A4CE219A6D76600338A3A /* FCSMAVLinkRCChannelsRawMessage.h */,
+				445A4CE319A6D76600338A3A /* FCSMAVLinkRCChannelsRawMessage.m */,
+				445A4CE519A6D78300338A3A /* FCSMAVLinkServoOutputRawMessage.h */,
+				445A4CE619A6D78300338A3A /* FCSMAVLinkServoOutputRawMessage.m */,
+				445A4CA319A6D3D700338A3A /* FCSMAVLinkMissionRequestPartialListMessage.h */,
+				445A4CA419A6D3D700338A3A /* FCSMAVLinkMissionRequestPartialListMessage.m */,
+				445A4CA619A6D41C00338A3A /* FCSMAVLinkMissionWritePartialListMessage.h */,
+				445A4CA719A6D41C00338A3A /* FCSMAVLinkMissionWritePartialListMessage.m */,
+				445A4C8E19A6D0E300338A3A /* FCSMAVLinkMissionItemMessage.h */,
+				445A4C8F19A6D0E300338A3A /* FCSMAVLinkMissionItemMessage.m */,
+				445A4CA919A6D45600338A3A /* FCSMAVLinkMissionRequestMessage.h */,
+				445A4CAA19A6D45600338A3A /* FCSMAVLinkMissionRequestMessage.m */,
+				445A4CAC19A6D48300338A3A /* FCSMAVLinkMissionSetCurrentMessage.h */,
+				445A4CAD19A6D48300338A3A /* FCSMAVLinkMissionSetCurrentMessage.m */,
+				445A4CAF19A6D49300338A3A /* FCSMAVLinkMissionCurrentMessage.h */,
+				445A4CB019A6D49300338A3A /* FCSMAVLinkMissionCurrentMessage.m */,
+				445A4CB219A6D4B200338A3A /* FCSMAVLinkMissionRequestListMessage.h */,
+				445A4CB319A6D4B200338A3A /* FCSMAVLinkMissionRequestListMessage.m */,
+				445A4C9119A6D0F400338A3A /* FCSMAVLinkMissionCountMessage.h */,
+				445A4C9219A6D0F400338A3A /* FCSMAVLinkMissionCountMessage.m */,
+				445A4CE819A6D7B300338A3A /* FCSMAVLinkMissionClearAllMessage.h */,
+				445A4CE919A6D7B300338A3A /* FCSMAVLinkMissionClearAllMessage.m */,
+				445A4CEB19A6D7CE00338A3A /* FCSMAVLinkMissionItemReachedMessage.h */,
+				445A4CEC19A6D7CE00338A3A /* FCSMAVLinkMissionItemReachedMessage.m */,
+				445A4C9419A6D11700338A3A /* FCSMAVLinkMissionAcknowledgementMessage.h */,
+				445A4C9519A6D11700338A3A /* FCSMAVLinkMissionAcknowledgementMessage.m */,
+				445A4CEE19A6D7EC00338A3A /* FCSMAVLinkSetGPSGlobalOriginMessage.h */,
+				445A4CEF19A6D7EC00338A3A /* FCSMAVLinkSetGPSGlobalOriginMessage.m */,
+				445A4CF119A6D7FF00338A3A /* FCSMAVLinkGPSGlobalOriginMessage.h */,
+				445A4CF219A6D7FF00338A3A /* FCSMAVLinkGPSGlobalOriginMessage.m */,
+				445A4CF419A6D82800338A3A /* FCSMAVLinkSetAllowedSafetyAreaMessage.h */,
+				445A4CF519A6D82800338A3A /* FCSMAVLinkSetAllowedSafetyAreaMessage.m */,
+				445A4CF719A6D83D00338A3A /* FCSMAVLinkAllowedSafetyAreaMessage.h */,
+				445A4CF819A6D83D00338A3A /* FCSMAVLinkAllowedSafetyAreaMessage.m */,
+				445A4CFA19A6D87000338A3A /* FCSMAVLinkAttitudeQuaternionCOVMessage.h */,
+				445A4CFB19A6D87000338A3A /* FCSMAVLinkAttitudeQuaternionCOVMessage.m */,
+				445A4CFD19A6D89A00338A3A /* FCSMAVLinkNavControllerOutputMessage.h */,
+				445A4CFE19A6D89A00338A3A /* FCSMAVLinkNavControllerOutputMessage.m */,
+				445A4D0019A6D8C800338A3A /* FCSMAVLinkGlobalPositionCOVMessage.h */,
+				445A4D0119A6D8C800338A3A /* FCSMAVLinkGlobalPositionCOVMessage.m */,
+				445A4D0319A6D8E400338A3A /* FCSMAVLinkLocalPositionCOVMessage.h */,
+				445A4D0419A6D8E400338A3A /* FCSMAVLinkLocalPositionCOVMessage.m */,
+				445A4D0619A6D91700338A3A /* FCSMAVLinkRCChannelsMessage.h */,
+				445A4D0719A6D91700338A3A /* FCSMAVLinkRCChannelsMessage.m */,
+				445A4C9A19A6D22400338A3A /* FCSMAVLinkRequestDataStreamMessage.h */,
+				445A4C9B19A6D22400338A3A /* FCSMAVLinkRequestDataStreamMessage.m */,
+				445A4C9719A6D1FD00338A3A /* FCSMAVLinkDataStreamMessage.h */,
+				445A4C9819A6D1FD00338A3A /* FCSMAVLinkDataStreamMessage.m */,
+				445A4D0919A6D95900338A3A /* FCSMAVLinkManualControlMessage.h */,
+				445A4D0A19A6D95900338A3A /* FCSMAVLinkManualControlMessage.m */,
+				445A4D0C19A6D96C00338A3A /* FCSMAVLinkRCChannelOverrideMessage.h */,
+				445A4D0D19A6D96C00338A3A /* FCSMAVLinkRCChannelOverrideMessage.m */,
+				445A4D0F19A6D9C600338A3A /* FCSMAVLinkMissionItemINTMessage.h */,
+				445A4D1019A6D9C600338A3A /* FCSMAVLinkMissionItemINTMessage.m */,
+				445A4D1219A6D9FC00338A3A /* FCSMAVLinkVFRHUDMessage.h */,
+				445A4D1319A6D9FC00338A3A /* FCSMAVLinkVFRHUDMessage.m */,
+				445A4D1519A6DA5D00338A3A /* FCSMAVLinkCommandINTMessage.h */,
+				445A4D1619A6DA5D00338A3A /* FCSMAVLinkCommandINTMessage.m */,
+				445A4C8219A6D06300338A3A /* FCSMAVLinkCommandLongMessage.h */,
+				445A4C8319A6D06300338A3A /* FCSMAVLinkCommandLongMessage.m */,
+				445A4C8519A6D08F00338A3A /* FCSMAVLinkCommandAcknowledgementMessage.h */,
+				445A4C8619A6D08F00338A3A /* FCSMAVLinkCommandAcknowledgementMessage.m */,
+				44A9516719ABB4AE008D7D5F /* FCSMAVLinkManualSetpointMessage.h */,
+				44A9516819ABB4AE008D7D5F /* FCSMAVLinkManualSetpointMessage.m */,
+				44A9516A19ABB4CE008D7D5F /* FCSMAVLinkSetAttitudeTargetMessage.h */,
+				44A9516B19ABB4CE008D7D5F /* FCSMAVLinkSetAttitudeTargetMessage.m */,
+				44A9516D19ABB4E5008D7D5F /* FCSMAVLinkAttitudeTargetMessage.h */,
+				44A9516E19ABB4E5008D7D5F /* FCSMAVLinkAttitudeTargetMessage.m */,
+				44A9517019ABB512008D7D5F /* FCSMAVLinkSetPositionTargetLocalNEDMessage.h */,
+				44A9517119ABB512008D7D5F /* FCSMAVLinkSetPositionTargetLocalNEDMessage.m */,
+				44A9517319ABB52C008D7D5F /* FCSMAVLinkPositionTargetLocalNEDMessage.h */,
+				44A9517419ABB52C008D7D5F /* FCSMAVLinkPositionTargetLocalNEDMessage.m */,
+				44A9517619ABB544008D7D5F /* FCSMAVLinkSetPositionTargetGlobalINTMessage.h */,
+				44A9517719ABB544008D7D5F /* FCSMAVLinkSetPositionTargetGlobalINTMessage.m */,
+				44A9517919ABB565008D7D5F /* FCSMAVLinkPositionTargetGlobalINTMessage.h */,
+				44A9517A19ABB565008D7D5F /* FCSMAVLinkPositionTargetGlobalINTMessage.m */,
+				44A9517C19ABB5AB008D7D5F /* FCSMAVLinkLocalPositionNEDSystemGlobalOffsetMessage.h */,
+				44A9517D19ABB5AB008D7D5F /* FCSMAVLinkLocalPositionNEDSystemGlobalOffsetMessage.m */,
+				44A9517F19ABB5EA008D7D5F /* FCSMAVLinkHILStateMessage.h */,
+				44A9518019ABB5EA008D7D5F /* FCSMAVLinkHILStateMessage.m */,
+				44A9518219ABB606008D7D5F /* FCSMAVLinkHILControlsMessage.h */,
+				44A9518319ABB606008D7D5F /* FCSMAVLinkHILControlsMessage.m */,
+				44A9518519ABB61D008D7D5F /* FCSMAVLinkHILRCInputsRawMessage.h */,
+				44A9518619ABB61D008D7D5F /* FCSMAVLinkHILRCInputsRawMessage.m */,
+				44A9518819ABB632008D7D5F /* FCSMAVLinkOpticalFlowMessage.h */,
+				44A9518919ABB632008D7D5F /* FCSMAVLinkOpticalFlowMessage.m */,
+				44A9518B19ABB650008D7D5F /* FCSMAVLinkGlobalVisionPositionEstimateMessage.h */,
+				44A9518C19ABB650008D7D5F /* FCSMAVLinkGlobalVisionPositionEstimateMessage.m */,
+				44A9518E19ABB665008D7D5F /* FCSMAVLinkVisionPositionEstimateMessage.h */,
+				44A9518F19ABB665008D7D5F /* FCSMAVLinkVisionPositionEstimateMessage.m */,
+				44A9519119ABB67B008D7D5F /* FCSMAVLinkVisionSpeedEstimateMessage.h */,
+				44A9519219ABB67B008D7D5F /* FCSMAVLinkVisionSpeedEstimateMessage.m */,
+				44A9519419ABB69A008D7D5F /* FCSMAVLinkVICONPositionEstimateMessage.h */,
+				44A9519519ABB69A008D7D5F /* FCSMAVLinkVICONPositionEstimateMessage.m */,
+				445A4CA019A6D37D00338A3A /* FCSMAVLinkHighResIMUMessage.h */,
+				445A4CA119A6D37D00338A3A /* FCSMAVLinkHighResIMUMessage.m */,
+				44A9519719ABB6E6008D7D5F /* FCSMAVLinkOmnidirectionalFlowMessage.h */,
+				44A9519819ABB6E6008D7D5F /* FCSMAVLinkOmnidirectionalFlowMessage.m */,
+				44A9519A19ABB6FB008D7D5F /* FCSMAVLinkHILSensorMessage.h */,
+				44A9519B19ABB6FB008D7D5F /* FCSMAVLinkHILSensorMessage.m */,
+				44A9519D19ABB70D008D7D5F /* FCSMAVLinkSimStateMessage.h */,
+				44A9519E19ABB70D008D7D5F /* FCSMAVLinkSimStateMessage.m */,
+				44A951A019ABB720008D7D5F /* FCSMAVLinkRadioStatusMessage.h */,
+				44A951A119ABB720008D7D5F /* FCSMAVLinkRadioStatusMessage.m */,
+				44A951A319ABB734008D7D5F /* FCSMAVLinkFileTransferProtocolMessage.h */,
+				44A951A419ABB734008D7D5F /* FCSMAVLinkFileTransferProtocolMessage.m */,
+				44A951A619ABB747008D7D5F /* FCSMAVLinkHILGPSMessage.h */,
+				44A951A719ABB747008D7D5F /* FCSMAVLinkHILGPSMessage.m */,
+				44A951A919ABB756008D7D5F /* FCSMAVLinkHILOpticalFlowMessage.h */,
+				44A951AA19ABB756008D7D5F /* FCSMAVLinkHILOpticalFlowMessage.m */,
+				44A951AC19ABB76A008D7D5F /* FCSMAVLinkHILStateQuaternionMessage.h */,
+				44A951AD19ABB76A008D7D5F /* FCSMAVLinkHILStateQuaternionMessage.m */,
+				44A951AF19ABB78A008D7D5F /* FCSMAVLinkScaledIMU2Message.h */,
+				44A951B019ABB78A008D7D5F /* FCSMAVLinkScaledIMU2Message.m */,
+				44A951B219ABB79A008D7D5F /* FCSMAVLinkLogRequestMessage.h */,
+				44A951B319ABB79A008D7D5F /* FCSMAVLinkLogRequestMessage.m */,
+				44A951B519ABB7A9008D7D5F /* FCSMAVLinkLogEntryMessage.h */,
+				44A951B619ABB7A9008D7D5F /* FCSMAVLinkLogEntryMessage.m */,
+				44A951B819ABB7BC008D7D5F /* FCSMAVLinkLogRequestDataMessage.h */,
+				44A951B919ABB7BC008D7D5F /* FCSMAVLinkLogRequestDataMessage.m */,
+				44A951BB19ABB7C8008D7D5F /* FCSMAVLinkLogDataMessage.h */,
+				44A951BC19ABB7C8008D7D5F /* FCSMAVLinkLogDataMessage.m */,
+				44A951BE19ABB7DA008D7D5F /* FCSMAVLinkLogEraseMessage.h */,
+				44A951BF19ABB7DA008D7D5F /* FCSMAVLinkLogEraseMessage.m */,
+				44A951C119ABB7EE008D7D5F /* FCSMAVLinkLogRequestEndMessage.h */,
+				44A951C219ABB7EE008D7D5F /* FCSMAVLinkLogRequestEndMessage.m */,
+				44A951C419ABB801008D7D5F /* FCSMAVLinkGPSInjectDataMessage.h */,
+				44A951C519ABB801008D7D5F /* FCSMAVLinkGPSInjectDataMessage.m */,
+				44A951C719ABB812008D7D5F /* FCSMAVLinkGPS2RawMessage.h */,
+				44A951C819ABB812008D7D5F /* FCSMAVLinkGPS2RawMessage.m */,
+				44A951CA19ABB823008D7D5F /* FCSMAVLinkPowerStatusMessage.h */,
+				44A951CB19ABB823008D7D5F /* FCSMAVLinkPowerStatusMessage.m */,
+				44A951CD19ABB833008D7D5F /* FCSMAVLinkSerialControlMessage.h */,
+				44A951CE19ABB833008D7D5F /* FCSMAVLinkSerialControlMessage.m */,
+				44A951D019ABB845008D7D5F /* FCSMAVLinkGPSRTKMessage.h */,
+				44A951D119ABB845008D7D5F /* FCSMAVLinkGPSRTKMessage.m */,
+				44A951D319ABB851008D7D5F /* FCSMAVLinkGPS2RTKMessage.h */,
+				44A951D419ABB851008D7D5F /* FCSMAVLinkGPS2RTKMessage.m */,
+				44A951D619ABB86C008D7D5F /* FCSMAVLinkDataTransmissionHandshakeMessage.h */,
+				44A951D719ABB86C008D7D5F /* FCSMAVLinkDataTransmissionHandshakeMessage.m */,
+				44A951D919ABB880008D7D5F /* FCSMAVLinkEncapsulatedDataMessage.h */,
+				44A951DA19ABB880008D7D5F /* FCSMAVLinkEncapsulatedDataMessage.m */,
+				44A951DC19ABB891008D7D5F /* FCSMAVLinkDistanceSensorMessage.h */,
+				44A951DD19ABB891008D7D5F /* FCSMAVLinkDistanceSensorMessage.m */,
+				44A951DF19ABB8A5008D7D5F /* FCSMAVLinkTerrainRequestMessage.h */,
+				44A951E019ABB8A5008D7D5F /* FCSMAVLinkTerrainRequestMessage.m */,
+				44A951E219ABB8B4008D7D5F /* FCSMAVLinkTerrainDataMessage.h */,
+				44A951E319ABB8B4008D7D5F /* FCSMAVLinkTerrainDataMessage.m */,
+				44A951E519ABB8CC008D7D5F /* FCSMAVLinkTerrainCheckMessage.h */,
+				44A951E619ABB8CC008D7D5F /* FCSMAVLinkTerrainCheckMessage.m */,
+				44A951E819ABB8DC008D7D5F /* FCSMAVLinkTerrainReportMessage.h */,
+				44A951E919ABB8DC008D7D5F /* FCSMAVLinkTerrainReportMessage.m */,
+				44A951EB19ABB8EB008D7D5F /* FCSMAVLinkBatteryStatusMessage.h */,
+				44A951EC19ABB8EB008D7D5F /* FCSMAVLinkBatteryStatusMessage.m */,
+				44A951EE19ABB8FF008D7D5F /* FCSMAVLinkAutopilotVersionMessage.h */,
+				44A951EF19ABB8FF008D7D5F /* FCSMAVLinkAutopilotVersionMessage.m */,
+				44A951F119ABB911008D7D5F /* FCSMAVLinkV2ExtensionMessage.h */,
+				44A951F219ABB911008D7D5F /* FCSMAVLinkV2ExtensionMessage.m */,
+				445A4C7F19A6D03E00338A3A /* FCSMAVLinkStatusTextMessage.h */,
+				445A4C8019A6D03E00338A3A /* FCSMAVLinkStatusTextMessage.m */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
+		446E39A819AD13390000D8D2 /* Ardupilot */ = {
+			isa = PBXGroup;
+			children = (
+				446E39A919AD134B0000D8D2 /* FCAMAVLinkFenceStatusMessage.h */,
+				446E39AA19AD134B0000D8D2 /* FCAMAVLinkFenceStatusMessage.m */,
+				446E39AC19AD13610000D8D2 /* FCSMAVLinkFenceFetchPointMessage.h */,
+				446E39AD19AD13610000D8D2 /* FCSMAVLinkFenceFetchPointMessage.m */,
+				446E39AF19AD13760000D8D2 /* FCSMAVLinkFencePointMessage.h */,
+				446E39B019AD13760000D8D2 /* FCSMAVLinkFencePointMessage.m */,
+				446E39B219AD13890000D8D2 /* FCSMAVLinkHWStatusMessage.h */,
+				446E39B319AD13890000D8D2 /* FCSMAVLinkHWStatusMessage.m */,
+				446E39B519AD13BF0000D8D2 /* FCSMAVLinkLimitsStatusMessage.h */,
+				446E39B619AD13BF0000D8D2 /* FCSMAVLinkLimitsStatusMessage.m */,
+				446E39B819AD13D30000D8D2 /* FCSMAVLinkMemInfoMessage.h */,
+				446E39B919AD13D30000D8D2 /* FCSMAVLinkMemInfoMessage.m */,
+				446E39BB19AD140F0000D8D2 /* FCSMAVLinkWindMessage.h */,
+				446E39BC19AD140F0000D8D2 /* FCSMAVLinkWindMessage.m */,
+			);
+			name = Ardupilot;
 			sourceTree = "<group>";
 		};
 		449C2D1C19A4055C006EC79B /* App Delegate */ = {
@@ -849,18 +1418,126 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				445A4CAB19A6D45600338A3A /* FCSMAVLinkMissionRequestMessage.m in Sources */,
+				445A4D1419A6D9FC00338A3A /* FCSMAVLinkVFRHUDMessage.m in Sources */,
+				445A4D1119A6D9C600338A3A /* FCSMAVLinkMissionItemINTMessage.m in Sources */,
+				44A9517819ABB544008D7D5F /* FCSMAVLinkSetPositionTargetGlobalINTMessage.m in Sources */,
 				449C2D4E19A405B0006EC79B /* AppDelegate.m in Sources */,
+				44A951CC19ABB823008D7D5F /* FCSMAVLinkPowerStatusMessage.m in Sources */,
 				444502D219A3E8D8007056B9 /* FCSSerialLink.m in Sources */,
+				445A4C9F19A6D24F00338A3A /* FCSMAVLinkGPSStatusMessage.m in Sources */,
+				44A951F019ABB8FF008D7D5F /* FCSMAVLinkAutopilotVersionMessage.m in Sources */,
+				44A951E119ABB8A5008D7D5F /* FCSMAVLinkTerrainRequestMessage.m in Sources */,
+				445A4C9C19A6D22400338A3A /* FCSMAVLinkRequestDataStreamMessage.m in Sources */,
+				44A9519919ABB6E6008D7D5F /* FCSMAVLinkOmnidirectionalFlowMessage.m in Sources */,
+				445A4D0E19A6D96C00338A3A /* FCSMAVLinkRCChannelOverrideMessage.m in Sources */,
+				445A4CBA19A6D4EC00338A3A /* FCSMAVLinkPingMessage.m in Sources */,
+				445A4D0219A6D8C800338A3A /* FCSMAVLinkGlobalPositionCOVMessage.m in Sources */,
+				446E39AB19AD134B0000D8D2 /* FCAMAVLinkFenceStatusMessage.m in Sources */,
+				445A4CA819A6D41C00338A3A /* FCSMAVLinkMissionWritePartialListMessage.m in Sources */,
+				445A4C9619A6D11700338A3A /* FCSMAVLinkMissionAcknowledgementMessage.m in Sources */,
+				445A4CED19A6D7CE00338A3A /* FCSMAVLinkMissionItemReachedMessage.m in Sources */,
+				445A4CAE19A6D48300338A3A /* FCSMAVLinkMissionSetCurrentMessage.m in Sources */,
+				44A951AB19ABB756008D7D5F /* FCSMAVLinkHILOpticalFlowMessage.m in Sources */,
+				44A951E719ABB8CC008D7D5F /* FCSMAVLinkTerrainCheckMessage.m in Sources */,
+				445A4CCF19A6D67200338A3A /* FCSMAVLinkRawPressureMessage.m in Sources */,
 				444502CF19A3E83E007056B9 /* FCSConnectionLinkManager.m in Sources */,
+				445A4CCC19A6D65500338A3A /* FCSMAVLinkRawIMUMessage.m in Sources */,
+				445A4CA519A6D3D700338A3A /* FCSMAVLinkMissionRequestPartialListMessage.m in Sources */,
+				44A9519F19ABB70D008D7D5F /* FCSMAVLinkSimStateMessage.m in Sources */,
 				444502C719A3DD3D007056B9 /* FCSConnectionProtocol.m in Sources */,
+				44A951A819ABB747008D7D5F /* FCSMAVLinkHILGPSMessage.m in Sources */,
+				445A4D0B19A6D95900338A3A /* FCSMAVLinkManualControlMessage.m in Sources */,
+				445A4CE119A6D75500338A3A /* FCSMAVLinkRCChannelsScaledMessage.m in Sources */,
+				445A4D0519A6D8E400338A3A /* FCSMAVLinkLocalPositionCOVMessage.m in Sources */,
+				44A9517219ABB512008D7D5F /* FCSMAVLinkSetPositionTargetLocalNEDMessage.m in Sources */,
+				445A4CFC19A6D87000338A3A /* FCSMAVLinkAttitudeQuaternionCOVMessage.m in Sources */,
+				445A4C8119A6D03E00338A3A /* FCSMAVLinkStatusTextMessage.m in Sources */,
+				445A4CA219A6D37D00338A3A /* FCSMAVLinkHighResIMUMessage.m in Sources */,
+				44A951E419ABB8B4008D7D5F /* FCSMAVLinkTerrainDataMessage.m in Sources */,
+				44A9516C19ABB4CE008D7D5F /* FCSMAVLinkSetAttitudeTargetMessage.m in Sources */,
+				445A4CC919A6D63100338A3A /* FCSMAVLinkScaledIMUMessage.m in Sources */,
+				446E39BD19AD140F0000D8D2 /* FCSMAVLinkWindMessage.m in Sources */,
+				445A4CF019A6D7EC00338A3A /* FCSMAVLinkSetGPSGlobalOriginMessage.m in Sources */,
+				44A951B419ABB79A008D7D5F /* FCSMAVLinkLogRequestMessage.m in Sources */,
+				445A4CD519A6D6A000338A3A /* FCSMAVLinkAttitudeMessage.m in Sources */,
+				445A4CE719A6D78300338A3A /* FCSMAVLinkServoOutputRawMessage.m in Sources */,
 				44587C36199EC60900559FEC /* FCSMissionDocument.xcdatamodeld in Sources */,
+				44A9518419ABB606008D7D5F /* FCSMAVLinkHILControlsMessage.m in Sources */,
+				445A4C8D19A6D0CE00338A3A /* FCSMAVLinkParameterValueMessage.m in Sources */,
+				44A951BA19ABB7BC008D7D5F /* FCSMAVLinkLogRequestDataMessage.m in Sources */,
+				44A951AE19ABB76A008D7D5F /* FCSMAVLinkHILStateQuaternionMessage.m in Sources */,
+				44A9518119ABB5EA008D7D5F /* FCSMAVLinkHILStateMessage.m in Sources */,
 				444502BD19A3D0D9007056B9 /* ORSSerialPort.m in Sources */,
+				445A4CD819A6D6F000338A3A /* FCSMAVLinkAttitudeQuaternionMessage.m in Sources */,
+				44A951A519ABB734008D7D5F /* FCSMAVLinkFileTransferProtocolMessage.m in Sources */,
+				445A4C9919A6D1FD00338A3A /* FCSMAVLinkDataStreamMessage.m in Sources */,
+				445A4CFF19A6D89A00338A3A /* FCSMAVLinkNavControllerOutputMessage.m in Sources */,
+				44A9517519ABB52C008D7D5F /* FCSMAVLinkPositionTargetLocalNEDMessage.m in Sources */,
+				445A4C8419A6D06300338A3A /* FCSMAVLinkCommandLongMessage.m in Sources */,
+				445A4CEA19A6D7B300338A3A /* FCSMAVLinkMissionClearAllMessage.m in Sources */,
+				445A4C8719A6D08F00338A3A /* FCSMAVLinkCommandAcknowledgementMessage.m in Sources */,
+				445A4C7B19A6CFEC00338A3A /* FCSMAVLinkHeartbeatMessage.m in Sources */,
+				44A951F319ABB911008D7D5F /* FCSMAVLinkV2ExtensionMessage.m in Sources */,
+				44A951C919ABB812008D7D5F /* FCSMAVLinkGPS2RawMessage.m in Sources */,
+				446E39B419AD13890000D8D2 /* FCSMAVLinkHWStatusMessage.m in Sources */,
+				44A9516919ABB4AE008D7D5F /* FCSMAVLinkManualSetpointMessage.m in Sources */,
+				445A4CF619A6D82800338A3A /* FCSMAVLinkSetAllowedSafetyAreaMessage.m in Sources */,
+				445A4CDB19A6D72300338A3A /* FCSMAVLinkLocalPositionMessage.m in Sources */,
+				44A9517B19ABB565008D7D5F /* FCSMAVLinkPositionTargetGlobalINTMessage.m in Sources */,
+				44A9517E19ABB5AB008D7D5F /* FCSMAVLinkLocalPositionNEDSystemGlobalOffsetMessage.m in Sources */,
+				44A9518A19ABB632008D7D5F /* FCSMAVLinkOpticalFlowMessage.m in Sources */,
+				44A951DB19ABB880008D7D5F /* FCSMAVLinkEncapsulatedDataMessage.m in Sources */,
+				44A951C019ABB7DA008D7D5F /* FCSMAVLinkLogEraseMessage.m in Sources */,
+				44A9518719ABB61D008D7D5F /* FCSMAVLinkHILRCInputsRawMessage.m in Sources */,
+				44A951D519ABB851008D7D5F /* FCSMAVLinkGPS2RTKMessage.m in Sources */,
+				445A4C7E19A6D00E00338A3A /* FCSMAVLinkSystemStatusMessage.m in Sources */,
+				44A951B719ABB7A9008D7D5F /* FCSMAVLinkLogEntryMessage.m in Sources */,
+				445A4CB419A6D4B200338A3A /* FCSMAVLinkMissionRequestListMessage.m in Sources */,
+				445A4D1719A6DA5D00338A3A /* FCSMAVLinkCommandINTMessage.m in Sources */,
+				445A4CE419A6D76600338A3A /* FCSMAVLinkRCChannelsRawMessage.m in Sources */,
+				446E39B719AD13BF0000D8D2 /* FCSMAVLinkLimitsStatusMessage.m in Sources */,
+				44A9519619ABB69A008D7D5F /* FCSMAVLinkVICONPositionEstimateMessage.m in Sources */,
 				44587C33199EC60900559FEC /* FCSMissionDocument.m in Sources */,
+				44A951ED19ABB8EB008D7D5F /* FCSMAVLinkBatteryStatusMessage.m in Sources */,
+				445A4CC019A6D5AD00338A3A /* FCSMAVLinkParameterReadRequestMessage.m in Sources */,
 				444502BE19A3D0D9007056B9 /* ORSSerialPortManager.m in Sources */,
 				44E669DE19A40EA400E4EB20 /* FCSConnectionLink.m in Sources */,
+				445A4CF319A6D7FF00338A3A /* FCSMAVLinkGPSGlobalOriginMessage.m in Sources */,
+				44A951DE19ABB891008D7D5F /* FCSMAVLinkDistanceSensorMessage.m in Sources */,
+				445A4CD219A6D68400338A3A /* FCSMAVLinkScaledPressureMessage.m in Sources */,
+				44A9516F19ABB4E5008D7D5F /* FCSMAVLinkAttitudeTargetMessage.m in Sources */,
+				445A4CDE19A6D73B00338A3A /* FCSMAVLinkGlobalPositionMessage.m in Sources */,
+				44A9519019ABB665008D7D5F /* FCSMAVLinkVisionPositionEstimateMessage.m in Sources */,
+				445A4D0819A6D91700338A3A /* FCSMAVLinkRCChannelsMessage.m in Sources */,
+				44A9518D19ABB650008D7D5F /* FCSMAVLinkGlobalVisionPositionEstimateMessage.m in Sources */,
+				44A951C619ABB801008D7D5F /* FCSMAVLinkGPSInjectDataMessage.m in Sources */,
+				445A4CB719A6D4D700338A3A /* FCSMAVLinkSystemTimeMessage.m in Sources */,
 				44587C30199EC60900559FEC /* FCSMainViewController.m in Sources */,
+				445A4C9319A6D0F400338A3A /* FCSMAVLinkMissionCountMessage.m in Sources */,
+				44A951D819ABB86C008D7D5F /* FCSMAVLinkDataTransmissionHandshakeMessage.m in Sources */,
+				445A4CBD19A6D51400338A3A /* FCSMAVLinkSetModeMessage.m in Sources */,
+				445A4CF919A6D83D00338A3A /* FCSMAVLinkAllowedSafetyAreaMessage.m in Sources */,
+				446E39BA19AD13D30000D8D2 /* FCSMAVLinkMemInfoMessage.m in Sources */,
+				44A951A219ABB720008D7D5F /* FCSMAVLinkRadioStatusMessage.m in Sources */,
+				445A4CC319A6D5C400338A3A /* FCSMAVLinkParameterListRequestMessage.m in Sources */,
+				445A4C8A19A6D0B800338A3A /* FCAMAVLinkSetParameterMessage.m in Sources */,
+				44A951EA19ABB8DC008D7D5F /* FCSMAVLinkTerrainReportMessage.m in Sources */,
+				445A4CC619A6D5F800338A3A /* FCSMAVLinkGPSRawDataMessage.m in Sources */,
+				44A9519C19ABB6FB008D7D5F /* FCSMAVLinkHILSensorMessage.m in Sources */,
+				4418360619A55925000C8CBB /* FCSMAVLinkMessage.m in Sources */,
+				446E39AE19AD13610000D8D2 /* FCSMAVLinkFenceFetchPointMessage.m in Sources */,
+				44A951BD19ABB7C8008D7D5F /* FCSMAVLinkLogDataMessage.m in Sources */,
+				445A4CB119A6D49300338A3A /* FCSMAVLinkMissionCurrentMessage.m in Sources */,
 				444502CB19A3DD56007056B9 /* FCSConnectionDecoder.m in Sources */,
+				44A9519319ABB67B008D7D5F /* FCSMAVLinkVisionSpeedEstimateMessage.m in Sources */,
+				44A951CF19ABB833008D7D5F /* FCSMAVLinkSerialControlMessage.m in Sources */,
+				446E39B119AD13760000D8D2 /* FCSMAVLinkFencePointMessage.m in Sources */,
+				44A951B119ABB78A008D7D5F /* FCSMAVLinkScaledIMU2Message.m in Sources */,
+				44A951C319ABB7EE008D7D5F /* FCSMAVLinkLogRequestEndMessage.m in Sources */,
 				44587C2D199EC60900559FEC /* main.m in Sources */,
+				44A951D219ABB845008D7D5F /* FCSMAVLinkGPSRTKMessage.m in Sources */,
+				445A4C9019A6D0E300338A3A /* FCSMAVLinkMissionItemMessage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

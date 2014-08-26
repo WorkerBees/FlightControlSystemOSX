@@ -14,4 +14,7 @@
 
 #define OS_OBJECT_USE_OBJC 1
 
+#define FCSGCSSystemID ((uint8_t)252)
+#define FCSGCSComponentID ((uint8_t)1)
+
 #endif

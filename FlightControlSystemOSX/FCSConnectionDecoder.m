@@ -13,6 +13,12 @@
 - (void)link:(FCSConnectionLink *)link receivedMAVLinkMessage:(FCSMAVLinkMessage *)message
 {
     NSLog(@"Received message %@ on link %@", message, link);
+
+
+    // Broadcast that we received this message
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    NSDictionary *userInfo = @{@"message" : message};
+    [nc postNotificationName:message.name object:self userInfo:userInfo];
 }
 
 
