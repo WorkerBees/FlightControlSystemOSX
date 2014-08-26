@@ -49,7 +49,7 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"MISSION_REQUEST: %u for 0x%02x/0x%02x", _request->seq, _request->target_system, _request->target_component];
+    return [NSString stringWithFormat:@"%@: %u for 0x%02x/0x%02x", self.name, _request->seq, _request->target_system, _request->target_component];
 }
 
 - (uint16_t)sequenceNumber

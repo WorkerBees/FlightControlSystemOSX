@@ -99,7 +99,8 @@
         default: frame = [NSString stringWithFormat:@"Unknown(%u)", self.frame];
     }
 
-    return [NSString stringWithFormat:@"MISSION_ITEM: %u on 0x%02x/0x%02x - %@(%@)",
+    return [NSString stringWithFormat:@"%@: %u on 0x%02x/0x%02x - %@(%@)",
+            self.name,
             self.sequenceNumber,
             self.targetSystem,
             self.targetComponent,

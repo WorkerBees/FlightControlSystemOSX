@@ -46,7 +46,7 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"SYSSTATUS"];
+    return self.name;
 }
 
 @end

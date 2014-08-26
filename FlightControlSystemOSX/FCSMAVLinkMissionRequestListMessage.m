@@ -49,7 +49,7 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"0x%02x/0x%02x", _request_list->target_system, _request_list->target_component];
+    return [NSString stringWithFormat:@"%@: 0x%02x/0x%02x", self.name, _request_list->target_system, _request_list->target_component];
 }
 
 - (uint8_t)targetComponent

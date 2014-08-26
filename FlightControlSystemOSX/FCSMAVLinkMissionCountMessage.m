@@ -50,7 +50,8 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"MISSION_COUNT: %u for 0x%02x/0x%02x",
+    return [NSString stringWithFormat:@"%@: %u for 0x%02x/0x%02x",
+            self.name,
             _mission_count->count,
             _mission_count->target_system,
             _mission_count->target_component];

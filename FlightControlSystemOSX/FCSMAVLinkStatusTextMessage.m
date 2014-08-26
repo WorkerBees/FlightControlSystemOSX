@@ -60,7 +60,7 @@
         default:
             severity = @"Unknown";
     }
-    return [NSString stringWithFormat:@"STATUSTEXT: [%@] %s", severity, _statustext->text];
+    return [NSString stringWithFormat:@"%@: [%@] %s", self.name, severity, _statustext->text];
 }
 
 

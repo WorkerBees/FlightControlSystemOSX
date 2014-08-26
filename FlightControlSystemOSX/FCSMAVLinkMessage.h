@@ -16,6 +16,7 @@
 @property (readonly) mavlink_message_t* theMessage;
 @property (readonly) NSString *name;
 
++ (NSString *)nameForMessageID:(uint8_t)msgid;
 + (instancetype)makeFromMessage:(mavlink_message_t *)message;
 
 - (instancetype)initWithMessage:(mavlink_message_t *)message;

@@ -49,7 +49,8 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"SYSTEMTIME: Boot - %0.3f; Stamp - %0.6f",
+    return [NSString stringWithFormat:@"%@: Boot - %0.3f; Stamp - %0.6f",
+            self.name,
             ((float)_system_time->time_boot_ms/1000),
             ((float)_system_time->time_unix_usec)/1000000];
 }

@@ -140,7 +140,8 @@
         default: mavState = [NSString stringWithFormat:@"Unknown(0x%02x)", self.systemStatus];
     }
 
-    return  [NSString stringWithFormat:@"HEARTBEAT: %@ - %@ (%@) - %@ - version %u",
+    return  [NSString stringWithFormat:@"%@: %@ - %@ (%@) - %@ - version %u",
+              self.name,
               mavType,
               autoPilot,
               baseMode,

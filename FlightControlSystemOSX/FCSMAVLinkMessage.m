@@ -11,8 +11,25 @@
 #import "FCSMAVLinkMessageSubclasses.h"
 
 static const mavlink_message_info_t message_infos[] = MAVLINK_MESSAGE_INFO;
+static NSMutableDictionary *names = nil;
 
 @implementation FCSMAVLinkMessage
+
++ (void)fillNames
+{
+    names = [NSMutableDictionary dictionaryWithCapacity:256];
+    for(unsigned char i=0; i<255; i++)
+    {
+        NSString *newName = [NSString stringWithUTF8String:message_infos[i].name];
+        [names setObject:newName forKey:[NSNumber numberWithUnsignedChar:i]];
+    }
+}
+
++ (NSString *)nameForMessageID:(uint8_t)msgid
+{
+    if(names == nil) [self fillNames];
+    return [names objectForKey:[NSNumber numberWithUnsignedChar:msgid]];
+}
 
 - (instancetype)initWithMessage:(mavlink_message_t *)message
 {
@@ -114,7 +131,7 @@ static const mavlink_message_info_t message_infos[] = MAVLINK_MESSAGE_INFO;
 
 - (NSString *)name
 {
-    return [NSString stringWithUTF8String:message_infos[self.theMessage->msgid].name];
+    return [FCSMAVLinkMessage nameForMessageID:self.theMessage->msgid];
 }
 
 - (void)dealloc

@@ -70,7 +70,7 @@
         default: type = [NSString stringWithFormat:@"Unknown(%u)", self.type];
     }
 
-    return [NSString stringWithFormat:@"MISSION_ACK: %@ for 0x%02x/0x%02x", type, self.targetSystem, self.targetComponent];
+    return [NSString stringWithFormat:@"%@: %@ for 0x%02x/0x%02x", self.name, type, self.targetSystem, self.targetComponent];
 }
 
 - (FCSMavMissionAckType)type
