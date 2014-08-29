@@ -48,6 +48,13 @@
     FCSConnectionProtocol *protocol = [notification.userInfo objectForKey:@"protocol"];
     FCSConnectionLink *link = [notification.userInfo objectForKey:@"link"];
 
+    // Check if it's for us; if not, then skip
+    if(msg.targetSystem != FCSGCSSystemID || msg.targetComponent != FCSGCSComponentID)
+    {
+        NSLog(@"Not our mission item: %@", msg);
+        return;
+    }
+
     // For now just stick the message in the mission_items list
     [_mission_items addObject:msg];
 
@@ -87,11 +94,18 @@
 
 - (void)receivedMissionCount:(NSNotification *)notification
 {
-    [self stopHandlingMessage:[FCSMAVLinkMessage nameForMessageID:MAVLINK_MSG_ID_MISSION_COUNT]];
-
     FCSMAVLinkMissionCountMessage *msg = [notification.userInfo objectForKey:@"message"];
     FCSConnectionProtocol *protocol = [notification.userInfo objectForKey:@"protocol"];
     FCSConnectionLink *link = [notification.userInfo objectForKey:@"link"];
+
+    // Check if it's for us; if not, then skip
+    if(msg.targetSystem != FCSGCSSystemID || msg.targetComponent != FCSGCSComponentID)
+    {
+        NSLog(@"Not our mission count: %@", msg);
+        return;
+    }
+
+    [self stopHandlingMessage:[FCSMAVLinkMessage nameForMessageID:MAVLINK_MSG_ID_MISSION_COUNT]];
 
     _item_count = msg.count;
     _mission_items = [NSMutableArray arrayWithCapacity:_item_count];
@@ -137,6 +151,7 @@
 {
     self = [super init];
 
+    // Start the dialog once we get a heartbeat
     [self handleMessage:[FCSMAVLinkMessage nameForMessageID:MAVLINK_MSG_ID_HEARTBEAT] withSelector:@selector(requestListAfterHeartbeat:)];
 
     return self;

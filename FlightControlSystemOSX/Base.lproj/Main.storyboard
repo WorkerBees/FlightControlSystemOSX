@@ -657,7 +657,7 @@
                         <windowCollectionBehavior key="collectionBehavior" fullScreenPrimary="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1200"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1177"/>
                         <view key="contentView" id="pgY-O8-iph">
                             <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                             <autoresizingMask key="autoresizingMask"/>
@@ -692,7 +692,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="494"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <mapView mapType="hybrid" showsUserLocation="YES" showsZoomControls="NO" showsScale="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nFQ-R9-8NV">
+                            <mapView mapType="hybrid" showsZoomControls="NO" showsScale="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nFQ-R9-8NV">
                                 <rect key="frame" x="0.0" y="0.0" width="480" height="494"/>
                                 <connections>
                                     <outlet property="delegate" destination="j15-eZ-ddR" id="rYq-qQ-Zfg"/>

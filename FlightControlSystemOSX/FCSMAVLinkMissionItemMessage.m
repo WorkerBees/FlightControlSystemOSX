@@ -99,13 +99,14 @@
         default: frame = [NSString stringWithFormat:@"Unknown(%u)", self.frame];
     }
 
-    return [NSString stringWithFormat:@"%@: %u on 0x%02x/0x%02x - %@(%@)",
+    return [NSString stringWithFormat:@"%@: %u for 0x%02x/0x%02x - %@(%@ - [%f,%f,%f])",
             self.name,
             self.sequenceNumber,
             self.targetSystem,
             self.targetComponent,
             command,
-            frame];
+            frame,
+            self.x, self.y, self.z];
 }
 
 - (FCSMAVCMDType)command
@@ -149,6 +150,39 @@
 - (void)setTargetSystem:(uint8_t)target_system
 {
     _item->target_system = target_system;
+    mavlink_msg_mission_item_encode(self.theMessage->sysid, self.theMessage->compid, self.theMessage, _item);
+}
+
+- (float)x
+{
+    return _item->x;
+}
+
+- (void)setX:(float)x
+{
+    _item->x = x;
+    mavlink_msg_mission_item_encode(self.theMessage->sysid, self.theMessage->compid, self.theMessage, _item);
+}
+
+- (float)y
+{
+    return _item->y;
+}
+
+- (void)setY:(float)y
+{
+    _item->y = y;
+    mavlink_msg_mission_item_encode(self.theMessage->sysid, self.theMessage->compid, self.theMessage, _item);
+}
+
+- (float)z
+{
+    return _item->z;
+}
+
+- (void)setZ:(float)z
+{
+    _item->z = z;
     mavlink_msg_mission_item_encode(self.theMessage->sysid, self.theMessage->compid, self.theMessage, _item);
 }
 

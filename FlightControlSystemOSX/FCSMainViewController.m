@@ -10,9 +10,12 @@
 
 #import "AppDelegate.h"
 
+#import "FCSMessageHandlerMissionTranferor.h"
+#import "FCSAnnotation.h"
+
 @import MapKit;
 
-@interface FCSMainViewController () <MKMapViewDelegate, CLLocationManagerDelegate, NSTextFieldDelegate>
+@interface FCSMainViewController () <MKMapViewDelegate, CLLocationManagerDelegate, NSTextFieldDelegate, FCSWaypointListReceivedHandler>
 
 @property (weak) IBOutlet MKMapView *mapView;
 @property (weak) IBOutlet NSSearchField *searchField;
@@ -21,9 +24,90 @@
 @property (nonatomic) CLLocationManager *locationManager;
 @property (nonatomic) CLGeocoder *geocoder;
 
+@property FCSMessageHandlerMissionTranferor *missionTransfer;
+
 @end
 
 @implementation FCSMainViewController
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
+{
+    // If the annotation is the user location, just return nil.
+    if ([annotation isKindOfClass:[MKUserLocation class]])
+        return nil;
+
+    if ([annotation isKindOfClass:[FCSAnnotation class]])
+    {
+        FCSAnnotation *note = annotation;
+        NSString *item_type;
+        CGPoint handle_offset;
+        switch(note.mission_item.command)
+        {
+            case FCSMAVCMDType_NAV_LAND:
+                item_type = @"Land";
+                handle_offset = CGPointMake(-1.5, -21);
+                break;
+            case FCSMAVCMDType_NAV_WAYPOINT:
+                item_type = @"Waypoint";
+                handle_offset = CGPointMake(0, -60);
+                break;
+            case FCSMAVCMDType_NAV_TAKEOFF:
+                item_type = @"Takeoff";
+                handle_offset = CGPointMake(28, -23);
+                break;
+            default:
+                @throw [NSException exceptionWithName:@"Bad mission item"
+                                               reason:@"You should not have a mission item of that type here!"
+                                             userInfo:@{@"mission_item":note.mission_item}];
+        }
+        MKAnnotationView* aView = [self.mapView dequeueReusableAnnotationViewWithIdentifier:[item_type stringByAppendingString:@"AnnotationView"]];
+        if(aView == nil)
+        {
+            aView = [[MKAnnotationView alloc] initWithAnnotation:annotation
+                                                 reuseIdentifier:[item_type stringByAppendingString:@"AnnotationView"]];
+        }
+        else
+        {
+            aView.annotation = annotation;
+        }
+        aView.image = [NSImage imageNamed:item_type];
+        aView.centerOffset = handle_offset;
+        aView.canShowCallout = YES;
+
+        NSImageView *calloutImageView = [[NSImageView alloc] init];
+        calloutImageView.image = [NSImage imageNamed:item_type];
+        aView.leftCalloutAccessoryView = calloutImageView;
+
+        return aView;
+    }
+
+    // Otherwise dunno what to do
+    return nil;
+}
+
+- (void)receivedMissionItem:(FCSMAVLinkMissionItemMessage *)mission_item
+{
+    switch(mission_item.command)
+    {
+        case FCSMAVCMDType_NAV_TAKEOFF:
+        case FCSMAVCMDType_NAV_WAYPOINT:
+        case FCSMAVCMDType_NAV_LAND:
+            if(mission_item.x == 0 && mission_item.y == 0 && mission_item.z == 0)
+            {
+                NSLog(@"Ignoring waypoint with all 0s");
+                return;
+            }
+            break;
+        default:
+            NSLog(@"We do not handle this type of waypoint yet");
+            return;
+    }
+
+    // Make an annotation on the map
+    FCSAnnotation *spot = [[FCSAnnotation alloc] initWithMissionItem:mission_item];
+    [self.mapView addAnnotation:spot];
+    [self.mapView showAnnotations:self.mapView.annotations animated:YES];
+}
 
 - (void)setStatusForPlacemark:(MKPlacemark *)placemark
 {
@@ -103,6 +187,9 @@
             theLink.connected = YES;
         }
     });
+
+    // Create a waypoint list transferor
+    _missionTransfer = [[FCSMessageHandlerMissionTranferor alloc] initWithDelegate:self];
 }
 
 - (void)viewWillDisappear

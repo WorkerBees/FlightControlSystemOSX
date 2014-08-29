@@ -9,9 +9,8 @@
 #import "AppDelegate.h"
 
 #import "FCSMessageHandlerLogger.h"
-#import "FCSMessageHandlerMissionTranferor.h"
 
-@interface AppDelegate () <FCSWaypointListReceivedHandler>
+@interface AppDelegate ()
 
 @property NSMutableSet *handlers;
 
@@ -33,30 +32,12 @@
 
     // Create a logger
     [self.handlers addObject:[[FCSMessageHandlerLogger alloc] init]];
-
-    // Create a waypoint list transferor
-    [self.handlers addObject:[[FCSMessageHandlerMissionTranferor alloc] initWithDelegate:self]];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification
 {
     [self.handlers removeAllObjects];
     self.connectionLinkManager = nil;
-}
-
-- (void)receivedMissionItemCount:(NSUInteger)count
-{
-    NSLog(@"MAV says it will send %lul mission items", (unsigned long)count);
-}
-
-- (void)receivedMissionItem:(FCSMAVLinkMissionItemMessage *)mission_item
-{
-    NSLog(@"Got mission item: %@", mission_item);
-}
-
-- (void)receivedMissionItems:(NSArray *)mission_items
-{
-    NSLog(@"Got all mission items: %@", mission_items);
 }
 
 @end

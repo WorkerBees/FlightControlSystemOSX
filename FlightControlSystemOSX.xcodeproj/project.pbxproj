@@ -134,6 +134,7 @@
 		44A951F019ABB8FF008D7D5F /* FCSMAVLinkAutopilotVersionMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A951EF19ABB8FF008D7D5F /* FCSMAVLinkAutopilotVersionMessage.m */; };
 		44A951F319ABB911008D7D5F /* FCSMAVLinkV2ExtensionMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A951F219ABB911008D7D5F /* FCSMAVLinkV2ExtensionMessage.m */; };
 		44E669DE19A40EA400E4EB20 /* FCSConnectionLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E669DD19A40EA400E4EB20 /* FCSConnectionLink.m */; };
+		44EC91AF19B136CE002CC6B7 /* FCSAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 44EC91AE19B136CE002CC6B7 /* FCSAnnotation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -633,6 +634,8 @@
 		44EC91AA19B10E4F002CC6B7 /* icon-512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-512.png"; path = "Icons/icon-512.png"; sourceTree = "<group>"; };
 		44EC91AB19B10E4F002CC6B7 /* icon-1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-1024.png"; path = "Icons/icon-1024.png"; sourceTree = "<group>"; };
 		44EC91AC19B10E4F002CC6B7 /* make_icons.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = make_icons.sh; path = Icons/make_icons.sh; sourceTree = "<group>"; };
+		44EC91AD19B136CE002CC6B7 /* FCSAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSAnnotation.h; sourceTree = "<group>"; };
+		44EC91AE19B136CE002CC6B7 /* FCSAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSAnnotation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1037,8 +1040,6 @@
 			children = (
 				449C2D1C19A4055C006EC79B /* App Delegate */,
 				44587C54199ECDDD00559FEC /* Map Display */,
-				44587C2E199EC60900559FEC /* FCSMainViewController.h */,
-				44587C2F199EC60900559FEC /* FCSMainViewController.m */,
 				44587C31199EC60900559FEC /* FCSMissionDocument.h */,
 				44587C32199EC60900559FEC /* FCSMissionDocument.m */,
 				44587C37199EC60900559FEC /* Images.xcassets */,
@@ -1081,6 +1082,10 @@
 		44587C54199ECDDD00559FEC /* Map Display */ = {
 			isa = PBXGroup;
 			children = (
+				44587C2E199EC60900559FEC /* FCSMainViewController.h */,
+				44587C2F199EC60900559FEC /* FCSMainViewController.m */,
+				44EC91AD19B136CE002CC6B7 /* FCSAnnotation.h */,
+				44EC91AE19B136CE002CC6B7 /* FCSAnnotation.m */,
 			);
 			name = "Map Display";
 			sourceTree = "<group>";
@@ -1088,8 +1093,8 @@
 		445A4C7819A6CF8900338A3A /* FCSMAVLink message subclasses */ = {
 			isa = PBXGroup;
 			children = (
-				446E39A819AD13390000D8D2 /* Ardupilot */,
 				446E39A719AD132F0000D8D2 /* Common */,
+				446E39A819AD13390000D8D2 /* Ardupilot */,
 			);
 			name = "FCSMAVLink message subclasses";
 			sourceTree = "<group>";
@@ -1568,6 +1573,7 @@
 				44A748B519B00ECD005DBB3A /* FCSMessageHandler.m in Sources */,
 				44A9518D19ABB650008D7D5F /* FCSMAVLinkGlobalVisionPositionEstimateMessage.m in Sources */,
 				44A951C619ABB801008D7D5F /* FCSMAVLinkGPSInjectDataMessage.m in Sources */,
+				44EC91AF19B136CE002CC6B7 /* FCSAnnotation.m in Sources */,
 				445A4CB719A6D4D700338A3A /* FCSMAVLinkSystemTimeMessage.m in Sources */,
 				44587C30199EC60900559FEC /* FCSMainViewController.m in Sources */,
 				445A4C9319A6D0F400338A3A /* FCSMAVLinkMissionCountMessage.m in Sources */,
