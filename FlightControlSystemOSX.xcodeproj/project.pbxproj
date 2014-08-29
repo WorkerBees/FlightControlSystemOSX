@@ -623,6 +623,16 @@
 		44A951F219ABB911008D7D5F /* FCSMAVLinkV2ExtensionMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkV2ExtensionMessage.m; sourceTree = "<group>"; };
 		44A951F419ABC19F008D7D5F /* FCSMAVLinkMessageSubclasses.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkMessageSubclasses.h; sourceTree = "<group>"; };
 		44E669DD19A40EA400E4EB20 /* FCSConnectionLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSConnectionLink.m; sourceTree = "<group>"; };
+		44EC91A319B10E4F002CC6B7 /* Basic Bee.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "Basic Bee.svg"; path = "Icons/Basic Bee.svg"; sourceTree = "<group>"; };
+		44EC91A419B10E4F002CC6B7 /* Basic Compass.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "Basic Compass.svg"; path = "Icons/Basic Compass.svg"; sourceTree = "<group>"; };
+		44EC91A519B10E4F002CC6B7 /* icon-16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-16.png"; path = "Icons/icon-16.png"; sourceTree = "<group>"; };
+		44EC91A619B10E4F002CC6B7 /* icon-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-32.png"; path = "Icons/icon-32.png"; sourceTree = "<group>"; };
+		44EC91A719B10E4F002CC6B7 /* icon-64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-64.png"; path = "Icons/icon-64.png"; sourceTree = "<group>"; };
+		44EC91A819B10E4F002CC6B7 /* icon-128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-128.png"; path = "Icons/icon-128.png"; sourceTree = "<group>"; };
+		44EC91A919B10E4F002CC6B7 /* icon-256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-256.png"; path = "Icons/icon-256.png"; sourceTree = "<group>"; };
+		44EC91AA19B10E4F002CC6B7 /* icon-512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-512.png"; path = "Icons/icon-512.png"; sourceTree = "<group>"; };
+		44EC91AB19B10E4F002CC6B7 /* icon-1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-1024.png"; path = "Icons/icon-1024.png"; sourceTree = "<group>"; };
+		44EC91AC19B10E4F002CC6B7 /* make_icons.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = make_icons.sh; path = Icons/make_icons.sh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1032,6 +1042,7 @@
 				44587C31199EC60900559FEC /* FCSMissionDocument.h */,
 				44587C32199EC60900559FEC /* FCSMissionDocument.m */,
 				44587C37199EC60900559FEC /* Images.xcassets */,
+				44EC91A219B10E2D002CC6B7 /* Icon Sources */,
 				44587C39199EC60900559FEC /* Main.storyboard */,
 				44587C34199EC60900559FEC /* FCSMissionDocument.xcdatamodeld */,
 				44587C2A199EC60900559FEC /* Supporting Files */,
@@ -1333,6 +1344,23 @@
 				44A748BB19B01DE2005DBB3A /* FCSMessageHandlerMissionTranferor.m */,
 			);
 			name = "Message Handlers";
+			sourceTree = "<group>";
+		};
+		44EC91A219B10E2D002CC6B7 /* Icon Sources */ = {
+			isa = PBXGroup;
+			children = (
+				44EC91A319B10E4F002CC6B7 /* Basic Bee.svg */,
+				44EC91A419B10E4F002CC6B7 /* Basic Compass.svg */,
+				44EC91A519B10E4F002CC6B7 /* icon-16.png */,
+				44EC91A619B10E4F002CC6B7 /* icon-32.png */,
+				44EC91A719B10E4F002CC6B7 /* icon-64.png */,
+				44EC91A819B10E4F002CC6B7 /* icon-128.png */,
+				44EC91A919B10E4F002CC6B7 /* icon-256.png */,
+				44EC91AA19B10E4F002CC6B7 /* icon-512.png */,
+				44EC91AB19B10E4F002CC6B7 /* icon-1024.png */,
+				44EC91AC19B10E4F002CC6B7 /* make_icons.sh */,
+			);
+			name = "Icon Sources";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

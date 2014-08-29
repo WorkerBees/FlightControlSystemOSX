@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with EazyDraw for Mac ( http://www.eazydraw.com/ ) -->
+
+<svg
+    version="1.1"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:svg="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns="http://www.w3.org/2000/svg"
+    width="492.1"
+    height="492.1"
+    viewBox="0, 0, 492.1, 492.1"
+    preserveAspectRatio="none"
+    id="svg2">
+   <defs
+       id="defs_DC398F50"/>
+   <metadata
+       id="metadata7">
+      <rdf:RDF>
+         <cc:Work
+             rdf:about="">
+            <dc:format>image/svg+xml</dc:format>
+            <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+            <dc:title></dc:title>
+         </cc:Work>
+      </rdf:RDF>
+   </metadata>
+   <g
+       id="layer_Paper"
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-opacity:1;fill-rule:nonzero;stroke-linecap:square;stroke-linejoin:miter;stroke-width:1;stroke-miterlimit:10">
+      <path
+          style="fill:#003CFF;stroke:none"
+          id="06C42A50"
+          d="M432.19,222.043 L463.064,229.083 C454.84,122.255 369.619,36.997 262.808,28.714 L269.867,59.597 C354.306,70.473 421.378,137.585 432.19,222.043 z"/>
+      <path
+          style="fill:#003CFF;stroke:none"
+          id="86C42A50"
+          d="M222.25,59.512 L229.303,28.663 C122.101,36.644 36.49,122.148 28.351,229.306 L59.217,222.258 C69.972,137.471 137.419,70.122 222.25,59.512 z"/>
+      <path
+          style="fill:#003CFF;stroke:none"
+          id="B6C42A50"
+          d="M59.216,269.837 L28.351,262.792 C36.489,369.951 122.101,455.457 229.304,463.438 L222.253,432.589 C137.419,421.979 69.969,354.627 59.216,269.837 z"/>
+      <path
+          style="fill:#003CFF;stroke:none"
+          id="E6C42A50"
+          d="M269.878,432.502 L262.814,463.386 C369.621,455.1 454.84,369.845 463.065,263.02 L432.191,270.063 C421.375,354.515 354.309,421.622 269.878,432.502 z"/>
+      <path
+          style="fill:#505050;stroke:none"
+          id="37C42A50"
+          d="M347.779,347.779 L310.002,287.634 L492.05,246.05 L314.632,205.524 L362.016,130.085 L286.577,177.469 L246.05,0.05 L204.466,182.098 L144.321,144.321 L182.098,204.466 L0.05,246.05 L182.098,287.634 L144.321,347.779
+L204.466,310.002 L246.05,492.05 L287.634,310.002 L347.779,347.779 z M245.717,278.05 C228.044,278.05 213.717,263.723 213.717,246.05 C213.717,228.377 228.044,214.05 245.717,214.05 C263.39,214.05 277.717,228.377 277.717,246.05
+C277.717,263.723 263.39,278.05 245.717,278.05 z"/>
+   </g>
+</svg>
