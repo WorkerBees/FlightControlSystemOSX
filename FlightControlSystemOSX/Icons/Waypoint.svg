@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with EazyDraw for Mac ( http://www.eazydraw.com/ ) -->
+
+<svg
+    version="1.1"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:svg="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns="http://www.w3.org/2000/svg"
+    width="348.339042"
+    height="512.05002"
+    viewBox="0, 0, 348.339042, 512.05002"
+    preserveAspectRatio="none"
+    id="svg2">
+   <defs
+       id="defs_26B03982"/>
+   <metadata
+       id="metadata7">
+      <rdf:RDF>
+         <cc:Work
+             rdf:about="">
+            <dc:format>image/svg+xml</dc:format>
+            <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+            <dc:title></dc:title>
+         </cc:Work>
+      </rdf:RDF>
+   </metadata>
+   <g
+       id="layer_Paper"
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-opacity:1;fill-rule:nonzero;stroke-linecap:square;stroke-linejoin:miter;stroke-width:1;stroke-miterlimit:10">
+      <path
+          style="fill:#003CFF;stroke:none"
+          id="6CD46582"
+          d="M174.152202,0 C78.2867219999,0 0.05,78.2417499998 0.05,174.10206 C0.05,249.69418 48.6945120001,314.32365 116.268552,338.27911 L174.152202,512.00002 L232.070562,338.27911 C299.638752,314.31403 348.289042,249.67864 348.289042,174.10206
+C348.289042,78.2365699999 270.013102,0 174.152202,0 z M174.152202,49.9713999998 C243.006352,49.9713999998 298.317572,105.24354 298.317572,174.10206 C298.317572,242.95613 243.010642,298.23271 174.152202,298.23271
+C105.298052,298.23271 50.0215520001,242.96057 50.0215520001,174.10206 C50.0215520001,105.24798 105.293762,49.9713999998 174.152202,49.9713999998 z"/>
+   </g>
+</svg>

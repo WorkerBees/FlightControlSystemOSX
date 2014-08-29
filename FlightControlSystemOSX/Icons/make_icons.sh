@@ -64,4 +64,17 @@ convert -antialias -background none \( 'Basic Bee.svg' -flop -resize 64x64 -grav
             " \) \
     -flatten \
     -strip \
-    Land.png
+   Land.png
+
+# Waypoint
+convert -gravity center -background none \
+                \( Waypoint.svg -resize 240x240 \) \
+                \( 'Basic Bee.svg' -resize 120x120 -extent 180x180 -flop \
+                    \( +clone -channel A -blur 64x64 -level 5%,50% +channel +level-colors azure \) \
+                +swap \
+                    \( +clone -channel A -blur 1x1 -level 0,50% +channel +level-colors black \) \
+                +swap -flatten \) \
+                -geometry 120x120+10-40 \
+                -compose Dst-Over -composite \
+                -strip \
+        Waypoint.png
