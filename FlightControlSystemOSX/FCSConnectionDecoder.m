@@ -10,11 +10,11 @@
 
 @implementation FCSConnectionDecoder
 
-- (void)link:(FCSConnectionLink *)link receivedMAVLinkMessage:(FCSMAVLinkMessage *)message
+- (void)protocol:(FCSConnectionProtocol *)protocol link:(FCSConnectionLink *)link receivedMAVLinkMessage:(FCSMAVLinkMessage *)message;
 {
     // Broadcast that we received this message
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-    NSDictionary *userInfo = @{@"link": link, @"message" : message};
+    NSDictionary *userInfo = @{@"link": link, @"message" : message, @"protocol": protocol};
     [nc postNotificationName:message.name object:self userInfo:userInfo];
     NSLog(@"Broadcast: %@", message.name);
 }

@@ -28,6 +28,6 @@
 
 @protocol FCSMAVLinkMessageReceivedDelegate <NSObject>
 
-- (void)link:(FCSConnectionLink *)link receivedMAVLinkMessage:(FCSMAVLinkMessage *)message;
+- (void)protocol:(FCSConnectionProtocol *)protocol link:(FCSConnectionLink *)link receivedMAVLinkMessage:(FCSMAVLinkMessage *)message;
 
 @end

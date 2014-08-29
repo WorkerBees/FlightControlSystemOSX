@@ -8,41 +8,55 @@
 
 #import "AppDelegate.h"
 
-#import "FCSMAVLinkMessage.h"
+#import "FCSMessageHandlerLogger.h"
+#import "FCSMessageHandlerMissionTranferor.h"
+
+@interface AppDelegate () <FCSWaypointListReceivedHandler>
+
+@property NSMutableSet *handlers;
+
+@end
 
 @implementation AppDelegate
-            
+
+- (instancetype)init
+{
+    self = [super init];
+    _handlers = [NSMutableSet setWithCapacity:20];
+    return self;
+}
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     NSLog(@"App delegate created and finished launching");
     self.connectionLinkManager = [[FCSConnectionLinkManager alloc] init];
 
-    NSLog(@"Registering for notifications on certain message types");
-    // Broadcast that we received this message
-    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-    [nc addObserver:self selector:@selector(logMAVLinkMessage:) name:[FCSMAVLinkMessage nameForMessageID:MAVLINK_MSG_ID_HEARTBEAT] object:nil];
-    [nc addObserver:self selector:@selector(logMAVLinkMessage:) name:[FCSMAVLinkMessage nameForMessageID:MAVLINK_MSG_ID_STATUSTEXT] object:nil];
-    [nc addObserver:self selector:@selector(logMAVLinkMessage:) name:[FCSMAVLinkMessage nameForMessageID:MAVLINK_MSG_ID_SYS_STATUS] object:nil];
-    [nc addObserver:self selector:@selector(logMAVLinkMessage:) name:[FCSMAVLinkMessage nameForMessageID:MAVLINK_MSG_ID_SYSTEM_TIME] object:nil];
-    [nc addObserver:self selector:@selector(logMAVLinkMessage:) name:[FCSMAVLinkMessage nameForMessageID:MAVLINK_MSG_ID_MEMINFO] object:nil];
+    // Create a logger
+    [self.handlers addObject:[[FCSMessageHandlerLogger alloc] init]];
 
-    [nc addObserver:self selector:@selector(logMAVLinkMessage:) name:[FCSMAVLinkMessage nameForMessageID:MAVLINK_MSG_ID_MISSION_REQUEST_LIST] object:nil];
-    [nc addObserver:self selector:@selector(logMAVLinkMessage:) name:[FCSMAVLinkMessage nameForMessageID:MAVLINK_MSG_ID_MISSION_COUNT] object:nil];
-    [nc addObserver:self selector:@selector(logMAVLinkMessage:) name:[FCSMAVLinkMessage nameForMessageID:MAVLINK_MSG_ID_MISSION_REQUEST] object:nil];
-    [nc addObserver:self selector:@selector(logMAVLinkMessage:) name:[FCSMAVLinkMessage nameForMessageID:MAVLINK_MSG_ID_MISSION_ITEM] object:nil];
-    [nc addObserver:self selector:@selector(logMAVLinkMessage:) name:[FCSMAVLinkMessage nameForMessageID:MAVLINK_MSG_ID_MISSION_ACK] object:nil];
+    // Create a waypoint list transferor
+    [self.handlers addObject:[[FCSMessageHandlerMissionTranferor alloc] initWithDelegate:self]];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [self.handlers removeAllObjects];
     self.connectionLinkManager = nil;
 }
 
-- (void)logMAVLinkMessage:(NSNotification *)notification
+- (void)receivedMissionItemCount:(NSUInteger)count
 {
-    FCSMAVLinkMessage *msg = [notification.userInfo objectForKey:@"message"];
-    NSLog(@"Received: %@", msg);
+    NSLog(@"MAV says it will send %lul mission items", (unsigned long)count);
+}
+
+- (void)receivedMissionItem:(FCSMAVLinkMissionItemMessage *)mission_item
+{
+    NSLog(@"Got mission item: %@", mission_item);
+}
+
+- (void)receivedMissionItems:(NSArray *)mission_items
+{
+    NSLog(@"Got all mission items: %@", mission_items);
 }
 
 @end

@@ -31,6 +31,23 @@ static NSMutableDictionary *names = nil;
     return [names objectForKey:[NSNumber numberWithUnsignedChar:msgid]];
 }
 
+- (instancetype)init
+{
+    self = [super init];
+
+    if(self)
+    {
+        _theMessage = malloc(sizeof(*_theMessage));
+        bzero(_theMessage, sizeof(*_theMessage));
+
+        // This is a message that likely will be sent outbound; so give it out sender address
+        _theMessage->sysid = FCSGCSSystemID;
+        _theMessage->compid = FCSGCSComponentID;
+    }
+
+    return self;
+}
+
 - (instancetype)initWithMessage:(mavlink_message_t *)message
 {
     self = [super init];

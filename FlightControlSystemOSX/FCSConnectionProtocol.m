@@ -134,7 +134,7 @@
             if(self.delegate)
             {
                 // FCSMAVLinkMessage init method will copy the message contents off the stack into a managed heap object
-                [self.delegate link:link receivedMAVLinkMessage:[FCSMAVLinkMessage makeFromMessage:&message]];
+                [self.delegate protocol:self link:link receivedMAVLinkMessage:[FCSMAVLinkMessage makeFromMessage:&message]];
             }
         }
     }
