@@ -12,6 +12,30 @@
 
 @synthesize coordinate=_coordinate;
 
+- (void)drawInView:(MKAnnotationView *)view
+{
+    NSAssert(view.annotation == self, @"View's annotation is not me!");
+
+    CGPoint handle_offset;
+    switch(self.mission_item.command)
+    {
+        case FCSMAVCMDType_NAV_LAND:     handle_offset = CGPointMake(-21.25, -29); break;
+        case FCSMAVCMDType_NAV_WAYPOINT: handle_offset = CGPointMake(0, -30); break;
+        case FCSMAVCMDType_NAV_TAKEOFF:  handle_offset = CGPointMake(17.5, -25); break;
+        default:
+            @throw [NSException exceptionWithName:@"Bad mission item"
+                                           reason:@"You should not have a mission item of that type here!"
+                                         userInfo:@{@"mission_item":self.mission_item}];
+    }
+    view.image = [NSImage imageNamed:self.title];
+    view.centerOffset = handle_offset;
+    view.canShowCallout = YES;
+
+    NSImageView *calloutImageView = [[NSImageView alloc] init];
+    calloutImageView.image = [NSImage imageNamed:self.title];
+    view.leftCalloutAccessoryView = calloutImageView;
+}
+
 - (NSString *)title
 {
     switch(self.mission_item.command)

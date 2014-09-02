@@ -39,44 +39,19 @@
     if ([annotation isKindOfClass:[FCSAnnotation class]])
     {
         FCSAnnotation *note = annotation;
-        NSString *item_type;
-        CGPoint handle_offset;
-        switch(note.mission_item.command)
-        {
-            case FCSMAVCMDType_NAV_LAND:
-                item_type = @"Land";
-                handle_offset = CGPointMake(-21.25, -29);
-                break;
-            case FCSMAVCMDType_NAV_WAYPOINT:
-                item_type = @"Waypoint";
-                handle_offset = CGPointMake(0, -30);
-                break;
-            case FCSMAVCMDType_NAV_TAKEOFF:
-                item_type = @"Takeoff";
-                handle_offset = CGPointMake(17.5, -25);
-                break;
-            default:
-                @throw [NSException exceptionWithName:@"Bad mission item"
-                                               reason:@"You should not have a mission item of that type here!"
-                                             userInfo:@{@"mission_item":note.mission_item}];
-        }
-        MKAnnotationView* aView = [self.mapView dequeueReusableAnnotationViewWithIdentifier:[item_type stringByAppendingString:@"AnnotationView"]];
+
+        MKAnnotationView* aView = [self.mapView dequeueReusableAnnotationViewWithIdentifier:@"FCSAnnotationView"];
         if(aView == nil)
         {
             aView = [[MKAnnotationView alloc] initWithAnnotation:annotation
-                                                 reuseIdentifier:[item_type stringByAppendingString:@"AnnotationView"]];
+                                                 reuseIdentifier:@"FCSAnnotationView"];
         }
         else
         {
             aView.annotation = annotation;
         }
-        aView.image = [NSImage imageNamed:item_type];
-        aView.centerOffset = handle_offset;
-        aView.canShowCallout = YES;
 
-        NSImageView *calloutImageView = [[NSImageView alloc] init];
-        calloutImageView.image = [NSImage imageNamed:item_type];
-        aView.leftCalloutAccessoryView = calloutImageView;
+        [note drawInView:aView];
 
         return aView;
     }
