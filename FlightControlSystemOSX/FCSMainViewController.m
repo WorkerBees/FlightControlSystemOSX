@@ -45,15 +45,15 @@
         {
             case FCSMAVCMDType_NAV_LAND:
                 item_type = @"Land";
-                handle_offset = CGPointMake(-1.5, -21);
+                handle_offset = CGPointMake(-21.25, -29);
                 break;
             case FCSMAVCMDType_NAV_WAYPOINT:
                 item_type = @"Waypoint";
-                handle_offset = CGPointMake(0, -60);
+                handle_offset = CGPointMake(0, -30);
                 break;
             case FCSMAVCMDType_NAV_TAKEOFF:
                 item_type = @"Takeoff";
-                handle_offset = CGPointMake(28, -23);
+                handle_offset = CGPointMake(17.5, -25);
                 break;
             default:
                 @throw [NSException exceptionWithName:@"Bad mission item"
