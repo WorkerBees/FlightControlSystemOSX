@@ -18,6 +18,6 @@
 @property FCSMAVLinkMissionItemMessage *mission_item;
 
 - (instancetype)initWithMissionItem:(FCSMAVLinkMissionItemMessage *)mission_item;
-- (void)drawInView:(MKAnnotationView *)view;
+- (void)associateView:(MKAnnotationView *)view;
 
 @end

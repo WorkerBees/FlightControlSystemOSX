@@ -51,7 +51,7 @@
             aView.annotation = annotation;
         }
 
-        [note drawInView:aView];
+        [note associateView:aView];
 
         return aView;
     }

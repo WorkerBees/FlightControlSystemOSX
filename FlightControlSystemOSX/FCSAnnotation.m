@@ -12,7 +12,7 @@
 
 @synthesize coordinate=_coordinate;
 
-- (void)drawInView:(MKAnnotationView *)view
+- (void)associateView:(MKAnnotationView *)view
 {
     NSAssert(view.annotation == self, @"View's annotation is not me!");
 
