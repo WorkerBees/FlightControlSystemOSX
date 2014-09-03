@@ -94,6 +94,9 @@
 
 - (void)receivedMissionCount:(NSNotification *)notification
 {
+    // Cancel timeout
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(missionCountTimeout) object:nil];
+
     FCSMAVLinkMissionCountMessage *msg = [notification.userInfo objectForKey:@"message"];
     FCSConnectionProtocol *protocol = [notification.userInfo objectForKey:@"protocol"];
     FCSConnectionLink *link = [notification.userInfo objectForKey:@"link"];
@@ -128,6 +131,15 @@
     }
 }
 
+- (void)missionCountTimeout
+{
+    // We didn't get a MISSION_COUNT message in time.  So assume something went wrong, and retry
+    NSLog(@"TIMEOUT: no MISSION_COUNT in time; re-listening for HEARTBEAT");
+    [self stopHandlingMessage:[FCSMAVLinkMessage nameForMessageID:MAVLINK_MSG_ID_MISSION_COUNT]];
+
+    [self handleMessage:[FCSMAVLinkMessage nameForMessageID:MAVLINK_MSG_ID_HEARTBEAT] withSelector:@selector(requestListAfterHeartbeat:)];
+}
+
 // When we get a heartbeat message, unregister for heartbeats, then send a request
 - (void)requestListAfterHeartbeat:(NSNotification *)notification
 {
@@ -145,6 +157,9 @@
     req.targetSystem = msg.theMessage->sysid;
     req.targetComponent = msg.theMessage->compid;
     [protocol sendMessage:req onLink:link];
+
+    // Start timeout; if expires before being cleared, will restart listening for heartbeat.
+    [self performSelector:@selector(missionCountTimeout) withObject:nil afterDelay:1.0];
 }
 
 - (instancetype)init
