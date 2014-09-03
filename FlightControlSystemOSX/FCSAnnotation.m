@@ -12,6 +12,11 @@
 
 @synthesize coordinate=_coordinate;
 
+- (void)setCoordinate:(CLLocationCoordinate2D)newCoordinate
+{
+    _coordinate = newCoordinate;
+}
+
 - (void)associateView:(MKAnnotationView *)view
 {
     NSAssert(view.annotation == self, @"View's annotation is not me!");
@@ -34,6 +39,7 @@
     NSImageView *calloutImageView = [[NSImageView alloc] init];
     calloutImageView.image = [NSImage imageNamed:self.title];
     view.leftCalloutAccessoryView = calloutImageView;
+    view.draggable = YES;
 }
 
 - (NSString *)title

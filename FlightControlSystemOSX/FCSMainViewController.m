@@ -30,6 +30,23 @@
 
 @implementation FCSMainViewController
 
+- (void)mapView:(MKMapView *)mapView
+ annotationView:(MKAnnotationView *)annotationView
+didChangeDragState:(MKAnnotationViewDragState)newDragState
+   fromOldState:(MKAnnotationViewDragState)oldDragState
+{
+    if(newDragState == MKAnnotationViewDragStateStarting)
+    {
+        NSLog(@"Drag starting");
+        annotationView.dragState = MKAnnotationViewDragStateDragging;
+    }
+    else if(newDragState == MKAnnotationViewDragStateEnding || newDragState == MKAnnotationViewDragStateCanceling)
+    {
+        NSLog(@"Drag ending");
+        annotationView.dragState = MKAnnotationViewDragStateNone;
+    }
+}
+
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
 {
     // If the annotation is the user location, just return nil.
