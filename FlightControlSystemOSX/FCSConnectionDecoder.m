@@ -16,7 +16,7 @@
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     NSDictionary *userInfo = @{@"link": link, @"message" : message, @"protocol": protocol};
     [nc postNotificationName:message.name object:self userInfo:userInfo];
-    NSLog(@"Broadcast: %@", message.name);
+    //    NSLog(@"Broadcast: %@", message.name);
 }
 
 
