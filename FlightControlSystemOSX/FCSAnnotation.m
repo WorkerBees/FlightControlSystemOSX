@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Craig Hughes. All rights reserved.
 //
 
+#import "FCSGoogleElevation.h"
 #import "FCSAnnotation.h"
 
 @interface FCSAnnotation ()
@@ -134,6 +135,10 @@
     }
 
     _coordinate = CLLocationCoordinate2DMake(mission_item.x, mission_item.y);
+
+    [FCSGoogleElevation altitudeAtLocation:_coordinate callback:^(CLLocationDistance altitude) {
+        self.mission_item.z = self.mission_item.z + (float)altitude;
+    }];
 
     return self;
 }

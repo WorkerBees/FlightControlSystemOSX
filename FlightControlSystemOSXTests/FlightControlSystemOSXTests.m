@@ -6,8 +6,11 @@
 //  Copyright (c) 2014 Craig Hughes. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
-#import <XCTest/XCTest.h>
+@import Cocoa;
+@import XCTest;
+@import MapKit;
+
+#import "FCSGoogleElevation.h"
 
 @interface FlightControlSystemOSXTests : XCTestCase
 
@@ -25,16 +28,21 @@
     [super tearDown];
 }
 
-- (void)testExample {
-    // This is an example of a functional test case.
-    XCTAssert(YES, @"Pass");
-}
+- (void)testPolyLineEncoding
+{
+    CLLocationCoordinate2D test1 = { 38.5, -120.2 };
+    NSString *test1StringShouldBe = @"_p~iF~ps|U";
+    XCTAssertEqualObjects(test1StringShouldBe, [FCSGoogleElevation encodeLocation:test1], @"Location encode failed");
 
-- (void)testPerformanceExample {
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
-    }];
+/*
+    CLLocationCoordinate2D test2 = { 40.7, -120.95 };
+    NSString *test2StringShouldBe = @"_ulLnnqC";
+    XCTAssertEqualObjects(test2StringShouldBe, [FCSGoogleElevation encodeLocation:test2], @"Location encode failed");
+
+    CLLocationCoordinate2D test3 = { 43.252, -126.453 };
+    NSString *test3StringShouldBe = @"_mqNvxq`@";
+    XCTAssertEqualObjects(test3StringShouldBe, [FCSGoogleElevation encodeLocation:test3], @"Location encode failed");
+*/
 }
 
 @end

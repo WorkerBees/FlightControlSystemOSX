@@ -82,7 +82,9 @@
 		446E39B719AD13BF0000D8D2 /* FCSMAVLinkLimitsStatusMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 446E39B619AD13BF0000D8D2 /* FCSMAVLinkLimitsStatusMessage.m */; };
 		446E39BA19AD13D30000D8D2 /* FCSMAVLinkMemInfoMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 446E39B919AD13D30000D8D2 /* FCSMAVLinkMemInfoMessage.m */; };
 		446E39BD19AD140F0000D8D2 /* FCSMAVLinkWindMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 446E39BC19AD140F0000D8D2 /* FCSMAVLinkWindMessage.m */; };
+		4488BABF19BE577300E06FD1 /* FCSGoogleElevation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4488BABE19BE577300E06FD1 /* FCSGoogleElevation.m */; };
 		449C2D4E19A405B0006EC79B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 449C2D4D19A405B0006EC79B /* AppDelegate.m */; };
+		44A30EAF19BE6FBB00EDC473 /* FCSGoogleElevation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4488BABE19BE577300E06FD1 /* FCSGoogleElevation.m */; };
 		44A748B519B00ECD005DBB3A /* FCSMessageHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A748B419B00ECD005DBB3A /* FCSMessageHandler.m */; };
 		44A748B919B01203005DBB3A /* FCSMessageHandlerLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A748B819B01203005DBB3A /* FCSMessageHandlerLogger.m */; };
 		44A748BC19B01DE2005DBB3A /* FCSMessageHandlerMissionTranferor.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A748BB19B01DE2005DBB3A /* FCSMessageHandlerMissionTranferor.m */; };
@@ -519,6 +521,8 @@
 		446E39B919AD13D30000D8D2 /* FCSMAVLinkMemInfoMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkMemInfoMessage.m; sourceTree = "<group>"; };
 		446E39BB19AD140F0000D8D2 /* FCSMAVLinkWindMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMAVLinkWindMessage.h; sourceTree = "<group>"; };
 		446E39BC19AD140F0000D8D2 /* FCSMAVLinkWindMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSMAVLinkWindMessage.m; sourceTree = "<group>"; };
+		4488BABD19BE577300E06FD1 /* FCSGoogleElevation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSGoogleElevation.h; sourceTree = "<group>"; };
+		4488BABE19BE577300E06FD1 /* FCSGoogleElevation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSGoogleElevation.m; sourceTree = "<group>"; };
 		449C2D4C19A405B0006EC79B /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		449C2D4D19A405B0006EC79B /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		44A748B319B00ECD005DBB3A /* FCSMessageHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSMessageHandler.h; sourceTree = "<group>"; };
@@ -1038,6 +1042,8 @@
 		44587C29199EC60900559FEC /* FlightControlSystemOSX */ = {
 			isa = PBXGroup;
 			children = (
+				4488BABC19BE575A00E06FD1 /* Helpers */,
+				444501D419A3D0A7007056B9 /* MAVLink */,
 				449C2D1C19A4055C006EC79B /* App Delegate */,
 				44587C54199ECDDD00559FEC /* Map Display */,
 				44587C31199EC60900559FEC /* FCSMissionDocument.h */,
@@ -1327,10 +1333,18 @@
 			name = Ardupilot;
 			sourceTree = "<group>";
 		};
+		4488BABC19BE575A00E06FD1 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				4488BABD19BE577300E06FD1 /* FCSGoogleElevation.h */,
+				4488BABE19BE577300E06FD1 /* FCSGoogleElevation.m */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
 		449C2D1C19A4055C006EC79B /* App Delegate */ = {
 			isa = PBXGroup;
 			children = (
-				444501D419A3D0A7007056B9 /* MAVLink */,
 				449C2D4C19A405B0006EC79B /* AppDelegate.h */,
 				449C2D4D19A405B0006EC79B /* AppDelegate.m */,
 			);
@@ -1524,6 +1538,7 @@
 				44587C36199EC60900559FEC /* FCSMissionDocument.xcdatamodeld in Sources */,
 				44A9518419ABB606008D7D5F /* FCSMAVLinkHILControlsMessage.m in Sources */,
 				445A4C8D19A6D0CE00338A3A /* FCSMAVLinkParameterValueMessage.m in Sources */,
+				4488BABF19BE577300E06FD1 /* FCSGoogleElevation.m in Sources */,
 				44A951BA19ABB7BC008D7D5F /* FCSMAVLinkLogRequestDataMessage.m in Sources */,
 				44A951AE19ABB76A008D7D5F /* FCSMAVLinkHILStateQuaternionMessage.m in Sources */,
 				44A9518119ABB5EA008D7D5F /* FCSMAVLinkHILStateMessage.m in Sources */,
@@ -1608,6 +1623,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				44587C47199EC60900559FEC /* FlightControlSystemOSXTests.m in Sources */,
+				44A30EAF19BE6FBB00EDC473 /* FCSGoogleElevation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

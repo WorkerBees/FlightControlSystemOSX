@@ -102,6 +102,10 @@ didChangeDragState:(MKAnnotationViewDragState)newDragState
     // Make an annotation on the map
     FCSAnnotation *spot = [[FCSAnnotation alloc] initWithMissionItem:mission_item];
     [self.mapView addAnnotation:spot];
+    // TODO: If there was a previous waypoint, add a path from that to this using
+    // MKPolyline or MKMultiPoint with custom renderer where the line segments are colored by altitude maybe
+    // Will need to track the connecting lines, so that when we add/remove/move a waypoint, we update the lines
+
     [self.mapView showAnnotations:self.mapView.annotations animated:YES];
 }
 
@@ -308,6 +312,7 @@ didChangeDragState:(MKAnnotationViewDragState)newDragState
                       ABS(location.coordinate.longitude),
                       location.coordinate.longitude > 0 ? 'E' : 'W',
                       location.horizontalAccuracy];
+    // NOTE: location.altitude is a complete fiction; need to actually look it up
     NSLog(@"Setting description to: \"%@\"",desc);
     [self setCurrentLocationDetail:desc
                    enableAddButton:YES];
