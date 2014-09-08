@@ -94,6 +94,8 @@
             [self.availableLinkIds removeIndex:self.availableLinkIds.firstIndex];
 
             [_links addObject:newLink];
+            NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+            [nc postNotificationName:FCSNewSerialPortNotification object:self userInfo:@{@"link": newLink}];
         }
     }
 }
@@ -119,6 +121,7 @@
         {
             if([disconnectedPorts containsObject:((FCSSerialLink *)link).thePort])
             {
+                link.connected = NO;
                 [self.links removeObject:link];
             }
         }

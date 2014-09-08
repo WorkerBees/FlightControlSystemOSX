@@ -24,6 +24,8 @@
 @property (nonatomic) CLLocationManager *locationManager;
 @property (nonatomic) CLGeocoder *geocoder;
 
+@property FCSConnectionLink *theLink;
+
 @property FCSMessageHandlerMissionTranferor *missionTransfer;
 
 @end
@@ -161,6 +163,8 @@ didChangeDragState:(MKAnnotationViewDragState)newDragState
     self.locationManager.distanceFilter = 10; // meters; send events if we move by this much
 
     self.currentLocationDetail.hidden = YES;
+
+    self.theLink = nil;
 }
 
 - (void)viewWillAppear
@@ -171,19 +175,36 @@ didChangeDragState:(MKAnnotationViewDragState)newDragState
     [self.locationManager startUpdatingLocation];
 }
 
+- (void)serialPortsWereConnected:(NSNotification *)notification
+{
+    // Stop listening while connected
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    self.theLink = [[notification userInfo] objectForKey:@"link"];
+
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        self.theLink.connected = YES;
+    });
+}
+
 - (void)viewDidAppear
 {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        // Find a serial connection and connect it
-        NSLog(@"Looking for a link to connect");
-        AppDelegate *myApp = (AppDelegate *)[NSApplication sharedApplication].delegate;
-        FCSConnectionLink *theLink = myApp.connectionLinkManager.availableLinks.anyObject;
-        NSLog(@"The connection manager gave me: %@", theLink);
-        if(theLink != nil)
-        {
-            theLink.connected = YES;
-        }
-    });
+    // Find a serial connection and connect it
+    NSLog(@"Looking for a link to connect");
+    AppDelegate *myApp = (AppDelegate *)[NSApplication sharedApplication].delegate;
+    self.theLink = myApp.connectionLinkManager.availableLinks.anyObject;
+    NSLog(@"The connection manager gave me: %@", self.theLink);
+    if(self.theLink != nil)
+    {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.theLink.connected = YES;
+        });
+    }
+    else
+    {
+        // Listen for new port becoming available
+        NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+        [nc addObserver:self selector:@selector(serialPortsWereConnected:) name:FCSNewSerialPortNotification object:myApp.connectionLinkManager];
+    }
 
     // Create a waypoint list transferor
     _missionTransfer = [[FCSMessageHandlerMissionTranferor alloc] initWithDelegate:self];
@@ -195,6 +216,11 @@ didChangeDragState:(MKAnnotationViewDragState)newDragState
     _locationManager = nil;
 
     [super viewWillDisappear];
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - Location detail visible

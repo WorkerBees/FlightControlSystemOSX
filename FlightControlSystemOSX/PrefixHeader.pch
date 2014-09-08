@@ -17,4 +17,9 @@
 #define FCSGCSSystemID ((uint8_t)252)
 #define FCSGCSComponentID ((uint8_t)1)
 
+@import Foundation;
+
+static NSString * const FCSNewSerialPortNotification = @"FCSNewSerialPortNotification";
+static NSString * const FCSSerialPortGoneNotification = @"FCSSerialPortGoneNotification";
+
 #endif
