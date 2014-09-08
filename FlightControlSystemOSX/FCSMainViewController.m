@@ -35,14 +35,16 @@
 didChangeDragState:(MKAnnotationViewDragState)newDragState
    fromOldState:(MKAnnotationViewDragState)oldDragState
 {
+    FCSAnnotation *annotation = (FCSAnnotation *)annotationView.annotation;
+
     if(newDragState == MKAnnotationViewDragStateStarting)
     {
-        NSLog(@"Drag starting");
+        NSLog(@"Drag starting from %@", annotation);
         annotationView.dragState = MKAnnotationViewDragStateDragging;
     }
     else if(newDragState == MKAnnotationViewDragStateEnding || newDragState == MKAnnotationViewDragStateCanceling)
     {
-        NSLog(@"Drag ending");
+        NSLog(@"Drag ending at %@", annotation);
         annotationView.dragState = MKAnnotationViewDragStateNone;
     }
 }
@@ -110,6 +112,9 @@ didChangeDragState:(MKAnnotationViewDragState)newDragState
                                     placemark.subAdministrativeArea,
                                     placemark.administrativeArea]
                    enableAddButton:NO];
+
+    // MKPlacemark lies about being MKAnnotation compliant.  It does not reply to "coordinate" message
+    // Instead, you have to go through placemark.location to get the lat/lon
 }
 
 - (void)setStatusForFirstPlacemarkOfArray:(NSArray *)placemarks

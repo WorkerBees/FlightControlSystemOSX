@@ -21,6 +21,13 @@
 - (void)setCoordinate:(CLLocationCoordinate2D)newCoordinate
 {
     _coordinate = newCoordinate;
+    self.mission_item.x = (float)newCoordinate.latitude;
+    self.mission_item.y = (float)newCoordinate.longitude;
+}
+
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"Annotation: %@", self.mission_item];
 }
 
 - (void)associateView:(MKAnnotationView *)view
