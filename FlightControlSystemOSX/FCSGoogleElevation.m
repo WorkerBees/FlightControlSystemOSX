@@ -17,10 +17,6 @@ static NSString * const FCSGoogleElevationAPIKey = @"AIzaSyCQCEazXsQqSA1ZmZzfs7v
 
 @implementation FCSGoogleElevation
 
-// Use this as, eg, https://maps.googleapis.com/maps/api/elevation/json?key=AIzaSyCQCEazXsQqSA1ZmZzfs7vRNflcSQijdvM&locations=36.697029,-121.319237
-// API docs for this Google API are here:
-// https://developers.google.com/maps/documentation/elevation/
-
 // Encode location using PolyLine algorithm
 // https://developers.google.com/maps/documentation/utilities/polylinealgorithm
 + (NSString *)encodeOneDimension:(CLLocationDegrees)dim
@@ -73,11 +69,31 @@ static NSString * const FCSGoogleElevationAPIKey = @"AIzaSyCQCEazXsQqSA1ZmZzfs7v
             [self encodeOneDimension:location.longitude]];
 }
 
++ (NSString *)encodeLocations:(NSArray *)locations
+{
+    NSMutableString *result = [NSMutableString stringWithCapacity:12*locations.count]; // Worst-case size 6 bytes per lat or long; ie 12 per coordinate
+
+    CLLocationCoordinate2D previous = { 0.0, 0.0 };
+
+    for (NSValue *val in locations)
+    {
+        CLLocationCoordinate2D current = val.MKCoordinateValue;
+        CLLocationCoordinate2D delta = { current.latitude - previous.latitude,
+                                        current.longitude - previous.longitude };
+
+        [result appendString:[self encodeLocation:delta]];
+        previous = current;
+    }
+
+    return result;
+}
+
 + (void) altitudeAtLocation:(CLLocationCoordinate2D)location callback:(void (^)(CLLocationDistance altitude))handler
 {
     NSURL *theURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/elevation/json?key=%@&locations=enc:%@",
-                         FCSGoogleElevationAPIKey,
-                         [FCSGoogleElevation encodeLocation:location]]];
+                                          FCSGoogleElevationAPIKey,
+                                          [[FCSGoogleElevation encodeLocation:location] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]]]];
+
     NSURLRequest *theRequest = [NSURLRequest requestWithURL:theURL
                                                 cachePolicy:NSURLRequestReturnCacheDataElseLoad
                                             timeoutInterval:15];
@@ -93,7 +109,6 @@ static NSString * const FCSGoogleElevationAPIKey = @"AIzaSyCQCEazXsQqSA1ZmZzfs7v
                                    NSDictionary *resultObject = [NSJSONSerialization JSONObjectWithData:data
                                                                                      options:0
                                                                                        error:&err];
-                                   NSLog(@"Got google elevation result: %@", resultObject);
                                    NSString *status = [resultObject objectForKey:@"status"];
                                    if([status isEqualToString:@"OK"])
                                    {
@@ -106,18 +121,53 @@ static NSString * const FCSGoogleElevationAPIKey = @"AIzaSyCQCEazXsQqSA1ZmZzfs7v
                                    else
                                    {
                                        NSLog(@"Google elevation lookup failed: %@", resultObject);
+                                       handler(0.0);
                                    }
                                }
                            }];
-    if(!gotResult)
-    {
-        handler(0.0);
-    }
 }
 
-+ (void) altitudeAtLocations:(NSArray *)locations callback:(void (^)(NSArray * altitudes))handler
++ (void) altitudesAtLocations:(NSArray *)locations callback:(void (^)(NSArray * altitudes))handler
 {
-    handler(@[]);
+    NSURL *theURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/elevation/json?key=%@&locations=enc:%@",
+                                          FCSGoogleElevationAPIKey,
+                                          [[FCSGoogleElevation encodeLocations:locations] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]]]];
+    
+    NSURLRequest *theRequest = [NSURLRequest requestWithURL:theURL
+                                                cachePolicy:NSURLRequestReturnCacheDataElseLoad
+                                            timeoutInterval:15];
+
+    __block BOOL gotResult = NO;
+    [NSURLConnection sendAsynchronousRequest:theRequest
+                                       queue:[NSOperationQueue currentQueue]
+                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+                               // TODO: better error handling
+                               if(connectionError == nil)
+                               {
+                                   NSError *err;
+                                   NSDictionary *resultObject = [NSJSONSerialization JSONObjectWithData:data
+                                                                                                options:0
+                                                                                                  error:&err];
+                                   NSString *status = [resultObject objectForKey:@"status"];
+                                   if([status isEqualToString:@"OK"])
+                                   {
+                                       NSArray *results = [resultObject objectForKey:@"results"];
+
+                                       NSMutableArray *altitudes = [NSMutableArray arrayWithCapacity:results.count];
+                                       for (NSDictionary *result in results)
+                                       {
+                                           [altitudes addObject:[result objectForKey:@"elevation"]];
+                                           gotResult = YES;
+                                       }
+                                       handler(altitudes);
+                                   }
+                                   else
+                                   {
+                                       NSLog(@"Google elevation lookup failed: %@", resultObject);
+                                       handler(@[]);
+                                   }
+                               }
+                           }];
 }
 
 
