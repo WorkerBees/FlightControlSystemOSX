@@ -8,6 +8,6 @@
 
 @import Cocoa;
 
-@interface FCSMissionDocument : NSPersistentDocument
+@interface FCSFlightControlDocument : NSPersistentDocument
 
 @end

@@ -16,8 +16,8 @@
 		444502D219A3E8D8007056B9 /* FCSSerialLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 444502D119A3E8D8007056B9 /* FCSSerialLink.m */; };
 		44587C2D199EC60900559FEC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 44587C2C199EC60900559FEC /* main.m */; };
 		44587C30199EC60900559FEC /* FCSMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44587C2F199EC60900559FEC /* FCSMainViewController.m */; };
-		44587C33199EC60900559FEC /* FCSMissionDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 44587C32199EC60900559FEC /* FCSMissionDocument.m */; };
-		44587C36199EC60900559FEC /* FCSMissionDocument.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 44587C34199EC60900559FEC /* FCSMissionDocument.xcdatamodeld */; };
+		44587C33199EC60900559FEC /* FCSFlightControlDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 44587C32199EC60900559FEC /* FCSFlightControlDocument.m */; };
+		44587C36199EC60900559FEC /* FCSFlightControlDocument.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 44587C34199EC60900559FEC /* FCSFlightControlDocument.xcdatamodeld */; };
 		44587C38199EC60900559FEC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44587C37199EC60900559FEC /* Images.xcassets */; };
 		44587C3B199EC60900559FEC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44587C39199EC60900559FEC /* Main.storyboard */; };
 		44587C47199EC60900559FEC /* FlightControlSystemOSXTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44587C46199EC60900559FEC /* FlightControlSystemOSXTests.m */; };
@@ -389,9 +389,9 @@
 		44587C2C199EC60900559FEC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		44587C2E199EC60900559FEC /* FCSMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FCSMainViewController.h; sourceTree = "<group>"; };
 		44587C2F199EC60900559FEC /* FCSMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FCSMainViewController.m; sourceTree = "<group>"; };
-		44587C31199EC60900559FEC /* FCSMissionDocument.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FCSMissionDocument.h; sourceTree = "<group>"; };
-		44587C32199EC60900559FEC /* FCSMissionDocument.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FCSMissionDocument.m; sourceTree = "<group>"; };
-		44587C35199EC60900559FEC /* FCSMissionDocument.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FCSMissionDocument.xcdatamodel; sourceTree = "<group>"; };
+		44587C31199EC60900559FEC /* FCSFlightControlDocument.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FCSFlightControlDocument.h; sourceTree = "<group>"; };
+		44587C32199EC60900559FEC /* FCSFlightControlDocument.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FCSFlightControlDocument.m; sourceTree = "<group>"; };
+		44587C35199EC60900559FEC /* FCSFlightControlDocument.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FCSFlightControlDocument.xcdatamodel; sourceTree = "<group>"; };
 		44587C37199EC60900559FEC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		44587C3A199EC60900559FEC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		44587C40199EC60900559FEC /* FlightControlSystemOSXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlightControlSystemOSXTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1046,12 +1046,12 @@
 				444501D419A3D0A7007056B9 /* MAVLink */,
 				449C2D1C19A4055C006EC79B /* App Delegate */,
 				44587C54199ECDDD00559FEC /* Map Display */,
-				44587C31199EC60900559FEC /* FCSMissionDocument.h */,
-				44587C32199EC60900559FEC /* FCSMissionDocument.m */,
+				44587C31199EC60900559FEC /* FCSFlightControlDocument.h */,
+				44587C32199EC60900559FEC /* FCSFlightControlDocument.m */,
 				44587C37199EC60900559FEC /* Images.xcassets */,
 				44EC91A219B10E2D002CC6B7 /* Icon Sources */,
 				44587C39199EC60900559FEC /* Main.storyboard */,
-				44587C34199EC60900559FEC /* FCSMissionDocument.xcdatamodeld */,
+				44587C34199EC60900559FEC /* FCSFlightControlDocument.xcdatamodeld */,
 				44587C2A199EC60900559FEC /* Supporting Files */,
 			);
 			path = FlightControlSystemOSX;
@@ -1535,7 +1535,7 @@
 				44A951B419ABB79A008D7D5F /* FCSMAVLinkLogRequestMessage.m in Sources */,
 				445A4CD519A6D6A000338A3A /* FCSMAVLinkAttitudeMessage.m in Sources */,
 				445A4CE719A6D78300338A3A /* FCSMAVLinkServoOutputRawMessage.m in Sources */,
-				44587C36199EC60900559FEC /* FCSMissionDocument.xcdatamodeld in Sources */,
+				44587C36199EC60900559FEC /* FCSFlightControlDocument.xcdatamodeld in Sources */,
 				44A9518419ABB606008D7D5F /* FCSMAVLinkHILControlsMessage.m in Sources */,
 				445A4C8D19A6D0CE00338A3A /* FCSMAVLinkParameterValueMessage.m in Sources */,
 				4488BABF19BE577300E06FD1 /* FCSGoogleElevation.m in Sources */,
@@ -1573,7 +1573,7 @@
 				445A4CE419A6D76600338A3A /* FCSMAVLinkRCChannelsRawMessage.m in Sources */,
 				446E39B719AD13BF0000D8D2 /* FCSMAVLinkLimitsStatusMessage.m in Sources */,
 				44A9519619ABB69A008D7D5F /* FCSMAVLinkVICONPositionEstimateMessage.m in Sources */,
-				44587C33199EC60900559FEC /* FCSMissionDocument.m in Sources */,
+				44587C33199EC60900559FEC /* FCSFlightControlDocument.m in Sources */,
 				44A951ED19ABB8EB008D7D5F /* FCSMAVLinkBatteryStatusMessage.m in Sources */,
 				445A4CC019A6D5AD00338A3A /* FCSMAVLinkParameterReadRequestMessage.m in Sources */,
 				444502BE19A3D0D9007056B9 /* ORSSerialPortManager.m in Sources */,
@@ -1844,13 +1844,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		44587C34199EC60900559FEC /* FCSMissionDocument.xcdatamodeld */ = {
+		44587C34199EC60900559FEC /* FCSFlightControlDocument.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				44587C35199EC60900559FEC /* FCSMissionDocument.xcdatamodel */,
+				44587C35199EC60900559FEC /* FCSFlightControlDocument.xcdatamodel */,
 			);
-			currentVersion = 44587C35199EC60900559FEC /* FCSMissionDocument.xcdatamodel */;
-			path = FCSMissionDocument.xcdatamodeld;
+			currentVersion = 44587C35199EC60900559FEC /* FCSFlightControlDocument.xcdatamodel */;
+			path = FCSFlightControlDocument.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

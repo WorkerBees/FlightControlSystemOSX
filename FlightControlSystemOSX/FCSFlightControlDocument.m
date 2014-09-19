@@ -6,13 +6,13 @@
 //  Copyright (c) 2014 Craig Hughes. All rights reserved.
 //
 
-#import "FCSMissionDocument.h"
+#import "FCSFlightControlDocument.h"
 
-@interface FCSMissionDocument ()
+@interface FCSFlightControlDocument ()
 
 @end
 
-@implementation FCSMissionDocument
+@implementation FCSFlightControlDocument
             
 - (instancetype)init {
     self = [super init];
