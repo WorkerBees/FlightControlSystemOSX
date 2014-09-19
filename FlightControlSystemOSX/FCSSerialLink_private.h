@@ -9,7 +9,6 @@
 #ifndef FlightControlSystemOSX_FCSSerialLink_private_h
 #define FlightControlSystemOSX_FCSSerialLink_private_h
 
-#import "FCSConnectionLinkManager_private.h"
 #import "FCSSerialLink.h"
 #import "ORSSerialPort.h"
 

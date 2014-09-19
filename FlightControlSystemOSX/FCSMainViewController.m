@@ -10,23 +10,17 @@
 
 #import "AppDelegate.h"
 
-#import "FCSMessageHandlerMissionTranferor.h"
 #import "FCSAnnotation.h"
 
 @import MapKit;
 
-@interface FCSMainViewController () <MKMapViewDelegate, CLLocationManagerDelegate, NSTextFieldDelegate, FCSWaypointListReceivedHandler>
+@interface FCSMainViewController () <MKMapViewDelegate, CLLocationManagerDelegate, NSTextFieldDelegate>
 
 @property (weak) IBOutlet MKMapView *mapView;
-@property (weak) IBOutlet NSSearchField *searchField;
-@property (weak,nonatomic) IBOutlet NSTextField *currentLocationDetail;
+@property (weak,nonatomic) IBOutlet NSTextField *feedback;
 
 @property (nonatomic) CLLocationManager *locationManager;
 @property (nonatomic) CLGeocoder *geocoder;
-
-@property FCSConnectionLink *theLink;
-
-@property FCSMessageHandlerMissionTranferor *missionTransfer;
 
 @end
 
@@ -81,59 +75,6 @@ didChangeDragState:(MKAnnotationViewDragState)newDragState
     return nil;
 }
 
-- (void)receivedMissionItem:(FCSMAVLinkMissionItemMessage *)mission_item
-{
-    switch(mission_item.command)
-    {
-        case FCSMAVCMDType_NAV_TAKEOFF:
-        case FCSMAVCMDType_NAV_WAYPOINT:
-        case FCSMAVCMDType_NAV_LAND:
-            if(mission_item.x == 0 && mission_item.y == 0 && mission_item.z == 0)
-            {
-                NSLog(@"Ignoring waypoint with all 0s");
-                return;
-            }
-            break;
-        default:
-            NSLog(@"We do not handle this type of waypoint yet");
-            return;
-    }
-
-    // Make an annotation on the map
-    FCSAnnotation *spot = [[FCSAnnotation alloc] initWithMissionItem:mission_item];
-    [self.mapView addAnnotation:spot];
-    // TODO: If there was a previous waypoint, add a path from that to this using
-    // MKPolyline or MKMultiPoint with custom renderer where the line segments are colored by altitude maybe
-    // Will need to track the connecting lines, so that when we add/remove/move a waypoint, we update the lines
-
-    [self.mapView showAnnotations:self.mapView.annotations animated:YES];
-}
-
-- (void)setStatusForPlacemark:(MKPlacemark *)placemark
-{
-    [self setCurrentLocationDetail:[NSString stringWithFormat:@"%@ %@\n%@, %@, %@",
-                                    placemark.subThoroughfare,
-                                    placemark.thoroughfare,
-                                    placemark.locality,
-                                    placemark.subAdministrativeArea,
-                                    placemark.administrativeArea]
-                   enableAddButton:NO];
-
-    // MKPlacemark lies about being MKAnnotation compliant.  It does not reply to "coordinate" message
-    // Instead, you have to go through placemark.location to get the lat/lon
-}
-
-- (void)setStatusForFirstPlacemarkOfArray:(NSArray *)placemarks
-{
-    if(placemarks != nil) // nil if cancelled or error
-    {
-        if ([placemarks count] > 0)
-        {
-            [self setStatusForPlacemark:[placemarks objectAtIndex:0]];
-        }
-    }
-}
-
 #pragma mark - Auto-allocation methods
 
 - (CLLocationManager *)locationManager
@@ -166,9 +107,7 @@ didChangeDragState:(MKAnnotationViewDragState)newDragState
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
     self.locationManager.distanceFilter = 10; // meters; send events if we move by this much
 
-    self.currentLocationDetail.hidden = YES;
-
-    self.theLink = nil;
+    self.feedback.hidden = YES;
 }
 
 - (void)viewWillAppear
@@ -181,12 +120,11 @@ didChangeDragState:(MKAnnotationViewDragState)newDragState
 
 - (void)serialPortsWereConnected:(NSNotification *)notification
 {
-    // Stop listening while connected
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-    self.theLink = [[notification userInfo] objectForKey:@"link"];
+    FCSConnectionLink *theLink = [[notification userInfo] objectForKey:@"link"];
 
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        self.theLink.connected = YES;
+        // Wait a suitable time period for the serial port driver to stabilize, and then open the link
+        theLink.connected = YES;
     });
 }
 
@@ -195,12 +133,12 @@ didChangeDragState:(MKAnnotationViewDragState)newDragState
     // Find a serial connection and connect it
     NSLog(@"Looking for a link to connect");
     AppDelegate *myApp = (AppDelegate *)[NSApplication sharedApplication].delegate;
-    self.theLink = myApp.connectionLinkManager.availableLinks.anyObject;
-    NSLog(@"The connection manager gave me: %@", self.theLink);
-    if(self.theLink != nil)
+    FCSConnectionLink *theLink = myApp.connectionLinkManager.availableLinks.anyObject;
+    NSLog(@"The connection manager gave me: %@", theLink);
+    if(theLink != nil)
     {
         dispatch_async(dispatch_get_main_queue(), ^{
-            self.theLink.connected = YES;
+            theLink.connected = YES;
         });
     }
     else
@@ -209,9 +147,6 @@ didChangeDragState:(MKAnnotationViewDragState)newDragState
         NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
         [nc addObserver:self selector:@selector(serialPortsWereConnected:) name:FCSNewSerialPortNotification object:myApp.connectionLinkManager];
     }
-
-    // Create a waypoint list transferor
-    _missionTransfer = [[FCSMessageHandlerMissionTranferor alloc] initWithDelegate:self];
 }
 
 - (void)viewWillDisappear
@@ -225,22 +160,6 @@ didChangeDragState:(MKAnnotationViewDragState)newDragState
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-#pragma mark - Location detail visible
-
-- (void)setCurrentLocationDetail:(NSString *)newDetail
-                 enableAddButton:(BOOL)enableAddButton
-{
-    (void)enableAddButton;
-
-    // Update UI on main thread
-    dispatch_async(dispatch_get_main_queue(), ^{
-        self.currentLocationDetail.stringValue = newDetail;
-        self.currentLocationDetail.hidden = NO;
-
-        [self.currentLocationDetail sizeToFit];
-    });
 }
 
 #pragma mark - Search for location
@@ -266,7 +185,12 @@ didChangeDragState:(MKAnnotationViewDragState)newDragState
     [self geocodeAddressString:sender.stringValue completionHandler:^(NSArray *placemarks, NSError *error) {
         if(error == nil)
         {
-            [self setStatusForFirstPlacemarkOfArray:placemarks];
+            CLPlacemark *placemark = placemarks.firstObject;
+            // Update the map view
+            [self.mapView setRegion:MKCoordinateRegionMakeWithDistance(placemark.location.coordinate,
+                                                                       MAX(placemark.location.horizontalAccuracy * 4, 1000),
+                                                                       MAX(placemark.location.horizontalAccuracy * 4, 1000))
+                           animated:YES];
         }
         else
         {
@@ -274,22 +198,6 @@ didChangeDragState:(MKAnnotationViewDragState)newDragState
         }
     }];
 }
-
-#pragma mark - Add waypoint
-
-- (IBAction)addButtonClicked:(id)sender
-{
-    (void)sender;
-}
-
-#pragma mark - Remove waypoint
-
-- (IBAction)deleteButtonClicked:(id)sender
-{
-    (void)sender;
-}
-
-#pragma mark - MapView delegate methods
 
 #pragma mark - Location update delegate methods
 
@@ -305,34 +213,6 @@ didChangeDragState:(MKAnnotationViewDragState)newDragState
                                                                MAX(location.horizontalAccuracy * 4, 1000),
                                                                MAX(location.horizontalAccuracy * 4, 1000))
                    animated:YES];
-
-    NSString *desc = [NSString stringWithFormat:@"%f%c, %f%c (+/- %0.0fm)",
-                      ABS(location.coordinate.latitude),
-                      location.coordinate.latitude > 0 ? 'N' : 'S',
-                      ABS(location.coordinate.longitude),
-                      location.coordinate.longitude > 0 ? 'E' : 'W',
-                      location.horizontalAccuracy];
-    // NOTE: location.altitude is a complete fiction; need to actually look it up
-    NSLog(@"Setting description to: \"%@\"",desc);
-    [self setCurrentLocationDetail:desc
-                   enableAddButton:YES];
-
-    // Can't run 2 geocodings at once, so abort the previous one
-    [self.geocoder cancelGeocode];
-
-    // Look up this location and get info about it
-    [self.geocoder reverseGeocodeLocation:location completionHandler:
-     ^(NSArray* placemarks, NSError* error)
-     {
-         if(error == nil)
-         {
-             [self setStatusForFirstPlacemarkOfArray:placemarks];
-         }
-         else
-         {
-             NSLog(@"Error: %@",error);
-         }
-     }];
 }
 
 #pragma mark - Autocomplete search using text field delegate

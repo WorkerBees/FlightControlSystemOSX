@@ -9,9 +9,13 @@
 #import "FCSMessageHandlerMissionTranferor.h"
 #import "FCSMessageHandler_Private.h"
 
+#import "FCSMission.h"
+
 #import "FCSConnectionProtocol.h"
 #import "FCSConnectionLink.h"
 #import "FCSMAVLinkMessage.h"
+
+#import "FCSGoogleElevation.h"
 
 /*
  *
@@ -36,7 +40,12 @@
 @interface FCSMessageHandlerMissionTranferor ()
 
 @property NSUInteger item_count;
-@property NSMutableArray *mission_items;
+@property FCSMission *theMission;
+@property FCSConnectionLink *theLink;
+@property FCSConnectionProtocol *theProtocol;
+
+@property uint8_t sysID;
+@property uint8_t compID;
 
 @end
 
@@ -48,135 +57,109 @@
     FCSConnectionProtocol *protocol = [notification.userInfo objectForKey:@"protocol"];
     FCSConnectionLink *link = [notification.userInfo objectForKey:@"link"];
 
-    // Check if it's for us; if not, then skip
-    if(msg.targetSystem != FCSGCSSystemID || msg.targetComponent != FCSGCSComponentID)
-    {
-        NSLog(@"Not our mission item: %@", msg);
-        return;
-    }
+    // If it wasn't for us, then ignore
+    if(link != self.theLink ||
+       protocol != self.theProtocol ||
+       msg.targetSystem != FCSGCSSystemID ||
+       msg.targetComponent != FCSGCSComponentID) return;
 
     // For now just stick the message in the mission_items list
-    [_mission_items addObject:msg];
-
-    if(_delegate && [_delegate respondsToSelector:@selector(receivedMissionItem:)])
+    [self.theMission makeMissionItemFromMessage:msg];
+    if(msg.sequenceNumber+1 == self.item_count)
     {
-        [_delegate receivedMissionItem:msg];
+        NSLog(@"Mission is complete: %@", self.theMission);
     }
 
     // Check if complete
     // TODO: handle errors that might have other ACK types
-    if(_mission_items.count != _item_count)
+    if(msg.sequenceNumber+1 != self.item_count)
     {
         // Send next request
         FCSMAVLinkMissionRequestMessage *req = [[FCSMAVLinkMissionRequestMessage alloc] init];
-        req.targetSystem = msg.theMessage->sysid;
-        req.targetComponent = msg.theMessage->compid;
-        req.sequenceNumber = (uint16_t)_mission_items.count;
-        [protocol sendMessage:req onLink:link];
+        req.targetSystem = self.sysID;
+        req.targetComponent = self.compID;
+        req.sequenceNumber = msg.sequenceNumber+1;
+        [self.theProtocol sendMessage:req onLink:self.theLink];
     }
     else
     {
         // Send ACK and be done
         [self stopHandlingMessage:[FCSMAVLinkMessage nameForMessageID:MAVLINK_MSG_ID_MISSION_ITEM]];
         FCSMAVLinkMissionAcknowledgementMessage *req = [[FCSMAVLinkMissionAcknowledgementMessage alloc] init];
-        req.targetSystem = msg.theMessage->sysid;
-        req.targetComponent = msg.theMessage->compid;
+        req.targetSystem = self.sysID;
+        req.targetComponent = self.compID;
         req.type = FCSMAVMissionAck_ACCEPTED;
-        [protocol sendMessage:req onLink:link];
-
-        // Notify the delegate
-        if(_delegate && [_delegate respondsToSelector:@selector(receivedMissionItems:)])
-        {
-            [_delegate receivedMissionItems:_mission_items];
-        }
+        [self.theProtocol sendMessage:req onLink:self.theLink];
     }
 }
 
 - (void)receivedMissionCount:(NSNotification *)notification
 {
+    FCSConnectionProtocol *protocol = [notification.userInfo objectForKey:@"protocol"];
+    FCSConnectionLink *link = [notification.userInfo objectForKey:@"link"];
+    FCSMAVLinkMissionCountMessage *msg = [notification.userInfo objectForKey:@"message"];
+
+    // If it wasn't for us, then ignore
+    if(link != self.theLink ||
+       protocol != self.theProtocol ||
+       msg.targetSystem != FCSGCSSystemID ||
+       msg.targetComponent != FCSGCSComponentID) return;
+
     // Cancel timeout
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(missionCountTimeout) object:nil];
 
-    FCSMAVLinkMissionCountMessage *msg = [notification.userInfo objectForKey:@"message"];
-    FCSConnectionProtocol *protocol = [notification.userInfo objectForKey:@"protocol"];
-    FCSConnectionLink *link = [notification.userInfo objectForKey:@"link"];
-
-    // Check if it's for us; if not, then skip
-    if(msg.targetSystem != FCSGCSSystemID || msg.targetComponent != FCSGCSComponentID)
-    {
-        NSLog(@"Not our mission count: %@", msg);
-        return;
-    }
-
     [self stopHandlingMessage:[FCSMAVLinkMessage nameForMessageID:MAVLINK_MSG_ID_MISSION_COUNT]];
 
-    _item_count = msg.count;
-    _mission_items = [NSMutableArray arrayWithCapacity:_item_count];
+    self.item_count = msg.count;
 
     // Listen for reply
     [self handleMessage:[FCSMAVLinkMessage nameForMessageID:MAVLINK_MSG_ID_MISSION_ITEM] withSelector:@selector(receivedMissionItem:)];
 
     // Send next request
     FCSMAVLinkMissionRequestMessage *req = [[FCSMAVLinkMissionRequestMessage alloc] init];
-    req.targetSystem = msg.theMessage->sysid;
-    req.targetComponent = msg.theMessage->compid;
-    req.sequenceNumber = (uint16_t)_mission_items.count;
-    [protocol sendMessage:req onLink:link];
-
-    // Notify the delegate
-    if(_delegate &&
-       [_delegate respondsToSelector:@selector(receivedMissionItemCount:)])
-    {
-        [_delegate receivedMissionItemCount:_item_count];
-    }
+    req.targetSystem = self.sysID;
+    req.targetComponent = self.compID;
+    req.sequenceNumber = 0;
+    [self.theProtocol sendMessage:req onLink:self.theLink];
 }
 
 - (void)missionCountTimeout
 {
     // We didn't get a MISSION_COUNT message in time.  So assume something went wrong, and retry
-    NSLog(@"TIMEOUT: no MISSION_COUNT in time; re-listening for HEARTBEAT");
+    NSLog(@"TIMEOUT: no MISSION_COUNT in time; restarting dialog");
     [self stopHandlingMessage:[FCSMAVLinkMessage nameForMessageID:MAVLINK_MSG_ID_MISSION_COUNT]];
 
-    [self handleMessage:[FCSMAVLinkMessage nameForMessageID:MAVLINK_MSG_ID_HEARTBEAT] withSelector:@selector(requestListAfterHeartbeat:)];
+    [self requestMission];
 }
 
-// When we get a heartbeat message, unregister for heartbeats, then send a request
-- (void)requestListAfterHeartbeat:(NSNotification *)notification
+#pragma mark - Lifecycle
+
+- (void)requestMission
 {
-    [self stopHandlingMessage:[FCSMAVLinkMessage nameForMessageID:MAVLINK_MSG_ID_HEARTBEAT]];
-
-    FCSMAVLinkMessage *msg = [notification.userInfo objectForKey:@"message"];
-    FCSConnectionProtocol *protocol = [notification.userInfo objectForKey:@"protocol"];
-    FCSConnectionLink *link = [notification.userInfo objectForKey:@"link"];
-
     // Listen for reply
     [self handleMessage:[FCSMAVLinkMessage nameForMessageID:MAVLINK_MSG_ID_MISSION_COUNT] withSelector:@selector(receivedMissionCount:)];
 
     // Send the message
     FCSMAVLinkMissionRequestListMessage *req = [[FCSMAVLinkMissionRequestListMessage alloc] init];
-    req.targetSystem = msg.theMessage->sysid;
-    req.targetComponent = msg.theMessage->compid;
-    [protocol sendMessage:req onLink:link];
+    req.targetSystem = self.sysID;
+    req.targetComponent = self.compID;
+    [self.theProtocol sendMessage:req onLink:self.theLink];
 
-    // Start timeout; if expires before being cleared, will restart listening for heartbeat.
+    // Start timeout; if expires before being cleared, will restart the dialog.
     [self performSelector:@selector(missionCountTimeout) withObject:nil afterDelay:1.0];
 }
 
-- (instancetype)init
+- (instancetype)initWithMission:(FCSMission *)mission withProtocol:(FCSConnectionProtocol *)protocol forLink:(FCSConnectionLink *)link sysID:(uint8_t)sysID compID:(uint8_t)compID
 {
     self = [super init];
 
-    // Start the dialog once we get a heartbeat
-    [self handleMessage:[FCSMAVLinkMessage nameForMessageID:MAVLINK_MSG_ID_HEARTBEAT] withSelector:@selector(requestListAfterHeartbeat:)];
+    _theMission = mission;
+    _theLink = link;
+    _theProtocol = protocol;
+    _sysID = sysID;
+    _compID = compID;
 
-    return self;
-}
-
-- (instancetype)initWithDelegate:(id<FCSWaypointListReceivedHandler>)delegate
-{
-    self = [self init];
-
-    _delegate = delegate;
+    [self requestMission];
 
     return self;
 }

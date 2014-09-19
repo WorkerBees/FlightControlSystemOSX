@@ -7,25 +7,18 @@
 //
 
 #import "FCSMessageHandler.h"
-#import "FCSMAVLinkMissionItemMessage.h"
 
+#import "FCSMission.h"
+#import "FCSMissionItem.h"
 
-@protocol FCSWaypointListReceivedHandler;
+#import "FCSConnectionLink.h"
+#import "FCSConnectionProtocol.h"
 
+/**
+ *  Handle the mission transfer protocol to get a list of mission items from the device or send a set of mission items to the device
+ */
 @interface FCSMessageHandlerMissionTranferor : FCSMessageHandler
 
-@property id<FCSWaypointListReceivedHandler> delegate;
-
-- (instancetype)initWithDelegate:(id<FCSWaypointListReceivedHandler>)delegate;
-
-@end
-
-@protocol FCSWaypointListReceivedHandler <NSObject>
-
-@optional
-
-- (void)receivedMissionItemCount:(NSUInteger)count;
-- (void)receivedMissionItem:(FCSMAVLinkMissionItemMessage *)mission_item;
-- (void)receivedMissionItems:(NSArray *)mission_items;
+- (instancetype)initWithMission:(FCSMission *)mission withProtocol:(FCSConnectionProtocol *)protocol forLink:(FCSConnectionLink *)link sysID:(uint8_t)sysID compID:(uint8_t)compID;
 
 @end

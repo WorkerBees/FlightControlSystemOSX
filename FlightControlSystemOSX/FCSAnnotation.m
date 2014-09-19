@@ -6,7 +6,10 @@
 //  Copyright (c) 2014 Craig Hughes. All rights reserved.
 //
 
-#import "FCSGoogleElevation.h"
+#import "FCSMissionItemLand.h"
+#import "FCSMissionItemTakeoff.h"
+#import "FCSMissionItemWaypoint.h"
+#import "FCSMissionItem_Private.h"
 #import "FCSAnnotation.h"
 
 @interface FCSAnnotation ()
@@ -22,8 +25,15 @@
 - (void)setCoordinate:(CLLocationCoordinate2D)newCoordinate
 {
     _coordinate = newCoordinate;
-    self.mission_item.x = (float)newCoordinate.latitude;
-    self.mission_item.y = (float)newCoordinate.longitude;
+
+    if([self.mission_item isKindOfClass:[FCSMissionItemWaypoint class]])
+    {
+        ((FCSMissionItemWaypoint *)self.mission_item).position = newCoordinate;
+    }
+    else if([self.mission_item isKindOfClass:[FCSMissionItemLand class]])
+    {
+        ((FCSMissionItemLand *)self.mission_item).position = newCoordinate;
+    }
 }
 
 - (NSString *)description
@@ -36,21 +46,24 @@
     NSAssert(view.annotation == self, @"View's annotation is not me!");
 
     CGPoint handle_offset;
-    switch(self.mission_item.command)
+    if([self.mission_item isKindOfClass:[FCSMissionItemLand class]])
     {
-        case FCSMAVCMDType_NAV_LAND:
-            handle_offset = CGPointMake(-21.25, -29);
-            break;
-        case FCSMAVCMDType_NAV_WAYPOINT:
-            handle_offset = CGPointMake(0, -30);
-            break;
-        case FCSMAVCMDType_NAV_TAKEOFF:
-            handle_offset = CGPointMake(17.5, -25);
-            break;
-        default:
-            @throw [NSException exceptionWithName:@"Bad mission item"
-                                           reason:@"You should not have a mission item of that type here!"
-                                         userInfo:@{@"mission_item":self.mission_item}];
+        handle_offset = CGPointMake(-21.25, -29);
+    }
+    else if([self.mission_item isKindOfClass:[FCSMissionItemWaypoint class]])
+    {
+        handle_offset = CGPointMake(0, -30);
+
+    }
+    else if([self.mission_item isKindOfClass:[FCSMissionItemTakeoff class]])
+    {
+        handle_offset = CGPointMake(17.5, -25);
+    }
+    else
+    {
+        @throw [NSException exceptionWithName:@"Bad mission item"
+                                       reason:@"You should not have a mission item of that type here!"
+                                     userInfo:@{@"mission_item":self.mission_item}];
     }
 
     // Search for cached image with waypoint number already scribbled on it
@@ -60,7 +73,7 @@
         img = [[NSImage imageNamed:self.titleBase] copy];
         // We need to overlay on the image the waypoint number
         [img lockFocus];
-        NSString *waypointNumber = [NSString stringWithFormat:@"%u", self.mission_item.sequenceNumber];
+        NSString *waypointNumber = [NSString stringWithFormat:@"%lu", (unsigned long)self.mission_item.sequenceNumber];
         NSMutableParagraphStyle * paragraphStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
         NSFont *font = [NSFont systemFontOfSize:24];
         NSShadow *shadow = [[NSShadow alloc] init];
@@ -75,27 +88,29 @@
                                        };
 
         NSRect textOverlayDrawRect;
-        switch(self.mission_item.command)
+        if([self.mission_item isKindOfClass:[FCSMissionItemLand class]])
         {
-            case FCSMAVCMDType_NAV_LAND:
-                textOverlayDrawRect = NSMakeRect(0, 2,
-                                                 img.size.width, font.pointSize);
-                paragraphStyle.alignment = NSLeftTextAlignment;
-                break;
-            case FCSMAVCMDType_NAV_WAYPOINT:
-                textOverlayDrawRect = NSMakeRect(0, img.size.height/2,
-                                                 img.size.width, font.pointSize);
-                paragraphStyle.alignment = NSCenterTextAlignment;
-                break;
-            case FCSMAVCMDType_NAV_TAKEOFF:
-                textOverlayDrawRect = NSMakeRect(0, 2,
-                                                 img.size.width, font.pointSize);
-                paragraphStyle.alignment = NSRightTextAlignment;
-                break;
-            default:
-                @throw [NSException exceptionWithName:@"Bad mission item"
-                                               reason:@"You should not have a mission item of that type here!"
-                                             userInfo:@{@"mission_item":self.mission_item}];
+            textOverlayDrawRect = NSMakeRect(0, 2,
+                                             img.size.width, font.pointSize);
+            paragraphStyle.alignment = NSLeftTextAlignment;
+        }
+        else if([self.mission_item isKindOfClass:[FCSMissionItemWaypoint class]])
+        {
+            textOverlayDrawRect = NSMakeRect(0, img.size.height/2,
+                                             img.size.width, font.pointSize);
+            paragraphStyle.alignment = NSCenterTextAlignment;
+        }
+        else if([self.mission_item isKindOfClass:[FCSMissionItemTakeoff class]])
+        {
+            textOverlayDrawRect = NSMakeRect(0, 2,
+                                             img.size.width, font.pointSize);
+            paragraphStyle.alignment = NSRightTextAlignment;
+        }
+        else
+        {
+            @throw [NSException exceptionWithName:@"Bad mission item"
+                                           reason:@"You should not have a mission item of that type here!"
+                                         userInfo:@{@"mission_item":self.mission_item}];
         }
 
         [waypointNumber drawInRect:textOverlayDrawRect withAttributes:attributes];
@@ -113,32 +128,34 @@
 
 - (NSString *)title
 {
-    return [NSString stringWithFormat:@"%u: %@", self.mission_item.sequenceNumber, self.titleBase];
+    return [NSString stringWithFormat:@"%lu: %@", (unsigned long)self.mission_item.sequenceNumber, self.titleBase];
 }
 
 - (NSString *)subtitle
 {
-    return [NSString stringWithFormat:@"Altitude: %0.1fm", self.mission_item.z];
+    return [NSString stringWithFormat:@"Altitude: %0.1fm", [[self.mission_item.parameters objectForKey:ALTITUDE] floatValue]];
 }
 
-- (instancetype)initWithMissionItem:(FCSMAVLinkMissionItemMessage *)mission_item
+- (instancetype)initWithMissionItem:(FCSMissionItem *)mission_item
 {
     self = [self init];
 
     self.mission_item = mission_item;
-    switch(self.mission_item.command)
+    if([self.mission_item isKindOfClass:[FCSMissionItemLand class]])
     {
-        case FCSMAVCMDType_NAV_LAND: self.titleBase = @"Land"; break;
-        case FCSMAVCMDType_NAV_TAKEOFF: self.titleBase = @"Takeoff"; break;
-        case FCSMAVCMDType_NAV_WAYPOINT:
-        default: self.titleBase = @"Waypoint";
+        self.titleBase = @"Land";
+        _coordinate = ((FCSMissionItemLand *)self.mission_item).position;
     }
-
-    _coordinate = CLLocationCoordinate2DMake(mission_item.x, mission_item.y);
-
-    [FCSGoogleElevation altitudeAtLocation:_coordinate callback:^(CLLocationDistance altitude) {
-        self.mission_item.z = self.mission_item.z + (float)altitude;
-    }];
+    else if([self.mission_item isKindOfClass:[FCSMissionItemTakeoff class]])
+    {
+        self.titleBase = @"Takeoff";
+        _coordinate = CLLocationCoordinate2DMake([self.mission_item param:Param5], [self.mission_item param:Param6]);
+    }
+    else
+    {
+        self.titleBase = @"Waypoint";
+        _coordinate = ((FCSMissionItemWaypoint *)self.mission_item).position;
+    }
 
     return self;
 }

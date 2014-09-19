@@ -59,7 +59,6 @@
     self = [super initWithType:FCSSerialLinkType withLinkID:linkId withName:port.name];
 
     self.readerDelegate = protocolDelegate;
-    self.linkStatusDelegate = manager;
     self.thePort = port;
 
     self.thePort.delegate = self;

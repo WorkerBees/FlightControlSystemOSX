@@ -6,8 +6,6 @@
 //  Copyright (c) 2014 Craig Hughes. All rights reserved.
 //
 
-#import "FCSConnectionLinkManager_private.h"
-
 #import "FCSSerialLink_private.h"
 
 #import "FCSConnectionProtocol.h"
@@ -62,18 +60,6 @@
     return self.links;
 }
 
-#pragma mark - FCSConnectionLink delegate methods
-
-- (void)opened:(FCSConnectionLink *)link
-{
-    NSLog(@"Connected: %@",link);
-}
-
-- (void)closed:(FCSConnectionLink *)link
-{
-    NSLog(@"Disconnected: %@",link);
-}
-
 #pragma mark - Manage the list of serial connections
 
 - (void)addUSBSerialPorts:(NSArray *)ports
@@ -106,8 +92,6 @@
     NSLog(@"Ports were plugged in: %@", connectedPorts);
 
     [self addUSBSerialPorts:connectedPorts];
-
-    [self postUserNotificationForConnectedPorts:connectedPorts];
 }
 
 - (void)serialPortsWereDisconnected:(NSNotification *)notification
@@ -126,41 +110,6 @@
             }
         }
     }
-
-    [self postUserNotificationForDisconnectedPorts:disconnectedPorts];
 }
-
-- (void)postUserNotificationForConnectedPorts:(NSArray *)connectedPorts
-{
-    if (!NSClassFromString(@"NSUserNotificationCenter")) return;
-
-    NSUserNotificationCenter *unc = [NSUserNotificationCenter defaultUserNotificationCenter];
-    for (ORSSerialPort *port in connectedPorts)
-    {
-        NSUserNotification *userNote = [[NSUserNotification alloc] init];
-        userNote.title = NSLocalizedString(@"Serial Port Connected", @"Serial Port Connected");
-        NSString *informativeTextFormat = NSLocalizedString(@"Serial Port %@ was connected to your Mac.", @"Serial port connected user notification informative text");
-        userNote.informativeText = [NSString stringWithFormat:informativeTextFormat, port.name];
-        userNote.soundName = nil;
-        [unc deliverNotification:userNote];
-    }
-}
-
-- (void)postUserNotificationForDisconnectedPorts:(NSArray *)disconnectedPorts
-{
-    if (!NSClassFromString(@"NSUserNotificationCenter")) return;
-
-    NSUserNotificationCenter *unc = [NSUserNotificationCenter defaultUserNotificationCenter];
-    for (ORSSerialPort *port in disconnectedPorts)
-    {
-        NSUserNotification *userNote = [[NSUserNotification alloc] init];
-        userNote.title = NSLocalizedString(@"Serial Port Disconnected", @"Serial Port Disconnected");
-        NSString *informativeTextFormat = NSLocalizedString(@"Serial Port %@ was disconnected from your Mac.", @"Serial port disconnected user notification informative text");
-        userNote.informativeText = [NSString stringWithFormat:informativeTextFormat, port.name];
-        userNote.soundName = nil;
-        [unc deliverNotification:userNote];
-    }
-}
-
 
 @end

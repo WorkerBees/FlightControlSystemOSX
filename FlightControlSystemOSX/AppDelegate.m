@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 
 #import "FCSMessageHandlerLogger.h"
+#import "FCSMessageHandlerNewBeeDetector.h"
 
 @interface AppDelegate ()
 
@@ -27,11 +28,13 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    NSLog(@"App delegate created and finished launching");
     self.connectionLinkManager = [[FCSConnectionLinkManager alloc] init];
 
     // Create a logger
     [self.handlers addObject:[[FCSMessageHandlerLogger alloc] init]];
+
+    // Detect new Bees
+    [self.handlers addObject:[[FCSMessageHandlerNewBeeDetector alloc] init]];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification

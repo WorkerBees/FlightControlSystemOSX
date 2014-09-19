@@ -8,16 +8,16 @@
 
 @import Foundation;
 
-#import "FCSMAVLinkMissionItemMessage.h"
+#import "FCSMissionItem.h"
 
 @import MapKit;
 
 
 @interface FCSAnnotation : NSObject <MKAnnotation>
 
-@property FCSMAVLinkMissionItemMessage *mission_item;
+@property FCSMissionItem *mission_item;
 
-- (instancetype)initWithMissionItem:(FCSMAVLinkMissionItemMessage *)mission_item;
+- (instancetype)initWithMissionItem:(FCSMissionItem *)mission_item;
 - (void)associateView:(MKAnnotationView *)view;
 
 @end
