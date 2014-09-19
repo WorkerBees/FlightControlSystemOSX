@@ -8,8 +8,9 @@
 
 #import "FCSMessageHandler.h"
 
+/**
+ *  Log all messages using NSLog()
+ */
 @interface FCSMessageHandlerLogger : FCSMessageHandler
-
-
 
 @end
